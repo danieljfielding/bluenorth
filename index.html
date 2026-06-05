@@ -517,6 +517,89 @@
     .carousel-content .display-1 { color: white !important; }
     .carousel-content p { color: rgba(255,255,255,0.8) !important; }
     .carousel-content .hero-eyebrow { color: rgba(255,255,255,0.65) !important; }
+
+    /* Split layout */
+    .carousel-split {
+      max-width: 100% !important;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 max(48px, 6vw) !important;
+      padding-top: var(--nav-height) !important;
+    }
+    .cs-left {
+      flex: 0 0 55%;
+      max-width: 55%;
+      padding-right: 60px;
+    }
+    .cs-right {
+      flex: 0 0 45%;
+      max-width: 45%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 1px solid rgba(255,255,255,0.12);
+      padding-left: 60px;
+    }
+    .cs-stat-block {
+      padding: 20px 0;
+    }
+    .cs-stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: white;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .cs-stat-num span { color: var(--sky-blue); }
+    .cs-stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .cs-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+    }
+    .cs-tagline {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+      padding: 20px 0;
+    }
+    .cs-credential {
+      padding: 20px 0;
+    }
+    .cs-cred-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+    .cs-cred-name {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: white;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .cs-cred-sub {
+      font-size: 0.78rem;
+      color: var(--sky-blue);
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 900px) {
+      .carousel-split { flex-direction: column; align-items: flex-start; }
+      .cs-left { flex: none; max-width: 100%; padding-right: 0; }
+      .cs-right { display: none; }
+    }
     .carousel-content .display-1 {
       opacity: 0;
       transform: translateY(24px);
@@ -672,13 +755,31 @@
       <img src="images/star-white.png" class="cs-star cs-star-c" aria-hidden="true">
       <img src="images/star-white.png" class="cs-star cs-star-d" aria-hidden="true">
       <img src="images/star-white.png" class="cs-star cs-star-e" aria-hidden="true">
-      <div class="carousel-content">
-        
-        <h1 class="display-1">Smarter<br>procurement.<br><em style="color:var(--sky-blue);font-style:italic;">Better outcomes.</em></h1>
-        <p class="lead" style="color:rgba(255,255,255,0.7);max-width:480px;">We help organisations across the public and private sectors transform their procurement function — driving value, capability, and positive social impact.</p>
-        <div class="hero-cta-group">
-          <a href="services.html" class="btn btn-primary btn-arrow">Our Services</a>
-          <a href="cpo360.html" class="btn btn-outline btn-arrow">Discover CPO360</a>
+      <div class="carousel-content carousel-split">
+        <div class="cs-left">
+          <div class="hero-eyebrow">Australian Procurement Consultancy</div>
+          <h1 class="display-1">Smarter<br>procurement.<br><em style="color:var(--sky-blue);font-style:italic;">Better outcomes.</em></h1>
+          <p class="lead">We help organisations across the public and private sectors transform their procurement function — driving value, capability, and positive social impact.</p>
+          <div class="hero-cta-group">
+            <a href="services.html" class="btn btn-primary btn-arrow">Our Services</a>
+            <a href="cpo360.html" class="btn btn-outline btn-arrow">Discover CPO360</a>
+          </div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-stat-block">
+            <div class="cs-stat-num">50<span>+</span></div>
+            <div class="cs-stat-label">Years combined experience</div>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-stat-block">
+            <div class="cs-stat-num">4</div>
+            <div class="cs-stat-label">Service areas</div>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-stat-block">
+            <div class="cs-stat-num">AU</div>
+            <div class="cs-stat-label">Based &amp; operated</div>
+          </div>
         </div>
       </div>
     </div>
@@ -692,13 +793,28 @@
       <img src="images/star-white.png" class="cs-star cs-star-c" aria-hidden="true">
       <img src="images/star-white.png" class="cs-star cs-star-d" aria-hidden="true">
       <img src="images/star-white.png" class="cs-star cs-star-e" aria-hidden="true">
-      <div class="carousel-content">
-        <div class="hero-eyebrow" style="color:rgba(255,255,255,0.6);">AI &amp; Technology Enabled</div>
-        <h1 class="display-1">Meet<br><em style="color:var(--aurora-teal);font-style:italic;">CPO360.</em></h1>
-        <p class="lead" style="color:rgba(255,255,255,0.7);max-width:480px;">Nine integrated modules. One platform. A complete, AI-powered picture of your procurement function — from team capability to Board reporting.</p>
-        <div class="hero-cta-group">
-          <a href="cpo360.html" class="btn btn-primary btn-arrow">Explore CPO360</a>
-          <a href="contact.html" class="btn btn-outline btn-arrow">Book a Demo</a>
+      <div class="carousel-content carousel-split">
+        <div class="cs-left">
+          <div class="hero-eyebrow">AI &amp; Technology Enabled</div>
+          <h1 class="display-1">Meet<br><em style="color:var(--aurora-teal);font-style:italic;">CPO360.</em></h1>
+          <p class="lead">Nine integrated modules. One platform. A complete, AI-powered picture of your procurement function — from team capability to Board reporting.</p>
+          <div class="hero-cta-group">
+            <a href="cpo360.html" class="btn btn-primary btn-arrow">Explore CPO360</a>
+            <a href="contact.html" class="btn btn-outline btn-arrow">Book a Demo</a>
+          </div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-stat-block">
+            <div class="cs-stat-num" style="color:var(--aurora-teal);">9</div>
+            <div class="cs-stat-label">Integrated modules</div>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-stat-block">
+            <div class="cs-stat-num" style="color:var(--aurora-teal);">360°</div>
+            <div class="cs-stat-label">Capability visibility</div>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-tagline">One platform.<br>Board-ready reporting.</div>
         </div>
       </div>
     </div>
@@ -712,13 +828,32 @@
       <img src="images/star-white.png" class="cs-star cs-star-c" aria-hidden="true">
       <img src="images/star-white.png" class="cs-star cs-star-d" aria-hidden="true">
       <img src="images/star-white.png" class="cs-star cs-star-e" aria-hidden="true">
-      <div class="carousel-content">
-        <div class="hero-eyebrow" style="color:rgba(255,255,255,0.6);">Our Approach</div>
-        <h1 class="display-1">Built by<br>practitioners.<br><em style="color:var(--beacon-orange);font-style:italic;">For practitioners.</em></h1>
-        <p class="lead" style="color:rgba(255,255,255,0.7);max-width:480px;">Advice grounded in real experience. Dan and Chris have led procurement transformations across hundreds of organisations — and built one of Asia-Pacific's leading consultancies.</p>
-        <div class="hero-cta-group">
-          <a href="about.html" class="btn btn-primary btn-arrow">Our Story</a>
-          <a href="team.html" class="btn btn-outline btn-arrow">Meet the Team</a>
+      <div class="carousel-content carousel-split">
+        <div class="cs-left">
+          <div class="hero-eyebrow">Our Approach</div>
+          <h1 class="display-1">Built by<br>practitioners.<br><em style="color:var(--sky-blue);font-style:italic;">For practitioners.</em></h1>
+          <p class="lead">Advice grounded in real experience. We have led procurement transformations across hundreds of organisations — and built one of Asia-Pacific's leading consultancies.</p>
+          <div class="hero-cta-group">
+            <a href="about.html" class="btn btn-primary btn-arrow">Our Story</a>
+            <a href="team.html" class="btn btn-outline btn-arrow">Meet the Team</a>
+          </div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-credential">
+            <div class="cs-cred-label">Previously co-founded</div>
+            <div class="cs-cred-name">ArcBlue</div>
+            <div class="cs-cred-sub">Acquired by Bain &amp; Company</div>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-stat-block">
+            <div class="cs-stat-num">100<span>s</span></div>
+            <div class="cs-stat-label">Of transformations delivered</div>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-stat-block">
+            <div class="cs-stat-num">AP</div>
+            <div class="cs-stat-label">Asia-Pacific reach</div>
+          </div>
         </div>
       </div>
     </div>
@@ -732,13 +867,28 @@
       <img src="images/star-white.png" class="cs-star cs-star-c" aria-hidden="true">
       <img src="images/star-white.png" class="cs-star cs-star-d" aria-hidden="true">
       <img src="images/star-white.png" class="cs-star cs-star-e" aria-hidden="true">
-      <div class="carousel-content">
-        <div class="hero-eyebrow" style="color:rgba(255,255,255,0.6);">Social &amp; Sustainable Procurement</div>
-        <h1 class="display-1">Buy better.<br><em style="color:var(--aurora-teal);font-style:italic;">Do better.</em></h1>
-        <p class="lead" style="color:rgba(255,255,255,0.7);max-width:480px;">Procurement is one of the most powerful levers organisations have to create positive social and environmental change. We help you use it well.</p>
-        <div class="hero-cta-group">
-          <a href="services.html#social" class="btn btn-primary btn-arrow">Our Approach</a>
-          <a href="contact.html" class="btn btn-outline btn-arrow">Talk to Us</a>
+      <div class="carousel-content carousel-split">
+        <div class="cs-left">
+          <div class="hero-eyebrow">Social &amp; Sustainable Procurement</div>
+          <h1 class="display-1">Buy better.<br><em style="color:var(--aurora-teal);font-style:italic;">Do better.</em></h1>
+          <p class="lead">Procurement is one of the most powerful levers organisations have to create positive social and environmental change. We help you use it well.</p>
+          <div class="hero-cta-group">
+            <a href="services.html#social" class="btn btn-primary btn-arrow">Our Approach</a>
+            <a href="contact.html" class="btn btn-outline btn-arrow">Talk to Us</a>
+          </div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-tagline" style="color:var(--aurora-teal);">Embedding purpose into every spend decision.</div>
+          <div class="cs-divider"></div>
+          <div class="cs-stat-block">
+            <div class="cs-stat-num" style="color:var(--aurora-teal);">ESG</div>
+            <div class="cs-stat-label">Integration &amp; reporting</div>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-stat-block">
+            <div class="cs-stat-num" style="color:var(--aurora-teal);">IPS</div>
+            <div class="cs-stat-label">Indigenous procurement strategy</div>
+          </div>
         </div>
       </div>
     </div>
