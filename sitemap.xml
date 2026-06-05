@@ -1,33 +1,1185 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://bluenorth.com.au/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://bluenorth.com.au/about.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bluenorth.com.au/services.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluenorth.com.au/cpo360.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluenorth.com.au/team.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bluenorth.com.au/contact.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-</urlset>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blue North is an Australian procurement consultancy specialising in learning & development, operating model design, social procurement, and CPO360 — the procurement intelligence platform.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Blue North">
+  <link rel="canonical" href="https://bluenorth.com.au/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Blue North">
+  <meta property="og:title" content="Blue North — Smarter Procurement. Better Outcomes.">
+  <meta property="og:description" content="Australian procurement consultancy helping public and private sector organisations build smarter, more purposeful procurement functions.">
+  <meta property="og:url" content="https://bluenorth.com.au/">
+  <meta property="og:image" content="https://bluenorth.com.au/images/logo-primary.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blue North — Smarter Procurement. Better Outcomes.">
+  <meta name="twitter:description" content="Australian procurement consultancy helping public and private sector organisations build smarter, more purposeful procurement functions.">
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Blue North",
+      "url": "https://bluenorth.com.au",
+      "logo": "https://bluenorth.com.au/images/logo-primary.png",
+      "description": "Australian procurement consultancy specialising in learning & development, operating model design, social procurement, and CPO360.",
+      "address": { "@type": "PostalAddress", "addressCountry": "AU" },
+      "sameAs": ["https://www.linkedin.com/company/bluenorth"],
+      "founder": [
+        { "@type": "Person", "name": "Dan Fielding", "jobTitle": "Co-Founder & Director" },
+        { "@type": "Person", "name": "Chris Newman", "jobTitle": "Co-Founder & Director" }
+      ]
+    }
+  </script>
+  <title>Blue North — Smarter Procurement. Better Outcomes.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Page-specific styles ---- */
+
+    /* ---- Star animations ---- */
+    @keyframes starPulse {
+      0%, 100% { opacity: 0.06; transform: translateY(-50%) scale(1); }
+      50% { opacity: 0.13; transform: translateY(-50%) scale(1.04); }
+    }
+    @keyframes starTwinkleA {
+      0%, 100% { opacity: 0.04; transform: rotate(-10deg) scale(1); }
+      40% { opacity: 0.09; transform: rotate(-10deg) scale(1.08); }
+      70% { opacity: 0.02; transform: rotate(-10deg) scale(0.95); }
+    }
+    @keyframes starTwinkleB {
+      0%, 100% { opacity: 0.05; transform: scale(1) translateY(0px); }
+      30% { opacity: 0.02; transform: scale(0.92) translateY(-8px); }
+      65% { opacity: 0.07; transform: scale(1.08) translateY(4px); }
+    }
+    @keyframes starFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-12px) rotate(3deg); }
+      66% { transform: translateY(6px) rotate(-2deg); }
+    }
+    @keyframes starDrift {
+      0%, 100% { transform: translateY(-50%) rotate(0deg); }
+      25% { transform: translateY(-52%) rotate(1deg); }
+      75% { transform: translateY(-48%) rotate(-1deg); }
+    }
+
+    /* Services strip */
+    /* Services strip */
+    .services-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--ice);
+    }
+
+    .service-tile {
+      background: white;
+      padding: 56px 44px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .service-tile::after {
+      content: '→';
+      position: absolute;
+      bottom: 44px; right: 44px;
+      font-size: 1.4rem;
+      color: var(--sky-blue);
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s;
+    }
+
+    .service-tile:hover {
+      background: var(--deep-polaris);
+    }
+
+    .service-tile:hover .tile-title,
+    .service-tile:hover .tile-text { color: white; }
+    .service-tile:hover .tile-text { color: rgba(255,255,255,0.6); }
+    .service-tile:hover::after { opacity: 1; transform: translateX(0); }
+    .service-tile:hover .tile-icon { color: var(--sky-blue); }
+
+    .tile-icon {
+      width: 44px;
+      height: 44px;
+      color: var(--sky-blue);
+      margin-bottom: 28px;
+      transition: color 0.3s;
+    }
+
+    .tile-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fog);
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .service-tile:hover .tile-number { color: rgba(255,255,255,0.3); }
+
+    .tile-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--midnight);
+      margin-bottom: 14px;
+      transition: color 0.3s;
+    }
+
+    .tile-text {
+      font-size: 0.9rem;
+      color: var(--slate);
+      line-height: 1.7;
+      transition: color 0.3s;
+    }
+
+    /* Why Blue North */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .why-visual {
+      background: var(--polaris-blue);
+      position: relative;
+      overflow: hidden;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .why-star-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .why-star-bg img {
+      width: 70%;
+      opacity: 0.12;
+    }
+
+    .why-content-inner {
+      position: relative;
+      z-index: 2;
+      padding: 40px;
+      text-align: center;
+      color: white;
+    }
+
+    .why-big-number {
+      font-family: var(--font-display);
+      font-size: 7rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.08);
+      line-height: 1;
+    }
+
+    .why-content {
+      padding: 80px 80px 80px 80px;
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .why-points {
+      list-style: none;
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .why-points li {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .why-point-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--polaris-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .why-point-icon svg {
+      width: 16px;
+      height: 16px;
+      color: white;
+    }
+
+    .why-point-title {
+      font-weight: 600;
+      color: var(--midnight);
+      margin-bottom: 4px;
+    }
+
+    .why-point-text {
+      font-size: 0.9rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    /* CPO360 teaser */
+    .cpo-teaser {
+      background: linear-gradient(135deg, var(--deep-polaris) 0%, var(--polaris-blue) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cpo-teaser-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 80% 50%, rgba(94,137,201,0.15) 0%, transparent 50%);
+    }
+
+    .cpo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cpo-mockup {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+    }
+
+    .cpo-mockup-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #FF5F57; }
+    .dot-yellow { background: #FFBD2E; }
+    .dot-green { background: #28C840; }
+
+    .cpo-mockup-title {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      margin-left: auto;
+      font-family: monospace;
+      letter-spacing: 0.05em;
+    }
+
+    .radar-chart {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .radar-chart svg { max-width: 280px; }
+
+    .cpo-skill-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 5px;
+    }
+
+    .skill-bar-track {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sky-blue), var(--aurora-teal));
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+
+    /* Stats band */
+    .stats-band {
+      background: var(--midnight);
+      padding: 70px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 0 20px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    /* Founders teaser */
+    .founders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .founders-text h2 { margin-bottom: 20px; }
+
+    .founders-bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .founder-card {
+      background: var(--paper);
+      padding: 32px;
+      border-left: 3px solid var(--sky-blue);
+    }
+
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--midnight);
+      margin-bottom: 4px;
+    }
+
+    .founder-role {
+      font-size: 0.8rem;
+      color: var(--sky-blue);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .founder-desc {
+      font-size: 0.875rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    /* CTA band */
+    .cta-band {
+      text-align: center;
+      padding: 100px 0;
+      background: var(--ice);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band-star {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    .cta-band h2 { margin-bottom: 20px; }
+    .cta-band p { margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-band .btn { position: relative; z-index: 2; }
+
+    @media (max-width: 900px) {
+      .services-strip { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-visual { min-height: 300px; }
+      .why-content { padding: 60px 40px; }
+      .cpo-grid { grid-template-columns: 1fr; gap: 40px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .founders-grid { grid-template-columns: 1fr; }
+      .founders-bio-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <style>
+    /* Meet the founders */
+    .team-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+    .team-card { background:white; border:1px solid var(--ice); overflow:hidden; transition:all 0.3s; }
+    .team-card:hover { box-shadow:0 20px 60px rgba(31,58,107,0.1); transform:translateY(-4px); }
+    .team-photo { height:360px; overflow:hidden; position:relative; background:linear-gradient(135deg,var(--polaris-blue) 0%,var(--harbor) 100%); }
+    .team-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+    .team-card-body { padding:36px; }
+    .team-name { font-family:var(--font-display); font-size:1.5rem; color:var(--midnight); margin-bottom:4px; }
+    .team-role { font-size:0.8rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--sky-blue); margin-bottom:20px; }
+    .team-bio { font-size:0.9rem; color:var(--slate); line-height:1.75; margin-bottom:16px; }
+    .team-credentials { display:flex; flex-wrap:wrap; gap:8px; }
+    .credential { background:var(--ice); color:var(--polaris-blue); font-size:0.72rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:2px; }
+    .team-linkedin { display:inline-flex; align-items:center; gap:8px; font-size:0.82rem; font-weight:600; color:var(--sky-blue); text-decoration:none; margin-top:16px; transition:color 0.2s; }
+    .team-linkedin:hover { color:var(--polaris-blue); }
+    @media(max-width:900px) { .team-grid { grid-template-columns:1fr; } }
+
+    /* ═══════════════════════════════════════════
+       HERO CAROUSEL
+    ═══════════════════════════════════════════ */
+    .hero-carousel {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 620px;
+      max-height: 900px;
+      overflow: hidden;
+    }
+
+    /* Slides */
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      z-index: 1;
+    }
+    .carousel-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .carousel-slide.leaving {
+      opacity: 0;
+      z-index: 3;
+    }
+
+    /* Dark overlay */
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(8,16,32,0.92) 0%, rgba(13,27,46,0.85) 100%);
+      z-index: 1;
+    }
+
+    /* Star positions — same across all slides */
+    .cs-star { position: absolute; pointer-events: none; z-index: 2; filter: brightness(10); }
+    .cs-star-main {
+      right: 4%; top: 50%; transform: translateY(-50%);
+      width: clamp(200px, 28vw, 420px);
+      opacity: 0.13;
+      animation: starPulse 7s ease-in-out infinite;
+    }
+    .cs-star-a { left: 4%; top: 26%; width: 72px; opacity: 0.07; animation: starTwinkleA 5s ease-in-out 0.5s infinite; }
+    .cs-star-b { left: 10%; bottom: 18%; width: 44px; opacity: 0.05; animation: starTwinkleB 7s ease-in-out 1.5s infinite; }
+    .cs-star-c { left: 2%; top: 60%; width: 28px; opacity: 0.04; animation: starTwinkleA 9s ease-in-out 3s infinite; }
+    .cs-star-d { left: 28%; top: 12%; width: 130px; opacity: 0.05; animation: starPulse 8s ease-in-out 1s infinite; }
+    .cs-star-e { left: 50%; bottom: 22%; width: 60px; opacity: 0.04; animation: starPulse 6s ease-in-out 2s infinite; }
+
+    /* Content */
+    .carousel-content {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      padding: 0 max(48px, 6vw);
+      max-width: min(680px, 55%);
+      padding-top: var(--nav-height);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .carousel-content h1,
+    .carousel-content .display-1 { 
+      color: white !important;
+      font-size: clamp(3.2rem, 6vw, 5.8rem) !important;
+      line-height: 1.05 !important;
+      max-width: 100% !important;
+    }
+    .carousel-content p { color: rgba(255,255,255,0.8) !important; }
+    .carousel-content .hero-eyebrow { color: rgba(255,255,255,0.65) !important; }
+
+    /* Split layout — right panels removed, left takes full width */
+    .carousel-split {
+      max-width: 100% !important;
+      width: 100%;
+      display: block;
+      padding: 0 max(48px, 6vw) !important;
+      padding-top: var(--nav-height) !important;
+    }
+    .cs-left {
+      max-width: 65%;
+    }
+    @media (max-width: 900px) {
+      .cs-left { max-width: 100%; }
+    }
+    .carousel-content .display-1 {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+    }
+    .carousel-content .lead {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s;
+    }
+    .carousel-content .hero-eyebrow {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+    }
+    .carousel-content .hero-cta-group {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.7s ease 0.7s, transform 0.7s ease 0.7s;
+    }
+    .carousel-slide.active .carousel-content .display-1,
+    .carousel-slide.active .carousel-content .lead,
+    .carousel-slide.active .carousel-content .hero-eyebrow,
+    .carousel-slide.active .carousel-content .hero-cta-group {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; }
+
+    /* Outline button variant for carousel */
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: white !important;
+      padding: 14px 28px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    /* Prev / Next arrows */
+    .carousel-prev, .carousel-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .carousel-prev { left: 24px; }
+    .carousel-next { right: 24px; }
+    .carousel-prev:hover, .carousel-next:hover {
+      background: rgba(94,137,201,0.3);
+      border-color: var(--sky-blue);
+    }
+
+    /* Dots */
+    .carousel-dots {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 10px;
+    }
+    .carousel-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 0;
+    }
+    .carousel-dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+
+    /* Progress bar */
+    .carousel-progress {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      z-index: 10;
+    }
+    .carousel-progress-bar {
+      height: 100%;
+      background: var(--sky-blue);
+      width: 0%;
+      transition: width linear;
+    }
+
+    @media (max-width: 768px) {
+      .hero-carousel { height: 100svh; max-height: none; }
+      .carousel-content { max-width: 90%; padding: 0 24px; padding-top: var(--nav-height); }
+      .cs-star-main { width: 180px; opacity: 0.08; }
+      .carousel-prev, .carousel-next { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav transparent" role="navigation" aria-label="Main navigation">
+    <div class="nav-logo">
+      <a href="index.html">
+        <img src="images/logo-nav-reverse.png" alt="Blue North" id="nav-logo-img">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="cpo360.html">CPO360</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO CAROUSEL -->
+  <section class="hero-carousel" aria-label="Hero">
+
+    <!-- SLIDE 1: Smarter procurement -->
+    <div class="carousel-slide active" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80&auto=format&fit=crop');">
+      <div class="carousel-overlay"></div>
+      <!-- Stars -->
+      <img src="images/star-white.png" class="cs-star cs-star-main" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-a" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-b" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-c" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-d" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-e" aria-hidden="true">
+      <div class="carousel-content carousel-split">
+        <div class="cs-left">
+          <div class="hero-eyebrow">Australian Procurement Consultancy</div>
+          <h1 class="display-1">Smarter procurement.<br><em style="color:var(--sky-blue);font-style:italic;">Better outcomes.</em></h1>
+          <p class="lead">We help organisations transform their procurement function —<br>driving value, capability, and positive social impact.</p>
+          <div class="hero-cta-group">
+            <a href="services.html" class="btn btn-primary btn-arrow">Our Services</a>
+            <a href="cpo360.html" class="btn btn-outline btn-arrow">Discover CPO360</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: CPO360 platform -->
+    <div class="carousel-slide" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80&auto=format&fit=crop');">
+      <div class="carousel-overlay" style="background:linear-gradient(135deg,rgba(8,16,32,0.94) 0%,rgba(13,27,46,0.88) 100%);"></div>
+      <img src="images/star-white.png" class="cs-star cs-star-main" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-a" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-b" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-c" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-d" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-e" aria-hidden="true">
+      <div class="carousel-content carousel-split">
+        <div class="cs-left">
+          <div class="hero-eyebrow">AI &amp; Technology Enabled</div>
+          <h1 class="display-1">Meet<br><em style="color:var(--aurora-teal);font-style:italic;">CPO360.</em></h1>
+          <p class="lead">Nine integrated modules. One platform.<br>A complete, AI-powered picture of your procurement function.</p>
+          <div class="hero-cta-group">
+            <a href="cpo360.html" class="btn btn-primary btn-arrow">Explore CPO360</a>
+            <a href="contact.html" class="btn btn-outline btn-arrow">Book a Demo</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Built by practitioners -->
+    <div class="carousel-slide" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80&auto=format&fit=crop');">
+      <div class="carousel-overlay" style="background:linear-gradient(135deg,rgba(5,10,20,0.94) 0%,rgba(8,16,32,0.90) 100%);"></div>
+      <img src="images/star-white.png" class="cs-star cs-star-main" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-a" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-b" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-c" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-d" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-e" aria-hidden="true">
+      <div class="carousel-content carousel-split">
+        <div class="cs-left">
+          <div class="hero-eyebrow">Our Approach</div>
+          <h1 class="display-1">Built by practitioners.<br><em style="color:var(--sky-blue);font-style:italic;">For practitioners.</em></h1>
+          <p class="lead">Advice grounded in real experience.<br>We have built one of Asia-Pacific's leading procurement consultancies.</p>
+          <div class="hero-cta-group">
+            <a href="about.html" class="btn btn-primary btn-arrow">Our Story</a>
+            <a href="team.html" class="btn btn-outline btn-arrow">Meet the Team</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Social procurement -->
+    <div class="carousel-slide" style="background-image:url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1600&q=80&auto=format&fit=crop');">
+      <div class="carousel-overlay" style="background:linear-gradient(135deg,rgba(4,14,10,0.94) 0%,rgba(6,26,18,0.90) 100%);"></div>
+      <img src="images/star-white.png" class="cs-star cs-star-main" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-a" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-b" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-c" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-d" aria-hidden="true">
+      <img src="images/star-white.png" class="cs-star cs-star-e" aria-hidden="true">
+      <div class="carousel-content carousel-split">
+        <div class="cs-left">
+          <div class="hero-eyebrow">Social &amp; Sustainable Procurement</div>
+          <h1 class="display-1">Buy better.<br><em style="color:var(--aurora-teal);font-style:italic;">Do better.</em></h1>
+          <p class="lead">Procurement is one of the most powerful levers for<br>positive social and environmental change. We help you use it.</p>
+          <div class="hero-cta-group">
+            <a href="services.html#social" class="btn btn-primary btn-arrow">Our Approach</a>
+            <a href="contact.html" class="btn btn-outline btn-arrow">Talk to Us</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-prev" aria-label="Previous slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="carousel-next" aria-label="Next slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="carousel-dots">
+      <button class="carousel-dot active" aria-label="Slide 1"></button>
+      <button class="carousel-dot" aria-label="Slide 2"></button>
+      <button class="carousel-dot" aria-label="Slide 3"></button>
+      <button class="carousel-dot" aria-label="Slide 4"></button>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="carousel-progress"><div class="carousel-progress-bar"></div></div>
+
+  </section>
+
+    <!-- SERVICES STRIP -->
+  <div class="services-strip">
+    <a href="services.html#learning" class="service-tile fade-up">
+      <div class="tile-number">01</div>
+      <div class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+        </svg>
+      </div>
+      <div class="tile-title">Learning &amp; Development</div>
+      <div class="tile-text">Skills assessments, targeted training delivery, and executive coaching to build world-class procurement capability.</div>
+    </a>
+    <a href="services.html#social" class="service-tile fade-up fade-up-delay-1">
+      <div class="tile-number" style="color:#3FA08C;">02</div>
+      <div class="tile-icon" style="color:#3FA08C;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
+        </svg>
+      </div>
+      <div class="tile-title">Social &amp; Sustainable Procurement</div>
+      <div class="tile-text">Embedding social value, indigenous procurement, and sustainability outcomes into every spend decision.</div>
+    </a>
+    <a href="services.html#operating" class="service-tile fade-up fade-up-delay-2">
+      <div class="tile-number" style="color:#385C82;">03</div>
+      <div class="tile-icon" style="color:#385C82;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/>
+        </svg>
+      </div>
+      <div class="tile-title">Operating Model Design</div>
+      <div class="tile-text">Designing fit-for-purpose procurement functions that deliver sustained value and organisational alignment.</div>
+    </a>
+    <a href="cpo360.html" class="service-tile fade-up fade-up-delay-3">
+      <div class="tile-number" style="color:#D88A3E;">04</div>
+      <div class="tile-icon" style="color:#D88A3E;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/>
+        </svg>
+      </div>
+      <div class="tile-title">AI &amp; Technology</div>
+      <div class="tile-text">CPO360 — our procurement intelligence platform for capability assessment, spend analytics, and Board reporting.</div>
+    </a>
+  </div>
+
+  <!-- WHY BLUE NORTH -->
+  <section class="why-grid">
+    <div class="why-visual">
+      <div class="why-star-bg">
+        <img src="images/star-white.png" alt="">
+      </div>
+      <div class="why-content-inner">
+        <div style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px;">Founded by practitioners</div>
+        <div style="font-family:var(--font-display);font-size:2.2rem;color:white;line-height:1.2;">50+ years<br>combined<br>expertise</div>
+        <div style="margin-top:20px;font-size:0.9rem;color:rgba(255,255,255,0.55);">Across public, private &amp; not-for-profit sectors</div>
+      </div>
+    </div>
+    <div class="why-content">
+      <div class="section-label teal"><img src="images/star-navy.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:10px;flex-shrink:0;">Why Blue North</div>
+      <h2 class="section-title">Advice from practitioners who've been in your seat</h2>
+      <ul class="why-points">
+        <li>
+          <div class="why-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="why-point-title">Practical, hands-on advice</div>
+            <div class="why-point-text">We don't just consult — we've led procurement functions, built teams, and delivered transformations ourselves.</div>
+          </div>
+        </li>
+        <li>
+          <div class="why-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="why-point-title">Deliver and embed change</div>
+            <div class="why-point-text">We leave your team with the tools, skills, and confidence to sustain improvement long after we've gone.</div>
+          </div>
+        </li>
+        <li>
+          <div class="why-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="why-point-title">Technology-enabled</div>
+            <div class="why-point-text">Our CPO360 platform provides data-driven insights to guide capability development and track progress.</div>
+          </div>
+        </li>
+      </ul>
+      <div style="margin-top:44px;">
+        <a href="about.html" class="btn btn-outline-dark btn-arrow">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <div class="stats-band">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-up">
+          <div class="stat-number"><span class="stat-animate" data-target="20" data-suffix="+">50+</span></div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.5);">Industries served</div>
+        </div>
+        <div class="stat-item fade-up fade-up-delay-1">
+          <div class="stat-number"><span class="stat-animate" data-target="15" data-suffix="+">15+</span></div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.5);">L&amp;D Topic areas</div>
+        </div>
+        <div class="stat-item fade-up fade-up-delay-2">
+          <div class="stat-number" style="color:var(--beacon);"><span class="stat-animate" data-target="100" data-suffix="%">100%</span></div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.5);">Practitioner-led</div>
+        </div>
+        <div class="stat-item fade-up fade-up-delay-3">
+          <div class="stat-number" style="color:var(--aurora-teal)">360°</div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.5);">Capability visibility</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CPO360 TEASER -->
+  <section class="section cpo-teaser">
+    <div class="cpo-teaser-bg"></div>
+    <div class="container">
+      <div class="cpo-grid">
+        <div>
+          <div class="section-label section-dark"><img src="images/star-white.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:10px;flex-shrink:0;">Technology Platform</div>
+          <h2 class="section-title" style="color:white;margin-bottom:20px;">Introducing <em style="font-style:italic;color:var(--sky-blue);">CPO360</em></h2>
+          <p style="color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:32px;">
+            Our proprietary skills assessment and development platform. CPO360 gives procurement leaders a complete, data-driven picture of team capability — and a clear path to improvement.
+          </p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;">
+            <li style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.75);font-size:0.925rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FA08C" stroke-width="2.5"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Comprehensive skills benchmarking across 15+ competency areas
+            </li>
+            <li style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.75);font-size:0.925rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FA08C" stroke-width="2.5"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Personalised learning pathways for individuals and teams
+            </li>
+            <li style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.75);font-size:0.925rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FA08C" stroke-width="2.5"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Track capability uplift with measurable, ongoing reporting
+            </li>
+          </ul>
+          <a href="cpo360.html" class="btn btn-primary btn-arrow">Learn More About CPO360</a>
+        </div>
+        <div class="cpo-mockup fade-up">
+          <div class="cpo-mockup-header">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+            <span class="cpo-mockup-title">CPO360 — Capability Dashboard</span>
+          </div>
+          <div class="radar-chart">
+            <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="radarGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#3FA08C" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#5E89C9" stop-opacity="0.1"/>
+                </radialGradient>
+              </defs>
+              <!-- Grid rings -->
+              <polygon points="140,30 218,80 218,180 140,230 62,180 62,80" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <polygon points="140,55 203,92 203,168 140,205 77,168 77,92" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <polygon points="140,80 188,104 188,156 140,180 92,156 92,104" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <polygon points="140,105 173,116 173,144 140,155 107,144 107,116" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <!-- Axes -->
+              <line x1="140" y1="30" x2="140" y2="230" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="62" y1="80" x2="218" y2="180" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="218" y1="80" x2="62" y2="180" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <!-- Data -->
+              <polygon points="140,45 210,100 195,170 140,200 80,165 75,90" fill="url(#radarGrad)" stroke="#5E89C9" stroke-width="1.5"/>
+              <!-- Labels -->
+              <text x="140" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Outfit,sans-serif">Category Mgmt</text>
+              <text x="230" y="78" text-anchor="start" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Outfit,sans-serif">Sourcing</text>
+              <text x="226" y="188" text-anchor="start" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Outfit,sans-serif">SRM</text>
+              <text x="140" y="246" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Outfit,sans-serif">Contract Mgmt</text>
+              <text x="50" y="188" text-anchor="end" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Outfit,sans-serif">Negotiation</text>
+              <text x="54" y="78" text-anchor="end" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Outfit,sans-serif">Cost Mgmt</text>
+              <!-- Score label -->
+              <text x="140" y="128" text-anchor="middle" fill="white" font-size="22" font-family="Playfair Display,serif" font-weight="700">74%</text>
+              <text x="140" y="144" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="Outfit,sans-serif" letter-spacing="1">CAPABILITY SCORE</text>
+            </svg>
+          </div>
+          <div class="cpo-skill-bars">
+            <div>
+              <div class="skill-bar-label"><span>Category Management</span><span>82%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div>
+            </div>
+            <div>
+              <div class="skill-bar-label"><span>Negotiation</span><span>68%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:68%"></div></div>
+            </div>
+            <div>
+              <div class="skill-bar-label"><span>Social Procurement</span><span>54%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:54%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDERS -->
+  <section class="section" style="background:var(--paper);">
+    <div class="container">
+      <div class="section-label fade-up"><img src="images/star-navy.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:10px;flex-shrink:0;">Our Founders</div>
+      <h2 class="section-title fade-up fade-up-delay-1" style="margin-bottom:16px;">Built by people who've done the job</h2>
+      <p class="lead fade-up fade-up-delay-2" style="max-width:580px;margin-bottom:60px;">Blue North was founded by two of Australia's most experienced procurement practitioners, bringing decades of real-world expertise to every engagement.</p>
+
+      <div class="team-grid">
+
+        <!-- DAN FIELDING -->
+        <div class="team-card fade-up">
+          <div class="team-card-body">
+            <div class="team-name">Dan Fielding</div>
+            <div class="team-role">Co-Founder &amp; Director · FCIPS</div>
+            <p class="team-bio">Dan is one of Australia's most respected procurement leaders, co-founding ArcBlue and helping build it into a leading Asia-Pacific procurement consultancy before its acquisition by Bain &amp; Company. He brings over two decades of hands-on experience across public sector, healthcare, infrastructure, and financial services.</p>
+            <p class="team-bio">Dan is passionate about using technology and data to lift procurement capability and demonstrate the strategic value of procurement to Boards and leadership teams.</p>
+            <div class="team-credentials">
+              <span class="credential">FCIPS</span>
+              <span class="credential">Co-Founder ArcBlue</span>
+              <span class="credential">CPO360 Creator</span>
+            </div>
+            <a href="https://www.linkedin.com/in/dan-fielding-fcips-b472876/" target="_blank" rel="noopener" class="team-linkedin">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              View LinkedIn Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- CHRIS NEWMAN -->
+        <div class="team-card fade-up fade-up-delay-1">
+          <div class="team-card-body">
+            <div class="team-name">Chris Newman</div>
+            <div class="team-role">Co-Founder &amp; Director · GAICD</div>
+            <p class="team-bio">Chris co-founded ArcBlue alongside Dan, building it into one of Asia-Pacific's premier procurement consultancies before its acquisition by Bain &amp; Company. He brings extensive experience in procurement transformation across public sector, healthcare, and financial services.</p>
+            <p class="team-bio">A Graduate of the Australian Institute of Company Directors (GAICD), Chris brings both strategic vision and hands-on delivery capability to every engagement. He is deeply passionate about the role procurement plays in driving social value and positive community impact.</p>
+            <div class="team-credentials">
+              <span class="credential">GAICD</span>
+              <span class="credential">Co-Founder ArcBlue</span>
+              <span class="credential">Social Procurement</span>
+            </div>
+            <a href="https://www.linkedin.com/in/chris-newman-gaicd-34202235/" target="_blank" rel="noopener" class="team-linkedin">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              View LinkedIn Profile
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:48px;" class="fade-up">
+        <a href="about.html" class="btn btn-outline-dark btn-arrow">Our Full Story</a>
+      </div>
+    </div>
+  </section>
+
+    <!-- CTA BAND -->
+  <div class="cta-band">
+    <img src="images/star-white.png" alt="" class="cta-band-star" aria-hidden="true">
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="section-label" style="justify-content:center;margin-bottom:20px;">Get started</div>
+      <h2 class="section-title fade-up">Ready to point north?</h2>
+      <p class="lead fade-up fade-up-delay-1">Let's talk about how Blue North can help your organisation achieve smarter procurement outcomes.</p>
+      <a href="contact.html" class="btn btn-primary btn-arrow fade-up fade-up-delay-2">Contact Us Today</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="images/logo-nav-reverse.png" alt="Blue North">
+          </div>
+          
+          <div class="footer-social" style="margin-top:24px;">
+            <a href="https://www.linkedin.com/company/bluenorth" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Services</div>
+          <ul class="footer-links">
+            <li><a href="services.html#learning">Learning &amp; Development</a></li>
+            <li><a href="services.html#operating">Operating Model Design</a></li>
+            <li><a href="services.html#social">Social &amp; Sustainable</a></li>
+            <li><a href="team.html">Team</a></li>
+      <li><a href="cpo360.html">CPO360</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@bluenorth.com.au">hello@bluenorth.com.au</a></li>
+            <li><a href="https://bluenorth.com.au">bluenorth.com.au</a></li>
+            <li style="color:rgba(255,255,255,0.35);font-size:0.875rem;">Australia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Blue North. All rights reserved.</span>
+        
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <script>
+    // ── Hero Carousel ──────────────────────────────────────────────
+    (function() {
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots   = document.querySelectorAll('.carousel-dot');
+      const bar    = document.querySelector('.carousel-progress-bar');
+      const DURATION = 6000; // ms per slide
+      let current = 0;
+      let timer, barTimer;
+
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        startProgress();
+      }
+
+      function startProgress() {
+        if (bar) {
+          bar.style.transition = 'none';
+          bar.style.width = '0%';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              bar.style.transition = 'width ' + DURATION + 'ms linear';
+              bar.style.width = '100%';
+            });
+          });
+        }
+      }
+
+      function startAuto() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), DURATION);
+      }
+
+      // Arrow buttons
+      const prev = document.querySelector('.carousel-prev');
+      const next = document.querySelector('.carousel-next');
+      if (prev) prev.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+      if (next) next.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+
+      // Dot buttons
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { goTo(i); startAuto(); });
+      });
+
+      // Touch swipe
+      let touchStartX = 0;
+      const carousel = document.querySelector('.hero-carousel');
+      if (carousel) {
+        carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        carousel.addEventListener('touchend', e => {
+          const diff = touchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 50) { goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
+        });
+      }
+
+      // Init
+      startProgress();
+      startAuto();
+    })();
+  </script>
+</body>
+</html>
