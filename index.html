@@ -518,87 +518,19 @@
     .carousel-content p { color: rgba(255,255,255,0.8) !important; }
     .carousel-content .hero-eyebrow { color: rgba(255,255,255,0.65) !important; }
 
-    /* Split layout */
+    /* Split layout — right panels removed, left takes full width */
     .carousel-split {
       max-width: 100% !important;
       width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 0;
+      display: block;
       padding: 0 max(48px, 6vw) !important;
       padding-top: var(--nav-height) !important;
     }
     .cs-left {
-      flex: 0 0 55%;
-      max-width: 55%;
-      padding-right: 60px;
-    }
-    .cs-right {
-      flex: 0 0 45%;
-      max-width: 45%;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border-left: 1px solid rgba(255,255,255,0.12);
-      padding-left: 60px;
-    }
-    .cs-stat-block {
-      padding: 20px 0;
-    }
-    .cs-stat-num {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      color: white;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .cs-stat-num span { color: var(--sky-blue); }
-    .cs-stat-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-    }
-    .cs-divider {
-      width: 40px;
-      height: 1px;
-      background: rgba(255,255,255,0.12);
-    }
-    .cs-tagline {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-style: italic;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.4;
-      padding: 20px 0;
-    }
-    .cs-credential {
-      padding: 20px 0;
-    }
-    .cs-cred-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 8px;
-    }
-    .cs-cred-name {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: white;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .cs-cred-sub {
-      font-size: 0.78rem;
-      color: var(--sky-blue);
-      letter-spacing: 0.04em;
+      max-width: 65%;
     }
     @media (max-width: 900px) {
-      .carousel-split { flex-direction: column; align-items: flex-start; }
-      .cs-left { flex: none; max-width: 100%; padding-right: 0; }
-      .cs-right { display: none; }
+      .cs-left { max-width: 100%; }
     }
     .carousel-content .display-1 {
       opacity: 0;
@@ -765,22 +697,8 @@
             <a href="cpo360.html" class="btn btn-outline btn-arrow">Discover CPO360</a>
           </div>
         </div>
-        <div class="cs-right">
-          <div class="cs-stat-block">
-            <div class="cs-stat-num">50<span>+</span></div>
-            <div class="cs-stat-label">Years combined experience</div>
-          </div>
-          <div class="cs-divider"></div>
-          <div class="cs-stat-block">
-            <div class="cs-stat-num">4</div>
-            <div class="cs-stat-label">Service areas</div>
-          </div>
-          <div class="cs-divider"></div>
-          <div class="cs-stat-block">
-            <div class="cs-stat-num">AU</div>
-            <div class="cs-stat-label">Based &amp; operated</div>
-          </div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -803,18 +721,6 @@
             <a href="contact.html" class="btn btn-outline btn-arrow">Book a Demo</a>
           </div>
         </div>
-        <div class="cs-right">
-          <div class="cs-stat-block">
-            <div class="cs-stat-num" style="color:var(--aurora-teal);">9</div>
-            <div class="cs-stat-label">Integrated modules</div>
-          </div>
-          <div class="cs-divider"></div>
-          <div class="cs-stat-block">
-            <div class="cs-stat-num" style="color:var(--aurora-teal);">360°</div>
-            <div class="cs-stat-label">Capability visibility</div>
-          </div>
-          <div class="cs-divider"></div>
-          <div class="cs-tagline">One platform.<br>Board-ready reporting.</div>
         </div>
       </div>
     </div>
@@ -838,23 +744,8 @@
             <a href="team.html" class="btn btn-outline btn-arrow">Meet the Team</a>
           </div>
         </div>
-        <div class="cs-right">
-          <div class="cs-credential">
-            <div class="cs-cred-label">Previously co-founded</div>
-            <div class="cs-cred-name">ArcBlue</div>
-            <div class="cs-cred-sub">Acquired by Bain &amp; Company</div>
-          </div>
-          <div class="cs-divider"></div>
-          <div class="cs-stat-block">
-            <div class="cs-stat-num">100<span>s</span></div>
-            <div class="cs-stat-label">Of transformations delivered</div>
-          </div>
-          <div class="cs-divider"></div>
-          <div class="cs-stat-block">
-            <div class="cs-stat-num">AP</div>
-            <div class="cs-stat-label">Asia-Pacific reach</div>
-          </div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -877,19 +768,8 @@
             <a href="contact.html" class="btn btn-outline btn-arrow">Talk to Us</a>
           </div>
         </div>
-        <div class="cs-right">
-          <div class="cs-tagline" style="color:var(--aurora-teal);">Embedding purpose into every spend decision.</div>
-          <div class="cs-divider"></div>
-          <div class="cs-stat-block">
-            <div class="cs-stat-num" style="color:var(--aurora-teal);">ESG</div>
-            <div class="cs-stat-label">Integration &amp; reporting</div>
-          </div>
-          <div class="cs-divider"></div>
-          <div class="cs-stat-block">
-            <div class="cs-stat-num" style="color:var(--aurora-teal);">IPS</div>
-            <div class="cs-stat-label">Indigenous procurement strategy</div>
-          </div>
         </div>
+      </div>
       </div>
     </div>
 
