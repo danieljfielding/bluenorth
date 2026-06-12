@@ -1112,15 +1112,23 @@ h1, h2, h3 { color: var(--polaris-blue); }
 .page-hero-bg::after {
   content: '';
   position: absolute;
-  right: -8%;
-  top: 50%;
+  right: 12%;
+  top: 42%;
   transform: translateY(-50%);
-  width: min(44vw, 560px);
+  width: min(24vw, 320px);
   aspect-ratio: 1;
   background: url('../images/star-navy-transparent.png') center/contain no-repeat;
   opacity: 0.06;
-  animation: starPulse 9s ease-in-out infinite;
-  --star-opacity: 0.06;
+  animation: starBreath 11s ease-in-out infinite;
+}
+
+/* Slow breath: grey -> blue -> grey with a gentle pulse */
+@keyframes starBreath {
+  0%, 100% { opacity: 0.05; filter: grayscale(1); transform: translateY(-50%) scale(1); }
+  50%      { opacity: 0.12; filter: grayscale(0) saturate(1.4); transform: translateY(-50%) scale(1.05); }
+}
+@media (max-width: 768px) {
+  .page-hero-bg::after { right: 4%; top: 38%; width: 38vw; }
 }
 .page-hero.no-hero-star .page-hero-bg::after { display: none; }
 .page-hero h1 { color: var(--polaris-blue) !important; }
