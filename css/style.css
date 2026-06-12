@@ -1075,3 +1075,109 @@ h2, h3, h4 {
   0%, 100% { opacity: var(--star-opacity, 0.06); transform: scale(1); }
   50% { opacity: calc(var(--star-opacity, 0.06) * 1.6); transform: scale(1.05); }
 }
+
+
+/* =============================================
+   POLAR LIGHT — Paper-first theme layer
+   Light canvas, Polaris Blue as ink, star as
+   architectural signature. June 2026 redesign.
+   ============================================= */
+
+/* Canvas */
+body { background: var(--paper); }
+
+/* Headings: navy ink on light */
+h1, h2, h3 { color: var(--polaris-blue); }
+.section-dark h2, .section-dark h3,
+.section-navy h2, .section-navy h3 { color: white; }
+
+/* Generous breathing room */
+:root { --section-pad: 120px; }
+@media (max-width: 768px) { :root { --section-pad: 80px; } }
+
+/* White sections alternate against Paper body */
+.section { background: transparent; }
+.section-white { background: white; }
+
+/* ---- Page heroes: light, with architectural star ---- */
+.page-hero {
+  background: var(--paper) !important;
+  min-height: 56vh;
+}
+.page-hero-bg {
+  background:
+    radial-gradient(ellipse 60% 70% at 80% 30%, rgba(94,137,201,0.12) 0%, transparent 60%),
+    var(--paper) !important;
+}
+.page-hero-bg::after {
+  content: '';
+  position: absolute;
+  right: -8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(44vw, 560px);
+  aspect-ratio: 1;
+  background: url('../images/star-navy-transparent.png') center/contain no-repeat;
+  opacity: 0.06;
+  animation: starPulse 9s ease-in-out infinite;
+  --star-opacity: 0.06;
+}
+.page-hero h1 { color: var(--polaris-blue) !important; }
+.page-hero .lead { color: var(--slate) !important; }
+.page-hero .hero-eyebrow { color: var(--harbor) !important; }
+
+/* Stars in light heroes & labels render navy, not white */
+.page-hero .section-label img { filter: none; }
+
+/* ---- Buttons on light ---- */
+.btn-outline {
+  color: var(--polaris-blue) !important;
+  border-color: rgba(31,58,107,0.4);
+}
+.btn-outline:hover {
+  background: rgba(31,58,107,0.06);
+  border-color: var(--polaris-blue);
+}
+.section-dark .btn-outline,
+.section-navy .btn-outline,
+.cta-band .btn-outline {
+  color: white !important;
+  border-color: rgba(255,255,255,0.4);
+}
+.section-dark .btn-outline:hover,
+.section-navy .btn-outline:hover,
+.cta-band .btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: white;
+}
+
+/* ---- CTA bands: solid Polaris Blue close ---- */
+.cta-band {
+  background: var(--polaris-blue) !important;
+}
+.cta-band h2, .cta-band .section-title { color: white !important; }
+.cta-band p, .cta-band .lead { color: rgba(255,255,255,0.7) !important; }
+.cta-band .section-label { color: var(--aurora) !important; }
+.section-dark.cta-final,
+.section-navy.cta-final { background: var(--polaris-blue); }
+
+/* ---- Sector tags: light chips ---- */
+.sector-tag {
+  background: white !important;
+  color: var(--polaris-blue) !important;
+  border: 1px solid var(--ice) !important;
+}
+.sector-tag:hover {
+  background: var(--polaris-blue) !important;
+  color: white !important;
+  border-color: var(--polaris-blue) !important;
+}
+
+/* ---- Cards lift slightly stronger on Paper ---- */
+.card { border-color: rgba(31,58,107,0.08); }
+
+/* ---- Light section star labels ---- */
+.section-light-converted .section-label img { filter: none !important; }
+.section-light-converted .section-label { color: var(--harbor); }
+.section-light-converted h2, .section-light-converted h3 { color: var(--polaris-blue) !important; }
+.section-light-converted p { color: var(--slate); }
