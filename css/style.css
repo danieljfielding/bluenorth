@@ -1182,3 +1182,13 @@ h1, h2, h3 { color: var(--polaris-blue); }
 .section-light-converted .section-label { color: var(--harbor); }
 .section-light-converted h2, .section-light-converted h3 { color: var(--polaris-blue) !important; }
 .section-light-converted p { color: var(--slate); }
+
+/* Mobile nav panel: dark panel needs white links regardless of light-nav
+   (.open bumps specificity above per-page inline overrides) */
+@media (max-width: 768px) {
+  .nav.light-nav .nav-links.open { background: var(--deep-polaris); }
+  .nav.light-nav .nav-links.open a { color: rgba(255,255,255,0.85); }
+  .nav.light-nav .nav-links.open a:hover { color: white; }
+  .nav.light-nav .nav-links.open li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav.light-nav .nav-links.open .nav-cta { color: white !important; }
+}
