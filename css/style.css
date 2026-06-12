@@ -2,7 +2,7 @@
    BLUE NORTH — Global Styles
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   /* Core Brand Colours */
@@ -28,7 +28,7 @@
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Outfit', sans-serif;
+  --font-body: 'Aptos', 'Aptos Display', 'Inter', 'Segoe UI', sans-serif;
 
   /* Spacing */
   --nav-height: 80px;
@@ -1096,7 +1096,6 @@ h1, h2, h3 { color: var(--polaris-blue); }
 @media (max-width: 768px) { :root { --section-pad: 80px; } }
 
 /* White sections alternate against Paper body */
-.section { background: transparent; }
 .section-white { background: white; }
 
 /* ---- Page heroes: light, with architectural star ---- */
@@ -1122,6 +1121,7 @@ h1, h2, h3 { color: var(--polaris-blue); }
   animation: starPulse 9s ease-in-out infinite;
   --star-opacity: 0.06;
 }
+.page-hero.no-hero-star .page-hero-bg::after { display: none; }
 .page-hero h1 { color: var(--polaris-blue) !important; }
 .page-hero .lead { color: var(--slate) !important; }
 .page-hero .hero-eyebrow { color: var(--harbor) !important; }
