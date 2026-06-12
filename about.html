@@ -110,6 +110,96 @@
     }
     @media(max-width:600px) { .values-grid { grid-template-columns:1fr; } }
   
+    /* ---- About hero: responsive flex layout ---- */
+    .about-hero { background: var(--paper); }
+    .about-hero-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 60px 40px 0;
+      display: flex;
+      align-items: flex-end;
+      gap: 48px;
+      min-height: 72vh;
+    }
+    .about-hero-text {
+      flex: 0 0 48%;
+      padding-bottom: 80px;
+    }
+    .about-hero-photo {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      align-self: flex-end;
+    }
+    .about-hero-photo img {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(-12px 0 32px rgba(31,58,107,0.18));
+    }
+    .about-badges {
+      display: flex;
+      gap: 10px;
+      margin-top: -2px;
+      flex-wrap: wrap;
+    }
+    .about-badge {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(31,58,107,0.12);
+      padding: 10px 16px;
+      box-shadow: 0 4px 16px rgba(31,58,107,0.10);
+    }
+    .about-badge-name {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      color: var(--polaris-blue);
+      font-weight: 600;
+    }
+    .about-badge-role {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sky-blue);
+      margin-top: 2px;
+    }
+    @media (max-width: 768px) {
+      .about-hero-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 32px 24px 0;
+        gap: 32px;
+        min-height: unset;
+      }
+      .about-hero-text {
+        flex: none;
+        padding-bottom: 0;
+        order: 1;
+      }
+      .about-hero-photo {
+        flex: none;
+        order: 2;
+        align-items: stretch;
+      }
+      .about-hero-photo img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 65vw;
+        object-fit: cover;
+        object-position: top center;
+      }
+      .about-badges {
+        margin-top: 0;
+        border-top: 1px solid var(--ice);
+      }
+      .about-badge {
+        flex: 1;
+        min-width: 140px;
+      }
+    }
+
     @keyframes starPulseAbout {
       0%, 100% { opacity: 0.15; transform: translateY(-50%) scale(1); }
       50% { opacity: 0.22; transform: translateY(-50%) scale(1.04); }
@@ -149,28 +239,28 @@
     .nav.light-nav .nav-toggle span { background:var(--ink); }
   </style>
 
-  <div class="page-hero no-hero-star" style="padding-top:var(--nav-height);overflow:hidden;position:relative;">
-    <div class="page-hero-bg"></div>
-    <!-- Stars -->
-    <!-- Extra animated stars — kept left of centre, away from photo -->
-    <!-- Joint founders photo — right side, overlapping bottom edge -->
-    <img src="images/founders-joint.png" alt="Dan Fielding and Chris Newman"
-         style="position:absolute;right:8%;bottom:0;height:92%;width:auto;object-fit:contain;pointer-events:none;filter:drop-shadow(-18px 0 40px rgba(31,58,107,0.22));">
-    <!-- Name badges over the photo -->
-    <div style="position:absolute;right:9%;bottom:28px;display:flex;gap:10px;z-index:4;">
-      <div style="background:rgba(255,255,255,0.88);backdrop-filter:blur(8px);border:1px solid rgba(31,58,107,0.12);padding:10px 16px;box-shadow:0 8px 24px rgba(31,58,107,0.12);">
-        <div style="font-family:var(--font-display);font-size:0.88rem;color:var(--polaris-blue);">Chris Newman</div>
-        <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sky-blue);margin-top:2px;">Co-Founder &amp; Director</div>
+  <div class="page-hero no-hero-star about-hero" style="padding-top:var(--nav-height);overflow:hidden;position:relative;">
+    <div class="about-hero-inner">
+      <!-- Text col -->
+      <div class="about-hero-text">
+        <div class="hero-eyebrow">Our Story</div>
+        <h1 class="display-2">Built by practitioners.<br>Designed for <em style="font-style:italic;color:var(--sky-blue);">impact.</em></h1>
+        <p class="lead">An Australian procurement consultancy founded by two of the most experienced people in the industry — committed to delivering real, lasting change.</p>
       </div>
-      <div style="background:rgba(255,255,255,0.88);backdrop-filter:blur(8px);border:1px solid rgba(31,58,107,0.12);padding:10px 16px;box-shadow:0 8px 24px rgba(31,58,107,0.12);">
-        <div style="font-family:var(--font-display);font-size:0.88rem;color:var(--polaris-blue);">Dan Fielding</div>
-        <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sky-blue);margin-top:2px;">Co-Founder &amp; Director</div>
+      <!-- Photo col -->
+      <div class="about-hero-photo">
+        <img src="images/founders-joint.png" alt="Dan Fielding and Chris Newman, Co-Founders of Blue North">
+        <div class="about-badges">
+          <div class="about-badge">
+            <div class="about-badge-name">Chris Newman</div>
+            <div class="about-badge-role">Co-Founder &amp; Director</div>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-name">Dan Fielding</div>
+            <div class="about-badge-role">Co-Founder &amp; Director</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="page-hero-content" style="position:relative;z-index:3;max-width:52%;">
-      <div class="hero-eyebrow">Our Story</div>
-      <h1 class="display-2">Built by practitioners.<br>Designed for <em style="font-style:italic;color:var(--sky-blue);">impact.</em></h1>
-      <p class="lead">An Australian procurement consultancy founded by two of the most experienced people in the industry — committed to delivering real, lasting change.</p>
     </div>
   </div>
 
