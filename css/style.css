@@ -2,7 +2,7 @@
    BLUE NORTH — Global Styles
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   /* Core Brand Colours */
@@ -29,6 +29,7 @@
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Aptos', 'Aptos Display', 'Inter', 'Segoe UI', sans-serif;
+  --font-heading: 'Outfit', 'Inter', sans-serif;
 
   /* Spacing */
   --nav-height: 80px;
@@ -1047,7 +1048,7 @@ h4, h5, h6 { font-family: var(--font-body); font-weight: 600; }
 .sni-title,
 .tile-title,
 h2, h3, h4 {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-heading) !important;
   font-weight: 700 !important;
   letter-spacing: -0.02em;
 }
