@@ -393,7 +393,7 @@
           <h2 class="form-title">Send us a message</h2>
           <p class="form-subtitle">We typically respond within one business day.</p>
 
-          <form id="contact-form" novalidate>
+          <form id="contact-form" action="https://formspree.io/f/xzdqqnpa" method="POST" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="first-name">First Name <span style="color:var(--sky-blue)">*</span></label>
@@ -536,7 +536,7 @@
 
   <script src="js/main.js"></script>
   <script>
-    // Contact form — show success on submit (replace with real form handler)
+    // Contact form — Formspree submission
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -545,7 +545,6 @@
       const message = document.getElementById('message').value.trim();
 
       if (!firstName || !email || !message) {
-        // Simple validation highlight
         [
           { id: 'first-name', val: firstName },
           { id: 'email', val: email },
@@ -562,10 +561,24 @@
         return;
       }
 
-      // Show success
-      document.getElementById('contact-form-wrap').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-      window.scrollTo(0, 0);
+      const form = this;
+      const data = new FormData(form);
+
+      fetch('https://formspree.io/f/xzdqqnpa', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById('contact-form-wrap').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+          window.scrollTo(0, 0);
+        } else {
+          alert('Something went wrong. Please try again or email us directly at hello@bluenorth.com.au');
+        }
+      }).catch(() => {
+        alert('Something went wrong. Please try again or email us directly at hello@bluenorth.com.au');
+      });
     });
   </script>
 </body>
