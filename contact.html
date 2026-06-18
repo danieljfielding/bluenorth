@@ -221,11 +221,37 @@
     }
 
     .checkbox-item input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
       width: 18px;
       height: 18px;
-      accent-color: var(--polaris-blue);
+      border: 2px solid var(--fog);
+      border-radius: 3px;
+      background: white;
       cursor: pointer;
       flex-shrink: 0;
+      position: relative;
+      display: inline-block;
+      transition: all 0.15s ease;
+    }
+
+    .checkbox-item input[type="checkbox"]:checked {
+      background: var(--polaris-blue);
+      border-color: var(--polaris-blue);
+    }
+
+    .checkbox-item input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: 2px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+      display: block;
     }
 
     .checkbox-item span {
