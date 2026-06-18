@@ -32,7 +32,7 @@
   --font-heading: 'Outfit', 'Inter', sans-serif;
 
   /* Spacing */
-  --nav-height: 104px;
+  --nav-height: 80px;
   --section-pad: 100px;
   --container: 1200px;
 }
@@ -89,6 +89,7 @@ h4, h5, h6 { font-family: var(--font-body); font-weight: 600; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow: visible;
 }
 
 .nav.transparent {
@@ -112,10 +113,15 @@ h4, h5, h6 { font-family: var(--font-body); font-weight: 600; }
   box-shadow: 0 2px 20px rgba(0,0,0,0.1);
 }
 
+.nav-logo {
+  overflow: visible;
+}
+
 .nav-logo img {
   height: 72px;
   width: auto;
   margin-top: -8px;
+  overflow: visible;
 }
 
 .nav-links {
