@@ -32,7 +32,7 @@
   --font-heading: 'Outfit', 'Inter', sans-serif;
 
   /* Spacing */
-  --nav-height: 96px;
+  --nav-height: 104px;
   --section-pad: 100px;
   --container: 1200px;
 }
@@ -113,7 +113,7 @@ h4, h5, h6 { font-family: var(--font-body); font-weight: 600; }
 }
 
 .nav-logo img {
-  height: 52px;
+  height: 46px;
   width: auto;
 }
 
