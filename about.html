@@ -111,20 +111,19 @@
     @media(max-width:600px) { .values-grid { grid-template-columns:1fr; } }
   
     /* ---- About hero: responsive flex layout ---- */
-    .about-hero { background: var(--paper); }
     .about-hero-inner {
       max-width: var(--container);
       margin: 0 auto;
-      padding: calc(var(--nav-height) - 16px) 40px 0;
+      padding: calc(var(--nav-height) + 24px) 40px 48px;
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       gap: 48px;
       min-height: unset;
     }
     .about-hero { padding-bottom: 0 !important; min-height: unset !important; }
     .about-hero-text {
       flex: 0 0 48%;
-      padding-bottom: 80px;
+      padding-bottom: 0;
     }
     .about-hero-photo {
       flex: 1;
@@ -225,7 +224,7 @@
 </head>
 <body>
   <nav class="nav light-nav" role="navigation">
-    <div class="nav-logo"><a href="index.html"><img src="images/logo-nav-primary.png" alt="Blue North"></a></div>
+    <div class="nav-logo"><a href="index.html"><img src="images/logo-with-tagline.svg" alt="Blue North"></a></div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html" class="active">Our Story</a></li>
