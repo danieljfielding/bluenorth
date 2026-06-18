@@ -2,7 +2,7 @@
    BLUE NORTH — Global Styles
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   /* Core Brand Colours */
@@ -28,8 +28,7 @@
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Aptos', 'Aptos Display', 'Inter', 'Segoe UI', sans-serif;
-  --font-heading: 'Outfit', 'Inter', sans-serif;
+  --font-body: 'Outfit', sans-serif;
 
   /* Spacing */
   --nav-height: 80px;
@@ -1048,7 +1047,7 @@ h4, h5, h6 { font-family: var(--font-body); font-weight: 600; }
 .sni-title,
 .tile-title,
 h2, h3, h4 {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-body) !important;
   font-weight: 700 !important;
   letter-spacing: -0.02em;
 }
@@ -1075,128 +1074,4 @@ h2, h3, h4 {
 @keyframes starPulse {
   0%, 100% { opacity: var(--star-opacity, 0.06); transform: scale(1); }
   50% { opacity: calc(var(--star-opacity, 0.06) * 1.6); transform: scale(1.05); }
-}
-
-
-/* =============================================
-   POLAR LIGHT — Paper-first theme layer
-   Light canvas, Polaris Blue as ink, star as
-   architectural signature. June 2026 redesign.
-   ============================================= */
-
-/* Canvas */
-body { background: var(--paper); }
-
-/* Headings: navy ink on light */
-h1, h2, h3 { color: var(--polaris-blue); }
-.section-dark h2, .section-dark h3,
-.section-navy h2, .section-navy h3 { color: white; }
-
-/* Generous breathing room */
-:root { --section-pad: 120px; }
-@media (max-width: 768px) { :root { --section-pad: 80px; } }
-
-/* White sections alternate against Paper body */
-.section-white { background: white; }
-
-/* ---- Page heroes: light, with architectural star ---- */
-.page-hero {
-  background: var(--paper) !important;
-  min-height: 56vh;
-}
-.page-hero-bg {
-  background:
-    radial-gradient(ellipse 60% 70% at 80% 30%, rgba(94,137,201,0.12) 0%, transparent 60%),
-    var(--paper) !important;
-}
-.page-hero-bg::after {
-  content: '';
-  position: absolute;
-  right: 12%;
-  top: 42%;
-  transform: translateY(-50%);
-  width: min(24vw, 320px);
-  aspect-ratio: 1;
-  background: url('../images/star-navy-transparent.png') center/contain no-repeat;
-  opacity: 0.06;
-  animation: starBreath 11s ease-in-out infinite;
-}
-
-/* Slow breath: grey -> blue -> grey with a gentle pulse */
-@keyframes starBreath {
-  0%, 100% { opacity: 0.05; filter: grayscale(1); transform: translateY(-50%) scale(1); }
-  50%      { opacity: 0.12; filter: grayscale(0) saturate(1.4); transform: translateY(-50%) scale(1.05); }
-}
-@media (max-width: 768px) {
-  .page-hero-bg::after { right: 4%; top: 38%; width: 38vw; }
-}
-.page-hero.no-hero-star .page-hero-bg::after { display: none; }
-.page-hero h1 { color: var(--polaris-blue) !important; }
-.page-hero .lead { color: var(--slate) !important; }
-.page-hero .hero-eyebrow { color: var(--harbor) !important; }
-
-/* Stars in light heroes & labels render navy, not white */
-.page-hero .section-label img { filter: none; }
-
-/* ---- Buttons on light ---- */
-.btn-outline {
-  color: var(--polaris-blue) !important;
-  border-color: rgba(31,58,107,0.4);
-}
-.btn-outline:hover {
-  background: rgba(31,58,107,0.06);
-  border-color: var(--polaris-blue);
-}
-.section-dark .btn-outline,
-.section-navy .btn-outline,
-.cta-band .btn-outline {
-  color: white !important;
-  border-color: rgba(255,255,255,0.4);
-}
-.section-dark .btn-outline:hover,
-.section-navy .btn-outline:hover,
-.cta-band .btn-outline:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: white;
-}
-
-/* ---- CTA bands: solid Polaris Blue close ---- */
-.cta-band {
-  background: var(--polaris-blue) !important;
-}
-.cta-band h2, .cta-band .section-title { color: white !important; }
-.cta-band p, .cta-band .lead { color: rgba(255,255,255,0.7) !important; }
-.cta-band .section-label { color: var(--aurora) !important; }
-.section-dark.cta-final,
-.section-navy.cta-final { background: var(--polaris-blue); }
-
-/* ---- Sector tags: light chips ---- */
-.sector-tag {
-  background: white !important;
-  color: var(--polaris-blue) !important;
-  border: 1px solid var(--ice) !important;
-}
-.sector-tag:hover {
-  background: var(--polaris-blue) !important;
-  color: white !important;
-  border-color: var(--polaris-blue) !important;
-}
-
-/* ---- Cards lift slightly stronger on Paper ---- */
-.card { border-color: rgba(31,58,107,0.08); }
-
-/* ---- Light section star labels ---- */
-.section-light-converted .section-label img { filter: none !important; }
-.section-light-converted .section-label { color: var(--harbor); }
-.section-light-converted h2, .section-light-converted h3 { color: var(--polaris-blue) !important; }
-.section-light-converted p { color: var(--slate); }
-
-/* Mobile nav panel: dark panel needs white links regardless of light-nav
-   (.open bumps specificity above per-page inline overrides) */
-@media (max-width: 768px) {
-  .nav.light-nav .nav-links.open { background: var(--deep-polaris); }
-  .nav.light-nav .nav-links.open a { color: rgba(255,255,255,0.85); }
-  .nav.light-nav .nav-links.open a:hover { color: white; }
-  .nav.light-nav .nav-links.open li { border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .nav.light-nav .nav-links.open .nav-cta { color: white !important; }
 }
