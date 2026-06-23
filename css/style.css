@@ -113,6 +113,24 @@ h4, h5, h6 { font-family: var(--font-body); font-weight: 600; }
   box-shadow: 0 2px 20px rgba(0,0,0,0.1);
 }
 
+/* Dark hero page — nav stays dark */
+.dark-hero-page .nav.light-nav {
+  background: rgba(22,29,43,0.95) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) !important;
+}
+.dark-hero-page .nav.light-nav.scrolled {
+  background: rgba(22,29,43,0.98) !important;
+}
+.dark-hero-page .nav.light-nav .nav-links a {
+  color: rgba(255,255,255,0.6) !important;
+}
+.dark-hero-page .nav.light-nav .nav-links a:hover {
+  color: #fff !important;
+}
+.dark-hero-page #nav-logo-img {
+  filter: brightness(0) invert(1);
+}
+
 .nav-logo {
   overflow: visible;
 }
