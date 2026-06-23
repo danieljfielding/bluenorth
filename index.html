@@ -525,12 +525,14 @@
       margin-bottom: 32px;
     }
     .hl-headline {
-      font-family: var(--font-display) !important;
+      font-family: 'Aptos Display', 'Aptos', 'Segoe UI', sans-serif !important;
       color: var(--polaris-blue);
-      font-size: clamp(2.55rem, 5.44vw, 5.1rem) !important;
-      line-height: 1.04 !important;
+      font-size: clamp(2.6rem, 5.2vw, 5rem) !important;
+      line-height: 1.06 !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.025em;
       max-width: 100% !important;
-      margin-bottom: 28px;
+      margin-bottom: 40px;
     }
     /* Rotating phrase */
     .hl-rotator {
@@ -638,30 +640,13 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero-light" aria-label="Hero">
-    <img src="images/star-navy-transparent.png" class="hl-star-main" alt="" aria-hidden="true">
-    <div class="hl-content">
-      <h1 class="hl-headline">Smarter procurement.<br>
-        <span class="hl-rotator" aria-live="polite">
-          <em class="hl-phrase active">Better outcomes.</em>
-          <em class="hl-phrase">Built by practitioners.</em>
-          <em class="hl-phrase">Positive social impact.</em>
-          <em class="hl-phrase">Powered by intelligence.</em>
-        </span>
-      </h1>
-      <p class="lead hl-lead">We help organisations transform their procurement function — driving value, capability, and positive social impact.</p>
+  <section class="hero-light" aria-label="Hero" style="position:relative;overflow:hidden;">
+    <canvas id="compass-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
+    <div class="hl-content" style="position:relative;z-index:2;">
+      <h1 class="hl-headline">Building procurement<br>for tomorrow.</h1>
       <div class="hero-cta-group">
         <a href="services.html" class="btn btn-primary btn-arrow">Our Services</a>
         <a href="cpo360.html" class="btn btn-outline-dark btn-arrow">Discover CPO360</a>
-      </div>
-      <div class="hl-progress-row" role="tablist" aria-label="Rotating messages">
-        <div class="hl-dots">
-          <button class="hl-dot active" aria-label="Message 1"></button>
-          <button class="hl-dot" aria-label="Message 2"></button>
-          <button class="hl-dot" aria-label="Message 3"></button>
-          <button class="hl-dot" aria-label="Message 4"></button>
-        </div>
-        <div class="hl-progress"><div class="carousel-progress-bar"></div></div>
       </div>
     </div>
     <div class="hero-scroll-light">Scroll</div>
@@ -1042,5 +1027,117 @@
       }
     })();
   </script>
+<script>
+(function() {
+  const canvas = document.getElementById('compass-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const POLARIS = '#1F3A6B', SKY = '#5E89C9';
+  let W, H, t = 0, startTime = null;
+  const introMs = 2400;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function cx() { return W * 0.72; }
+  function cy() { return H * 0.48; }
+
+  function ease(p) { return p < 0.5 ? 2*p*p : 1 - Math.pow(-2*p+2,2)/2; }
+
+  function drawBearingLines(x, y, rot, prog) {
+    const bearings = 36, maxLen = Math.max(W, H) * 0.9;
+    for (let i = 0; i < bearings; i++) {
+      const angle = (i / bearings) * Math.PI * 2 + rot;
+      const isMajor = i % 9 === 0, isMinor = i % 3 === 0;
+      const len = isMajor ? maxLen : isMinor ? maxLen * 0.7 : maxLen * 0.45;
+      const alpha = (isMajor ? 0.12 : isMinor ? 0.065 : 0.035) * prog;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + Math.cos(angle) * len * prog, y + Math.sin(angle) * len * prog);
+      ctx.strokeStyle = isMajor ? POLARIS : SKY;
+      ctx.globalAlpha = alpha;
+      ctx.lineWidth = isMajor ? 0.75 : isMinor ? 0.45 : 0.28;
+      ctx.stroke();
+      if (isMajor && prog > 0.3) {
+        const tl = 12, tr = len * 0.35 * prog;
+        ctx.beginPath();
+        ctx.moveTo(x + Math.cos(angle)*tr, y + Math.sin(angle)*tr);
+        ctx.lineTo(x + Math.cos(angle)*(tr+tl), y + Math.sin(angle)*(tr+tl));
+        ctx.strokeStyle = POLARIS; ctx.globalAlpha = 0.18 * prog;
+        ctx.lineWidth = 1.4; ctx.stroke();
+      }
+    }
+  }
+
+  function drawConcentric(x, y, rot, prog) {
+    const rings = [0.12,0.22,0.35,0.52,0.72,0.96];
+    const base = Math.min(W, H);
+    rings.forEach((r, i) => {
+      const radius = r * base * prog;
+      const isMajor = i % 2 === 0;
+      ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI*2);
+      ctx.strokeStyle = isMajor ? POLARIS : SKY;
+      ctx.globalAlpha = isMajor ? 0.08 : 0.045;
+      ctx.lineWidth = isMajor ? 0.65 : 0.38; ctx.stroke();
+      if (isMajor && prog > 0.5) {
+        for (let k = 0; k < 72; k++) {
+          const a = (k/72)*Math.PI*2 + rot*0.3;
+          const isT = k%18===0, tl = isT ? 8 : k%6===0 ? 4 : 2;
+          ctx.beginPath();
+          ctx.moveTo(x+Math.cos(a)*radius, y+Math.sin(a)*radius);
+          ctx.lineTo(x+Math.cos(a)*(radius+tl), y+Math.sin(a)*(radius+tl));
+          ctx.strokeStyle = POLARIS; ctx.globalAlpha = (isT?0.16:0.07)*prog;
+          ctx.lineWidth = isT ? 0.9 : 0.45; ctx.stroke();
+        }
+      }
+    });
+  }
+
+  function drawCardinals(x, y, rot, prog) {
+    if (prog < 0.6) return;
+    const a = (prog-0.6)/0.4, base = Math.min(W,H)*0.52*prog;
+    ctx.font = '500 11px Aptos, Inter, sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ['N','E','S','W'].forEach((lbl, i) => {
+      const angle = (i/4)*Math.PI*2 - Math.PI/2 + rot;
+      ctx.fillStyle = lbl==='N' ? POLARIS : SKY;
+      ctx.globalAlpha = (lbl==='N' ? 0.42 : 0.2) * a;
+      ctx.fillText(lbl, x+Math.cos(angle)*base, y+Math.sin(angle)*base);
+    });
+  }
+
+  function drawStar(x, y, size, alpha, angle) {
+    ctx.save(); ctx.translate(x,y); ctx.rotate(angle);
+    ctx.globalAlpha = alpha; ctx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const r = i%2===0 ? size : size*0.07;
+      const a = (i/8)*Math.PI*2 - Math.PI/2;
+      i===0 ? ctx.moveTo(Math.cos(a)*r, Math.sin(a)*r) : ctx.lineTo(Math.cos(a)*r, Math.sin(a)*r);
+    }
+    ctx.closePath(); ctx.fillStyle = POLARIS; ctx.fill(); ctx.restore();
+  }
+
+  function draw(ts) {
+    if (!startTime) startTime = ts;
+    const elapsed = ts - startTime;
+    const prog = ease(Math.min(elapsed/introMs, 1));
+    t += 0.00012;
+    ctx.clearRect(0,0,W,H);
+    const ox = cx(), oy = cy();
+    drawBearingLines(ox, oy, t, prog);
+    drawConcentric(ox, oy, t, prog);
+    drawCardinals(ox, oy, t, prog);
+    const starSize = Math.min(W,H)*0.055*prog;
+    drawStar(ox, oy, starSize, 0.16*prog, t*0.3);
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>
