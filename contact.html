@@ -122,7 +122,12 @@
           <x-import component-from-global-scope="DesignSystem_3d5da5.Textarea" label="How can we help" name="message" required="{{ true }}" rows="5" defaultValue="{{ messageSeed }}" placeholder="Tell us a bit about your organisation and what you are looking to achieve." hint-size="100%,140px"></x-import>
 
           <sc-if value="{{ statusMsg }}" hint-placeholder-val="{{ false }}">
-            <div style="{{ statusCss }}">{{ statusMsg }}</div>
+            <div style="{{ statusCss }}">
+              <span>{{ statusMsg }}</span>
+              <sc-if value="{{ showMailto }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ mailtoHref }}" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; height: 40px; padding: 0 18px; border-radius: 8px; background: var(--polaris-blue); color: var(--white); font-size: 14px; font-weight: 600; text-decoration: none;" style-hover="background: var(--deep-polaris); color: var(--white);">Send as email instead <span style="font-family: var(--font-mono);">&rarr;</span></a>
+              </sc-if>
+            </div>
           </sc-if>
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px; border-top: 1px solid var(--border-default); padding-top: 24px;">
             <p style="font-size: 13px; color: var(--text-subtle); margin: 0; max-width: 300px;">We respect your privacy. Your details will never be shared with third parties.</p>
@@ -231,10 +236,15 @@ class Component extends DCLogic {
         throw new Error(json.message || 'Request failed');
       }
     } catch (err) {
+      // Send failed — keep what they typed and offer a one-click handoff to email
+      // so the enquiry is never lost.
+      this.mailtoHref = 'mailto:' + FALLBACK_EMAIL
+        + '?subject=' + encodeURIComponent('Website enquiry — ' + d.first_name + ' ' + d.last_name + (d.organisation ? ', ' + d.organisation : ''))
+        + '&body=' + encodeURIComponent(summary);
       this.setState({
         sending: false,
         status: 'error',
-        statusMsg: 'Something went wrong sending that. Please email us directly at ' + FALLBACK_EMAIL + '.',
+        statusMsg: 'We could not send that just now. Nothing is lost — send it as an email instead and it will reach us.',
       });
     }
   };
@@ -264,8 +274,8 @@ class Component extends DCLogic {
     }
 
     const { sending, status, statusMsg } = this.state;
-    const okCss = 'font-size: 15px; padding: 16px 18px; border-radius: 8px; background: var(--surface-brand-soft); color: var(--polaris-blue); border: 1px solid var(--sky-blue); margin: 0;';
-    const errCss = 'font-size: 15px; padding: 16px 18px; border-radius: 8px; background: #FCEDEC; color: #8E2A24; border: 1px solid #E8615C; margin: 0;';
+    const okCss = 'display: block; font-size: 15px; padding: 16px 18px; border-radius: 8px; background: var(--surface-brand-soft); color: var(--polaris-blue); border: 1px solid var(--sky-blue); margin: 0;';
+    const errCss = 'display: block; font-size: 15px; padding: 16px 18px; border-radius: 8px; background: #FCEDEC; color: #8E2A24; border: 1px solid #E8615C; margin: 0;';
 
     return {
       formRef: (el) => { this.formEl = el; },
@@ -277,6 +287,8 @@ class Component extends DCLogic {
         + '; color: var(--white); cursor: ' + (sending ? 'default' : 'pointer') + ';',
       statusMsg: statusMsg,
       statusCss: status === 'error' ? errCss : okCss,
+      showMailto: status === 'error' && !!this.mailtoHref,
+      mailtoHref: this.mailtoHref || ('mailto:' + FALLBACK_EMAIL),
       hasContext: !!contextText,
       contextText: contextText,
       messageSeed: messageSeed,
