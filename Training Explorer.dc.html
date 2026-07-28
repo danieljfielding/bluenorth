@@ -15,7 +15,8 @@
 <link rel="stylesheet" href="ds/tokens/base.css">
 <link rel="stylesheet" href="ds/styles.css">
 <script src="ds/ds-bundle.js"></script>
-<style>a { text-decoration: none; }</style>
+<style>
+  h1, h2, h3, h4 { overflow-wrap: break-word; }a { text-decoration: none; }</style>
 </helmet>
 
 <div style="font-family: var(--font-body); color: var(--text-body); font-size: 16px; line-height: 1.6;">
@@ -57,7 +58,7 @@
   <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 28px;">
     <div>
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Training portfolio</div>
-      <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 10px;">14 facilitated programs. Explore the portfolio.</h3>
+      <h3 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(25px, 2.7vw, 34px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 10px;">14 facilitated programs. Explore the portfolio.</h3>
       <p style="font-size: 16px; color: var(--text-muted); margin: 0; max-width: 620px;">Every program includes a SkillsMap assessment, facilitated delivery and matching CPO360 eLearning. Pick a pathway, or browse by program.</p>
     </div>
     <div style="display: flex; gap: 28px;">
@@ -160,7 +161,7 @@
 
   </div>
 
-  <div style="margin-top: 20px; background: var(--surface-inverse); border-radius: 12px; padding: 28px 32px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;">
+  <div style="margin-top: 20px; background: var(--surface-inverse); border-radius: 12px; padding: 28px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
     <div>
       <div style="font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--white); margin-bottom: 6px;">SkillsMap assessment</div>
       <p style="font-size: 14px; color: var(--mist); margin: 0;">90 questions across 10 competency domains, with individual and team reporting before the workshop.</p>

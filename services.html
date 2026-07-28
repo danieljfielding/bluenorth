@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="ds/styles.css">
 <script src="ds/ds-bundle.js"></script>
 <style>
+  h1, h2, h3, h4 { overflow-wrap: break-word; }
   body { margin: 0; background: var(--surface-page); }
   a { color: var(--text-link); text-decoration: none; }
   a:hover { color: var(--polaris-blue); }
@@ -50,13 +51,13 @@
     <img src="assets/mark-navy.png" alt="" style="position: absolute; right: 60px; top: 40px; width: 300px; opacity: 0.06;">
     <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 88px 40px 72px;">
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 20px;">What we do</div>
-      <h1 style="font-family: var(--font-display); font-weight: 700; font-size: 60px; line-height: 1.06; letter-spacing: -0.03em; color: var(--polaris-blue); margin: 0 0 20px; max-width: 780px;">Five ways we build better procurement.</h1>
+      <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.06; letter-spacing: -0.03em; color: var(--polaris-blue); margin: 0 0 20px; max-width: 780px;">Five ways we build better procurement.</h1>
       <p style="font-size: 19px; color: var(--text-muted); margin: 0; max-width: 560px; text-wrap: pretty;">Interconnected pillars, delivered by practitioners with lived experience in each domain.</p>
     </div>
   </section>
 
   <nav data-screen-label="Pillar index" style="background: var(--white); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
       <a href="#learning" style="display: block; padding: 20px 20px 20px 0; border-right: 1px solid var(--border-default);" style-hover="background: var(--surface-brand-soft);">
         <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--fog); margin-bottom: 8px;">01</div>
         <div style="font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--polaris-blue);">Learning &amp; development</div>
@@ -83,7 +84,7 @@
   <section id="learning" data-screen-label="L&D" style="max-width: 1240px; margin: 0 auto; padding: 88px 40px 40px;">
     <div>
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--sky-blue); margin-bottom: 16px;">01 &middot; LEARNING &amp; DEVELOPMENT</div>
-      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">Build the capability your organisation needs to compete</h2>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">Build the capability your organisation needs to compete</h2>
       <div style="display: grid; gap: 18px; font-size: 17px; line-height: 1.7; color: var(--text-body); max-width: 620px;">
         <p style="margin: 0;">Effective procurement functions are built on skilled people. Our L&amp;D offering gives organisations a structured, measurable approach to building capability at every level — from graduate procurement officers to Chief Procurement Officers.</p>
         <p style="margin: 0;">Powered by our CPO360 assessment platform, we begin by establishing a clear baseline of current skills, then design learning pathways that address real gaps.</p>
@@ -117,8 +118,8 @@
       <aside style="background: var(--surface-brand); border-radius: 12px; padding: 40px; position: relative; overflow: hidden;">
         <img src="assets/mark-white.png" alt="" style="position: absolute; right: -60px; bottom: -70px; width: 260px; opacity: 0.1;">
         <div style="position: relative;">
-          <div style="font-family: var(--font-display); font-weight: 700; font-size: 38px; line-height: 1.1; color: var(--white); letter-spacing: -0.02em; margin-bottom: 6px;">Buy better.</div>
-          <div style="font-family: var(--font-display); font-weight: 700; font-size: 38px; line-height: 1.1; color: var(--sky-blue); letter-spacing: -0.02em; margin-bottom: 24px;">Do better.</div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(27px, 3vw, 38px); line-height: 1.1; color: var(--white); letter-spacing: -0.02em; margin-bottom: 6px;">Buy better.</div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(27px, 3vw, 38px); line-height: 1.1; color: var(--sky-blue); letter-spacing: -0.02em; margin-bottom: 24px;">Do better.</div>
           <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aurora); margin-bottom: 24px;">Social outcomes through every spend decision</div>
           <div style="display: flex; flex-wrap: wrap; gap: 8px;">
             <span style="font-size: 13px; padding: 7px 12px; border-radius: 8px; background: rgba(255,255,255,0.12); color: var(--white);">Social value</span>
@@ -132,7 +133,7 @@
       </aside>
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--sky-blue); margin-bottom: 16px;">02 &middot; SOCIAL &amp; SUSTAINABLE PROCUREMENT</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">Procurement is the most powerful lever you have for change</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">Procurement is the most powerful lever you have for change</h2>
         <div style="display: grid; gap: 18px; font-size: 17px; line-height: 1.7; color: var(--text-body); max-width: 620px;">
           <p style="margin: 0;">With billions of dollars spent each year across public and private organisations, procurement decisions have profound consequences — for communities, for the environment, and for the social enterprises and businesses that make up the supply chain.</p>
           <p style="margin: 0;">BlueNorth helps organisations move beyond compliance and tokenism to genuinely embed social value into procurement strategy, policy and practice. Whether you are responding to government requirements, meeting ESG commitments, or simply want to buy better — we help you do it well.</p>
@@ -147,7 +148,7 @@
   <section id="operating" data-screen-label="Operating model" style="max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1fr) 480px; gap: 72px; align-items: start;">
     <div>
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--sky-blue); margin-bottom: 16px;">03 &middot; OPERATING MODEL DESIGN</div>
-      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">A function built for your ambitions, not inherited by accident</h2>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">A function built for your ambitions, not inherited by accident</h2>
       <div style="display: grid; gap: 18px; font-size: 17px; line-height: 1.7; color: var(--text-body); max-width: 620px;">
         <p style="margin: 0;">Many organisations have a procurement function that evolved reactively rather than by design. The result is misaligned structures, unclear accountabilities, duplicated effort and missed value. We help fix that.</p>
         <p style="margin: 0;">Drawing on deep experience across public and private sector transformations, we work with leadership teams to design fit-for-purpose operating models that align procurement with organisational strategy.</p>
@@ -219,7 +220,7 @@
       </aside>
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--sky-blue); margin-bottom: 16px;">04 &middot; MENTORING &amp; BUSINESS CAPABILITY DEVELOPMENT</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">Helping purpose-led businesses reach their potential</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">Helping purpose-led businesses reach their potential</h2>
         <div style="display: grid; gap: 18px; font-size: 17px; line-height: 1.7; color: var(--text-body); max-width: 620px;">
           <p style="margin: 0;">Expert support to help social enterprises, First Nations businesses and SMEs access and win procurement opportunities, create partnerships, and build the commercial capability to grow.</p>
           <p style="margin: 0;">Our pro bono and low bono programs are designed specifically so the organisations that most need this expertise can get it — the same practitioners, the same rigour, at a price that works.</p>
@@ -236,7 +237,7 @@
     <div style="max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--sky-blue); margin-bottom: 16px;">05 &middot; AI &amp; TECHNOLOGY</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--white); margin: 0 0 20px;">Most procurement teams cannot prove what they are worth</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--white); margin: 0 0 20px;">Most procurement teams cannot prove what they are worth</h2>
         <div style="display: grid; gap: 18px; font-size: 17px; line-height: 1.7; color: var(--aurora); max-width: 520px;">
           <p style="margin: 0;">Spend data sits in three systems and none of them agree. Capability gaps are known anecdotally, not measured. Savings are contested by Finance. And when the Board asks how procurement is performing, the answer takes three weeks and a spreadsheet.</p>
           <p style="margin: 0;">CPO360 closes that gap. Nine integrated modules turn messy spend, scattered assessments and untracked savings into one evidence base — and a single Board-ready dashboard you can export or share as a read-only link.</p>
@@ -282,7 +283,7 @@
     <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: center;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 16px;">Get started</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">Not sure where to start?</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">Not sure where to start?</h2>
         <p style="font-size: 17px; color: var(--aurora); margin: 0; max-width: 460px;">Talk to us. We will help you identify the right entry point and build a programme tailored to your needs and budget.</p>
       </div>
       <div>

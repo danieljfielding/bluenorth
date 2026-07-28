@@ -7,8 +7,8 @@ class BnAurora extends HTMLElement {
     if (this._built) return;
     this._built = true;
     const cfg = {
-      intensity: parseFloat(this.getAttribute('intensity') || '1'),
-      speed: parseFloat(this.getAttribute('speed') || '1'),
+      intensity: parseFloat(this.getAttribute('intensity') || '1.65'),
+      speed: parseFloat(this.getAttribute('speed') || '2.5'),
       tealAccent: this.getAttribute('teal') !== 'false',
       starCount: parseInt(this.getAttribute('stars') || '26', 10),
       mark: this.getAttribute('mark') || 'assets/mark-white.png'
@@ -21,7 +21,7 @@ class BnAurora extends HTMLElement {
   canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .dot { position: absolute; border-radius: 50%; background: #EAF0F9; opacity: 0.3;
          animation: bnTwinkle 8s ease-in-out infinite; }
-  .mark { position: absolute; top: 14%; right: 10%; width: 68px; height: 68px; }
+  .mark { position: absolute; top: 14%; right: 12%; width: 68px; height: 68px; }
   .mark img { width: 100%; height: 100%; animation: bnStarBreathe 9s ease-in-out infinite; }
   .mark .glint { position: absolute; inset: 0; opacity: 0; filter: blur(6px) brightness(1.6);
                  animation: bnStarGlint 14s ease-in-out 2s infinite; }
@@ -53,8 +53,15 @@ class BnAurora extends HTMLElement {
     for (let i = 0; i < cfg.starCount; i++) {
       const d = document.createElement('div');
       d.className = 'dot';
-      d.style.left = (rnd(i + 1) * 96 + 2).toFixed(1) + '%';
-      d.style.top = (rnd(i + 40) * 62 + 3).toFixed(1) + '%';
+      let left = rnd(i + 1) * 96 + 2;
+      let top = rnd(i + 40) * 62 + 3;
+      // keep the middle-left clear for hero copy
+      if (left < 52 && top > 24) {
+        if (rnd(i + 300) < 0.5) top = rnd(i + 310) * 18 + 3;
+        else left = 55 + rnd(i + 320) * 43;
+      }
+      d.style.left = left.toFixed(1) + '%';
+      d.style.top = top.toFixed(1) + '%';
       const s = rnd(i + 80) < 0.75 ? 2 : 3;
       d.style.width = d.style.height = s + 'px';
       d.style.animationDuration = (5 + rnd(i + 120) * 9).toFixed(1) + 's';

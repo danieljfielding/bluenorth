@@ -36,6 +36,7 @@
 <script src="ds/ds-bundle.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
+  h1, h2, h3, h4 { overflow-wrap: break-word; }
   body { margin: 0; background: var(--surface-page); }
   a { color: var(--text-link); text-decoration: none; }
   a:hover { color: var(--polaris-blue); }
@@ -50,7 +51,7 @@
     <div style="max-width: 1240px; margin: 0 auto; padding: 72px 40px 0; display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 64px; align-items: end;">
       <div style="padding-bottom: 72px;">
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 20px;">Our team</div>
-        <h1 style="font-family: var(--font-display); font-weight: 700; font-size: 60px; line-height: 1.06; letter-spacing: -0.03em; color: var(--polaris-blue); margin: 0 0 20px;">Practitioners. Not generalists.</h1>
+        <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.06; letter-spacing: -0.03em; color: var(--polaris-blue); margin: 0 0 20px;">Practitioners. Not generalists.</h1>
         <p style="font-size: 19px; color: var(--text-muted); margin: 0; max-width: 480px; text-wrap: pretty;">Two founders, and a carefully curated network of associates — every one of them a specialist with real procurement experience.</p>
       </div>
       <div style="position: relative;">
@@ -64,7 +65,7 @@
     <div style="display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 72px; align-items: start;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">The associate network</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 24px;">A network built over decades. Deployed for you.</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 24px;">A network built over decades. Deployed for you.</h2>
         <div style="display: grid; gap: 18px; font-size: 17px; line-height: 1.7; color: var(--text-body); max-width: 620px;">
           <p style="margin: 0;">Over more than two decades in the industry, Dan and Chris have built and maintained relationships with some of Australia and New Zealand's most capable procurement practitioners. These are not people found on a recruiter database — they are colleagues, trusted peers, and specialists whose work we know firsthand.</p>
           <p style="margin: 0;">When you engage BlueNorth, you get access to the right people for your challenge, not whoever happens to be available. We match specialist capability to your specific need, whether that is a two-week diagnostic or a twelve-month transformation programme.</p>
@@ -112,9 +113,9 @@
   <section data-screen-label="Expertise" style="background: var(--white); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
     <div style="max-width: 1240px; margin: 0 auto; padding: 88px 40px;">
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Areas of expertise</div>
-      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 12px;">Deep specialists. Every specialism.</h2>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 12px;">Deep specialists. Every specialism.</h2>
       <p style="font-size: 17px; color: var(--text-muted); margin: 0 0 40px; max-width: 620px;">Our network spans every major area of procurement practice, so we can always field the right person for your challenge.</p>
-      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border-default); border: 1px solid var(--border-default); border-radius: 12px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border-default); border: 1px solid var(--border-default); border-radius: 12px; overflow: hidden;">
         <div style="background: var(--surface-card); padding: 28px;"><div style="width: 38px; height: 38px; border-radius: 8px; background: var(--surface-brand-soft); display: flex; align-items: center; justify-content: center; color: var(--polaris-blue); margin-bottom: 18px;"><i data-lucide="trending-down" width="20" height="20" stroke-width="2"></i></div><h3 style="font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--polaris-blue); margin: 0 0 8px;">Cost transformation</h3><p style="font-size: 14px; color: var(--text-muted); margin: 0;">Sustainable cost reduction across categories — baseline analysis, should-cost modelling and benefits tracking.</p></div>
         <div style="background: var(--surface-card); padding: 28px;"><div style="width: 38px; height: 38px; border-radius: 8px; background: var(--surface-brand-soft); display: flex; align-items: center; justify-content: center; color: var(--polaris-blue); margin-bottom: 18px;"><i data-lucide="shield-check" width="20" height="20" stroke-width="2"></i></div><h3 style="font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--polaris-blue); margin: 0 0 8px;">Probity &amp; governance</h3><p style="font-size: 14px; color: var(--text-muted); margin: 0;">Probity frameworks, conflict of interest management, audit response and ethical decision-making.</p></div>
         <div style="background: var(--surface-card); padding: 28px;"><div style="width: 38px; height: 38px; border-radius: 8px; background: var(--surface-brand-soft); display: flex; align-items: center; justify-content: center; color: var(--polaris-blue); margin-bottom: 18px;"><i data-lucide="file-text" width="20" height="20" stroke-width="2"></i></div><h3 style="font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--polaris-blue); margin: 0 0 8px;">Framework development</h3><p style="font-size: 14px; color: var(--text-muted); margin: 0;">Procurement policy and process frameworks, manuals, delegation matrices and panel arrangements.</p></div>
@@ -141,10 +142,10 @@
     <div style="display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 72px; align-items: start;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Sectors we cover</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 38px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">Experience across every sector that matters</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(27px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 20px;">Experience across every sector that matters</h2>
         <p style="font-size: 17px; color: var(--text-muted); margin: 0;">Our network has worked across the full breadth of Australian and New Zealand industry — so we bring genuine sector context, not generic methodology.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px;">
         <div>
           <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); padding-bottom: 12px; border-bottom: 1px solid var(--border-default); margin-bottom: 14px;">Government</div>
           <div style="display: grid; gap: 8px; font-size: 15px;"><div>Federal government</div><div>State &amp; territory government</div><div>Local government</div><div>Defence</div></div>
@@ -168,8 +169,8 @@
   <section data-screen-label="How it works" style="background: var(--white); border-top: 1px solid var(--border-default);">
     <div style="max-width: 1240px; margin: 0 auto; padding: 88px 40px;">
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">How it works</div>
-      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 44px;">The right people. Every time.</h2>
-      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;">
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 44px;">The right people. Every time.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
         <div style="border-top: 2px solid var(--sky-blue); padding-top: 24px;">
           <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--sky-blue); margin-bottom: 14px;">01</div>
           <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--polaris-blue); margin: 0 0 10px;">We understand your need</h3>
@@ -194,7 +195,7 @@
     <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: center;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 16px;">Work with us</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">Need a specialist? We know the right person.</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">Need a specialist? We know the right person.</h2>
         <p style="font-size: 17px; color: var(--aurora); margin: 0; max-width: 460px;">Tell us what you are working on and we will tell you who in our network is best placed to help.</p>
       </div>
       <div>

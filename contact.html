@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="ds/styles.css">
 <script src="ds/ds-bundle.js"></script>
 <style>
+  h1, h2, h3, h4 { overflow-wrap: break-word; }
   body { margin: 0; background: var(--surface-page); }
   a { color: var(--text-link); text-decoration: none; }
   a:hover { color: var(--polaris-blue); }
@@ -51,7 +52,7 @@
       <img src="assets/mark-white.png" alt="" style="position: absolute; right: -110px; bottom: -80px; width: 400px; opacity: 0.08;">
       <div style="position: relative; max-width: 420px;">
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 20px;">Contact</div>
-        <h1 style="font-family: var(--font-display); font-weight: 700; font-size: 46px; line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin: 0 0 20px;">Let's talk about smarter procurement.</h1>
+        <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin: 0 0 20px;">Let's talk about smarter procurement.</h1>
         <p style="font-size: 17px; color: var(--aurora); margin: 0 0 44px; text-wrap: pretty;">Whether you are building team capability, redesigning your operating model, or embedding social value into your supply chain — we would like to hear from you.</p>
 
         <div style="display: grid; gap: 24px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 32px;">
@@ -92,35 +93,38 @@
           </div>
         </sc-if>
 
-        <form style="display: grid; gap: 24px;">
+        <form ref="{{ formRef }}" onSubmit="{{ onSubmit }}" noValidate="{{ true }}" style="display: grid; gap: 24px;">
           <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
-            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="First name" required="{{ true }}" placeholder="Jane" hint-size="100%,72px"></x-import>
-            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Last name" required="{{ true }}" placeholder="Smith" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="First name" name="first_name" required="{{ true }}" placeholder="Jane" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Last name" name="last_name" required="{{ true }}" placeholder="Smith" hint-size="100%,72px"></x-import>
           </div>
           <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
-            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Email address" type="email" required="{{ true }}" placeholder="jane@organisation.com.au" hint-size="100%,72px"></x-import>
-            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Phone" type="tel" placeholder="+61 4XX XXX XXX" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Email address" name="email" type="email" required="{{ true }}" placeholder="jane@organisation.com.au" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Phone" name="phone" type="tel" placeholder="+61 4XX XXX XXX" hint-size="100%,72px"></x-import>
           </div>
           <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
-            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Organisation" placeholder="Your organisation" hint-size="100%,72px"></x-import>
-            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Your role" placeholder="Chief Procurement Officer" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Organisation" name="organisation" placeholder="Your organisation" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Your role" name="role" placeholder="Chief Procurement Officer" hint-size="100%,72px"></x-import>
           </div>
-          <x-import component-from-global-scope="DesignSystem_3d5da5.Select" label="Sector" placeholder="Select your sector" options="{{ sectors }}" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="DesignSystem_3d5da5.Select" label="Sector" name="sector" placeholder="Select your sector" options="{{ sectors }}" hint-size="100%,72px"></x-import>
 
           <fieldset style="border: 1px solid var(--border-default); border-radius: 12px; padding: 24px; margin: 0; background: var(--surface-card);">
             <legend style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); padding: 0 8px;">What are you interested in</legend>
             <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 24px;">
               <sc-for list="{{ interests }}" as="it" hint-placeholder-count="6">
-                <x-import component-from-global-scope="DesignSystem_3d5da5.Checkbox" label="{{ it.label }}" defaultChecked="{{ it.checked }}" hint-size="100%,24px"></x-import>
+                <x-import component-from-global-scope="DesignSystem_3d5da5.Checkbox" label="{{ it.label }}" name="interest_{{ it.id }}" defaultChecked="{{ it.checked }}" hint-size="100%,24px"></x-import>
               </sc-for>
             </div>
           </fieldset>
 
-          <x-import component-from-global-scope="DesignSystem_3d5da5.Textarea" label="How can we help" required="{{ true }}" rows="5" defaultValue="{{ messageSeed }}" placeholder="Tell us a bit about your organisation and what you are looking to achieve." hint-size="100%,140px"></x-import>
+          <x-import component-from-global-scope="DesignSystem_3d5da5.Textarea" label="How can we help" name="message" required="{{ true }}" rows="5" defaultValue="{{ messageSeed }}" placeholder="Tell us a bit about your organisation and what you are looking to achieve." hint-size="100%,140px"></x-import>
 
+          <sc-if value="{{ statusMsg }}" hint-placeholder-val="{{ false }}">
+            <div style="{{ statusCss }}">{{ statusMsg }}</div>
+          </sc-if>
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px; border-top: 1px solid var(--border-default); padding-top: 24px;">
             <p style="font-size: 13px; color: var(--text-subtle); margin: 0; max-width: 300px;">We respect your privacy. Your details will never be shared with third parties.</p>
-            <x-import component-from-global-scope="DesignSystem_3d5da5.Button" variant="primary" size="lg" hint-size="180px,48px">Send message</x-import>
+            <button type="submit" disabled="{{ sending }}" style="{{ submitCss }}">{{ submitLabel }}</button>
           </div>
         </form>
       </div>
@@ -142,7 +146,97 @@ const INTERESTS = [
   { id: 'other', label: 'Something else' },
 ];
 
+// ── Where the form sends ────────────────────────────────────────────────────
+// Paste the Cloudflare Worker URL from worker/contact-worker.js here, e.g.
+//   https://bluenorth-contact.danieljfielding.workers.dev
+// The Worker holds the Resend API key — it must never live in this file.
+// Until this is set, the form falls back to opening the visitor's mail client
+// with the enquiry pre-written, so nothing is lost.
+const FORM_ENDPOINT = '';
+const FALLBACK_EMAIL = 'hello@bluenorth.com.au';
+
 class Component extends DCLogic {
+  state = { sending: false, status: null, statusMsg: '' };
+
+  collect() {
+    const form = this.formEl;
+    if (!form) return null;
+    const fd = new FormData(form);
+    const get = (k) => (fd.get(k) || '').toString().trim();
+    const interests = INTERESTS.filter(i => fd.get('interest_' + i.id)).map(i => i.label);
+    return {
+      first_name: get('first_name'),
+      last_name: get('last_name'),
+      email: get('email'),
+      phone: get('phone'),
+      organisation: get('organisation'),
+      role: get('role'),
+      sector: get('sector'),
+      interests: interests.join(', '),
+      message: get('message'),
+    };
+  }
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+    if (this.state.sending) return;
+    const d = this.collect();
+    if (!d) return;
+
+    const missing = [];
+    if (!d.first_name) missing.push('first name');
+    if (!d.last_name) missing.push('last name');
+    if (!d.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) missing.push('a valid email address');
+    if (!d.message) missing.push('a message');
+    if (missing.length) {
+      this.setState({ status: 'error', statusMsg: 'Please add ' + missing.join(', ') + '.' });
+      return;
+    }
+
+    const summary = [
+      'Name: ' + d.first_name + ' ' + d.last_name,
+      'Email: ' + d.email,
+      d.phone ? 'Phone: ' + d.phone : null,
+      d.organisation ? 'Organisation: ' + d.organisation : null,
+      d.role ? 'Role: ' + d.role : null,
+      d.sector ? 'Sector: ' + d.sector : null,
+      d.interests ? 'Interested in: ' + d.interests : null,
+      '',
+      d.message,
+    ].filter(v => v !== null).join('\n');
+
+    // No endpoint yet → hand off to the visitor's mail client so nothing is lost.
+    if (!FORM_ENDPOINT) {
+      window.location.href = 'mailto:' + FALLBACK_EMAIL
+        + '?subject=' + encodeURIComponent('Website enquiry — ' + d.first_name + ' ' + d.last_name + (d.organisation ? ', ' + d.organisation : ''))
+        + '&body=' + encodeURIComponent(summary);
+      this.setState({ status: 'ok', statusMsg: 'Opening your email app so you can send this to us directly.' });
+      return;
+    }
+
+    this.setState({ sending: true, status: null, statusMsg: '' });
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(d),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (res.ok && json.success !== false) {
+        if (this.formEl) this.formEl.reset();
+        this.setState({ sending: false, status: 'ok', statusMsg: 'Thank you — your message is on its way. We typically respond within one business day.' });
+      } else {
+        throw new Error(json.message || 'Request failed');
+      }
+    } catch (err) {
+      this.setState({
+        sending: false,
+        status: 'error',
+        statusMsg: 'Something went wrong sending that. Please email us directly at ' + FALLBACK_EMAIL + '.',
+      });
+    }
+  };
+
   renderVals() {
     let q;
     try { q = new URLSearchParams(window.location.search); } catch (e) { q = new URLSearchParams(''); }
@@ -167,7 +261,20 @@ class Component extends DCLogic {
       messageSeed = 'I would like to talk about ' + chosen.join(' and ').toLowerCase() + '.';
     }
 
+    const { sending, status, statusMsg } = this.state;
+    const okCss = 'font-size: 15px; padding: 16px 18px; border-radius: 8px; background: var(--surface-brand-soft); color: var(--polaris-blue); border: 1px solid var(--sky-blue); margin: 0;';
+    const errCss = 'font-size: 15px; padding: 16px 18px; border-radius: 8px; background: #FCEDEC; color: #8E2A24; border: 1px solid #E8615C; margin: 0;';
+
     return {
+      formRef: (el) => { this.formEl = el; },
+      onSubmit: this.onSubmit,
+      sending: sending,
+      submitLabel: sending ? 'Sending…' : 'Send message',
+      submitCss: 'font-family: var(--font-body); font-size: 15px; font-weight: 600; height: 48px; padding: 0 28px; border-radius: 8px; border: 0; white-space: nowrap; background: '
+        + (sending ? 'var(--fog)' : 'var(--action-primary)')
+        + '; color: var(--white); cursor: ' + (sending ? 'default' : 'pointer') + ';',
+      statusMsg: statusMsg,
+      statusCss: status === 'error' ? errCss : okCss,
       hasContext: !!contextText,
       contextText: contextText,
       messageSeed: messageSeed,
