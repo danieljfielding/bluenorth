@@ -1,0 +1,50 @@
+/* ============================================================
+   BlueNorth — Typography tokens
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-brand: 'Poppins', 'Segoe UI', system-ui, sans-serif;   /* wordmark, display headings */
+  --font-sans:  'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; /* UI + body */
+  --font-mono:  'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;      /* data, codes, labels */
+
+  /* Weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold:800;
+
+  /* Type scale (1.250 major-third-ish, tuned) */
+  --text-2xs:  11px;
+  --text-xs:   12px;
+  --text-sm:   13px;
+  --text-base: 15px;   /* default UI body */
+  --text-md:   17px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  30px;
+  --text-3xl:  38px;
+  --text-4xl:  48px;
+  --text-5xl:  60px;
+  --text-6xl:  76px;
+
+  /* Line heights */
+  --leading-tight:   1.12;
+  --leading-snug:    1.28;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tighter: -0.03em;
+  --tracking-tight:   -0.015em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.12em;   /* mono eyebrow labels */
+
+  /* Semantic roles */
+  --font-display:  var(--font-brand);
+  --font-heading:  var(--font-brand);
+  --font-body:     var(--font-sans);
+  --font-label:    var(--font-mono);
+}

@@ -1,0 +1,10 @@
+/* ============================================================
+   BlueNorth — Webfonts
+   Brand wordmark is a geometric sans (closest match: Poppins).
+   UI/body uses Public Sans (institutional, trustworthy — apt for
+   procurement / B2B). Data + labels use IBM Plex Mono.
+   NOTE: exact licensed brand faces unknown — these are documented
+   Google Fonts substitutions. See readme.md > VISUAL FOUNDATIONS.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
