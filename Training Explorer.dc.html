@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/colors.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/typography.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/base.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/styles.css">
+<script src="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/_ds_bundle.js"></script>
+<style>a { text-decoration: none; }</style>
+</helmet>
+
+<div style="font-family: var(--font-body); color: var(--text-body); font-size: 16px; line-height: 1.6;">
+
+  <div style="border: 1px solid var(--border-default); border-radius: 12px; background: var(--surface-card); padding: 40px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center;">
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Training portfolio</div>
+      <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.14; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 12px;">14 facilitated programs across the procurement lifecycle</h3>
+      <p style="font-size: 16px; color: var(--text-muted); margin: 0 0 20px; max-width: 620px;">Browse every program — modules, learning outcomes and delivery format — or start from one of five suggested learning pathways and build a shortlist.</p>
+      <div style="display: flex; gap: 32px;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 22px; color: var(--polaris-blue);">14</div>
+          <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Programs</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 22px; color: var(--polaris-blue);">5</div>
+          <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Learning pathways</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 22px; color: var(--polaris-blue);">90</div>
+          <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">SkillsMap questions</div>
+        </div>
+      </div>
+    </div>
+    <button type="button" onClick="{{ openModal }}" style="display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 30px; border-radius: 8px; border: 0; background: var(--action-primary); color: var(--white); font-family: var(--font-body); font-size: 16px; font-weight: 600; cursor: pointer; white-space: nowrap;" style-hover="background: var(--action-primary-hover);">Explore the programs <span style="font-family: var(--font-mono);">&rarr;</span></button>
+  </div>
+
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+  <div style="position: fixed; inset: 0; z-index: 200; background: rgba(14,26,51,0.42); display: flex; align-items: center; justify-content: center; padding: 40px 24px;" onClick="{{ scrimClick }}">
+  <div style="width: 100%; max-width: 1240px; max-height: 90vh; display: flex; flex-direction: column; background: var(--surface-page); border-radius: 12px; box-shadow: 0 40px 90px rgba(14,26,51,0.4); overflow: hidden;" onClick="{{ stop }}">
+
+  <div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 24px 18px 36px; border-bottom: 1px solid var(--border-default); background: var(--white);">
+    <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier);">Training portfolio &middot; 14 programs</span>
+    <button type="button" onClick="{{ closeModal }}" style="width: 38px; height: 38px; border-radius: 8px; border: 1px solid var(--border-default); background: var(--white); color: var(--text-muted); font-size: 18px; line-height: 1; cursor: pointer;" style-hover="background: var(--surface-brand-soft); color: var(--polaris-blue);" aria-label="Close">&times;</button>
+  </div>
+
+  <div style="flex: 1 1 auto; overflow-y: auto; padding: 32px 36px 40px;">
+
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 28px;">
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Training portfolio</div>
+      <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 10px;">14 facilitated programs. Explore the portfolio.</h3>
+      <p style="font-size: 16px; color: var(--text-muted); margin: 0; max-width: 620px;">Every program includes a SkillsMap assessment, facilitated delivery and matching CPO360 eLearning. Pick a pathway, or browse by program.</p>
+    </div>
+    <div style="display: flex; gap: 28px;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 26px; color: var(--polaris-blue);">14</div>
+        <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Programs</div>
+      </div>
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 26px; color: var(--polaris-blue);">90</div>
+        <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">SkillsMap questions</div>
+      </div>
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 26px; color: var(--polaris-blue);">10</div>
+        <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Competency domains</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 16px 0; border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default); margin-bottom: 24px;">
+    <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-subtle); margin-right: 6px;">Pathway</span>
+    <sc-for list="{{ pathwayChips }}" as="chip" hint-placeholder-count="6">
+      <button type="button" onClick="{{ chip.select }}" style="{{ chip.css }}">{{ chip.label }}</button>
+    </sc-for>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 24px; align-items: start;">
+
+    <div style="border: 1px solid var(--border-default); border-radius: 12px; background: var(--surface-card); overflow: hidden;">
+      <div style="padding: 14px 18px; border-bottom: 1px solid var(--border-default); display: flex; align-items: baseline; justify-content: space-between;">
+        <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier);">{{ listLabel }}</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-subtle);">{{ listCount }}</span>
+      </div>
+      <div style="max-height: 620px; overflow-y: auto;">
+        <sc-for list="{{ list }}" as="row" hint-placeholder-count="8">
+          <button type="button" onClick="{{ row.select }}" style="{{ row.css }}">
+            <span style="display: flex; align-items: baseline; gap: 10px;">
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--sky-blue); min-width: 20px;">{{ row.step }}</span>
+              <span style="display: block;">
+                <span style="display: block; font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--polaris-blue); margin-bottom: 2px;">{{ row.name }}</span>
+                <span style="display: block; font-size: 13px; color: var(--text-muted);">{{ row.suited }}</span>
+              </span>
+            </span>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-subtle); white-space: nowrap;">{{ row.dayLabel }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="border: 1px solid var(--border-default); border-radius: 12px; background: var(--surface-card); overflow: hidden;">
+      <div style="padding: 32px 32px 24px; border-bottom: 1px solid var(--border-subtle);">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 12px;">
+          <h4 style="font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0;">{{ active.name }}</h4>
+          <span style="{{ active.pillCss }}">{{ active.dayPill }}</span>
+        </div>
+        <p style="font-size: 16px; color: var(--text-muted); margin: 0; max-width: 640px;">{{ active.desc }}</p>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; padding: 28px 32px;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Program modules</div>
+          <ol style="margin: 0; padding: 0; list-style: none; display: grid; gap: 10px;">
+            <sc-for list="{{ active.modules }}" as="m" hint-placeholder-count="7">
+              <li style="display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 15px; color: var(--text-body);">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--sky-blue); padding-top: 4px;">{{ m.n }}</span>
+                <span>{{ m.text }}</span>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Learning outcomes</div>
+          <ul style="margin: 0 0 28px; padding: 0; list-style: none; display: grid; gap: 12px;">
+            <sc-for list="{{ active.outcomes }}" as="o" hint-placeholder-count="4">
+              <li style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; font-size: 15px; color: var(--text-body);">
+                <span style="width: 6px; height: 6px; border-radius: 999px; background: var(--aurora-teal); margin-top: 9px;"></span>
+                <span>{{ o.text }}</span>
+              </li>
+            </sc-for>
+          </ul>
+          <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; display: grid; gap: 12px;">
+            <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier);">Format &amp; delivery</div>
+            <div style="display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px 14px; font-size: 14px;">
+              <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-subtle); padding-top: 3px;">Duration</span>
+              <span style="color: var(--text-body);">{{ active.duration }}</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-subtle); padding-top: 3px;">Cohort</span>
+              <span style="color: var(--text-body);">{{ active.cohort }}</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-subtle); padding-top: 3px;">Toolkit</span>
+              <span style="color: var(--text-body);">{{ active.toolkit }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 20px 32px; border-top: 1px solid var(--border-default); background: var(--surface-page); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <span style="font-size: 14px; color: var(--text-muted);">{{ shortlistText }}</span>
+        <span style="display: flex; gap: 10px;">
+          <button type="button" onClick="{{ toggleActive }}" style="{{ toggleCss }}">{{ toggleLabel }}</button>
+          <a href="{{ proposalHref }}" style="display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 20px; border-radius: 8px; background: var(--action-primary); color: var(--white); font-size: 14px; font-weight: 600;" style-hover="background: var(--action-primary-hover); color: var(--white);">Request a proposal <span style="font-family: var(--font-mono);">&rarr;</span></a>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 20px; background: var(--surface-inverse); border-radius: 12px; padding: 28px 32px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;">
+    <div>
+      <div style="font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--white); margin-bottom: 6px;">SkillsMap assessment</div>
+      <p style="font-size: 14px; color: var(--mist); margin: 0;">90 questions across 10 competency domains, with individual and team reporting before the workshop.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--white); margin-bottom: 6px;">Matching eLearning module</div>
+      <p style="font-size: 14px; color: var(--mist); margin: 0;">On-demand refresh in CPO360, tracked per learner and rolled up to the team heat map.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--white); margin-bottom: 6px;">Post-program re-assessment</div>
+      <p style="font-size: 14px; color: var(--mist); margin: 0;">The same assessment run again, so capability uplift is evidenced rather than assumed.</p>
+    </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1160,&quot;height&quot;:900}}">
+const COURSES = [
+  { id: 'essentials', name: 'Procurement Essentials', days: 1, cohort: 16, suited: 'New to procurement',
+    desc: 'A foundational grounding in the end-to-end procurement cycle for those new to the profession or moving into a procurement role.',
+    modules: ['What procurement is and why it matters to the business', 'The procurement framework and lifecycle', 'Understanding business needs and stakeholder engagement', 'Specification writing fundamentals', 'Analysing supply markets', 'Strategic sourcing and buying approaches', 'Evaluation models and purchase price analysis', 'Managing suppliers and contracts'],
+    outcomes: ['Explain the end-to-end procurement lifecycle and where value is created', 'Translate business needs into clear, usable specifications', 'Apply core sourcing, evaluation and negotiation concepts', 'Manage supplier and contract basics with confidence'],
+    toolkit: 'SkillsMap + Procurement Essentials workbook' },
+  { id: 'sourcing', name: 'Sourcing Essentials', days: 1, cohort: 16, suited: 'Buyers running tenders',
+    desc: 'Practical grounding in running a sourcing process — from category baselining through to a well-negotiated contract.',
+    modules: ['The role and value-add of procurement', 'Sourcing principles and category baselining', 'Developing clear, concise specifications', 'Approaches to market and their trade-offs', 'Understanding the difference between price and cost', 'Mapping and mitigating sourcing and supply chain risk', 'Evaluation methods and their application', 'Negotiating and contracting the outcome'],
+    outcomes: ['Baseline a category and define clear sourcing objectives', 'Select the right route to market for a given spend category', 'Apply structured evaluation methods to select suppliers', 'Carry a sourcing outcome through to a well-managed contract'],
+    toolkit: 'SkillsMap + sourcing plan template' },
+  { id: 'category', name: 'Category Management', days: 2, cohort: 16, suited: 'Category managers',
+    desc: 'An intensive, tools-based program to build and lead category strategies that deliver long-term value — a key domain of the BlueNorth Competency Framework.',
+    modules: ['Introduction to category management and the CM model (Day 1)', 'Category baselining and spend cube analysis (Day 1)', 'Understanding the business need (Day 1)', "Supply market analysis — PESTLE and Porter's Five Forces (Day 1)", 'Supply chain and risk analysis (Day 2)', 'Strategy tools — supply positioning and preferencing (Day 2)', 'Developing and structuring the category strategy (Day 2)', 'Gaining sponsorship and category governance (Day 2)'],
+    outcomes: ['Build a category strategy from spend and market analysis through to a governed plan', 'Apply supply positioning and customer preferencing tools to shape strategy', 'Identify, assess and manage category risk', 'Secure stakeholder sponsorship for the finished strategy'],
+    toolkit: 'SkillsMap + BlueNorth category strategy template' },
+  { id: 'commercial', name: 'Commercial Modelling', days: 1, cohort: 16, suited: 'Commercial analysts',
+    desc: 'Practical tools to build cost models, test pricing structures and evaluate commercial proposals with rigour.',
+    modules: ['Introduction to commercial modelling and spreadsheet discipline', 'Total cost of ownership and whole-of-life costing', 'Should-cost modelling — cost drivers and fair margin', 'Understanding pricing models — fixed, cost-plus, value-based', 'Proposal and tender evaluation, bid sheet design', 'Standardising and cleansing supplier data for comparison', 'Rise-and-fall pricing, CPI and indexing considerations'],
+    outcomes: ['Build a should-cost model and identify true cost drivers', 'Apply total cost of ownership thinking to sourcing decisions', 'Design bid sheets that compare proposals on a like-for-like basis', 'Select the right pricing model for a given category'],
+    toolkit: 'SkillsMap + should-cost model template (Excel)' },
+  { id: 'cost', name: 'Cost Management', days: 1, cohort: 16, suited: 'Savings and value owners',
+    desc: 'A strategic approach to controlling, reducing and reporting procurement cost throughout the process — without compromising value or quality.',
+    modules: ['The cost management lifecycle — from baseline to benefits realisation', 'Cost levers across the procurement cycle', 'Total cost of ownership versus purchase price', 'Benchmarking and should-cost as a negotiation input', 'Building a savings and benefits tracker', 'Reporting cost performance to leadership', 'Avoiding cost leakage post-contract'],
+    outcomes: ['Identify and prioritise cost levers across a category', 'Distinguish price, cost and value in supplier negotiations', 'Build a benefits and savings tracker aligned to CPO360 Value Tracker', 'Report cost performance in board-ready terms'],
+    toolkit: 'SkillsMap + CPO360 Value Tracker walkthrough' },
+  { id: 'finance', name: 'Finance for Procurement', days: 1, cohort: 16, suited: 'Anyone building a business case',
+    desc: 'Builds the financial literacy procurement professionals need to make and defend investment, budgeting and supplier decisions.',
+    modules: ['The role of accounting and finance in the business', 'Reading and interpreting financial statements', 'Budgeting, cost prediction and variance analysis', 'Cost centres, direct/indirect and fixed/variable costs', 'Assessing supplier financial health', 'Investment appraisal techniques for procurement projects', 'Sources of finance and the cost of capital'],
+    outcomes: ["Read and interpret a supplier's financial statements with confidence", 'Apply budgeting and variance analysis to procurement projects', 'Assess supplier financial risk as part of sourcing decisions', 'Use investment appraisal techniques to support a business case'],
+    toolkit: 'SkillsMap + financial analysis workbook' },
+  { id: 'contractmgmt', name: 'Contract Management', days: 1, cohort: 16, suited: 'Contract and supplier owners',
+    desc: 'Practical approaches to managing contracts and supplier performance so the value negotiated is the value actually realised.',
+    modules: ['Contract management principles and what goes wrong', 'Contract management enablers — people, framework, systems', 'Mobilising the contract and early actions', 'Contract administration, variations and disputes', 'Building a contract management plan', 'Performance regimes and KPIs', 'Managing contract closure and supplier exit'],
+    outcomes: ['Set up a contract governance structure appropriate to risk', 'Build a contract management plan with clear KPIs', 'Manage variations, disputes and performance reviews with confidence', 'Close out a contract and supplier exit cleanly'],
+    toolkit: 'SkillsMap + contract management plan template' },
+  { id: 'contractlaw', name: 'Contract Law', days: 1, cohort: 16, suited: 'Non-lawyers negotiating terms',
+    desc: 'Essential legal principles behind contract formation, key clauses and dispute resolution — built for procurement professionals, not lawyers.',
+    modules: ["Contract formation — offer, acceptance and the 'battle of the forms'", 'Conditions vs. warranties, express and implied terms', 'Key clauses — liability, indemnity, limitation and termination', 'Allocating risk through the contract', 'Variations and change control', 'Breach of contract and available remedies', 'Dispute resolution options and their trade-offs'],
+    outcomes: ['Recognise legal risk in contract formation and how to avoid it', 'Identify and negotiate the clauses that matter most', 'Understand available remedies and dispute resolution paths', 'Apply legal awareness to day-to-day supplier contracting'],
+    toolkit: 'SkillsMap + contract clause checklist' },
+  { id: 'negotiation', name: 'Negotiation', days: 2, cohort: 12, suited: 'Anyone at the table',
+    desc: 'An intensive program moving participants from negotiation fundamentals to advanced commercial practice, validated through live role-play — a key domain of the BlueNorth Competency Framework.',
+    modules: ['The negotiation process and stakeholder analysis (Day 1)', 'Preparation and planning — objectives, BATNA and ZOPA (Day 1)', 'Sources of power in commercial negotiation (Day 1)', 'Methods of persuasion and influence (Day 1)', 'Negotiation styles, ploys and tactics (Day 2)', 'Non-verbal behaviour and detecting influence attempts (Day 2)', 'Building an advanced, strategic negotiation plan (Day 2)', 'Role-play with one-to-one tutor feedback (Day 2)'],
+    outcomes: ['Plan and execute a structured negotiation from objectives through to close', 'Apply a range of influence and persuasion techniques', "Recognise and respond to the other party's tactics", 'Demonstrate negotiation skill through validated role-play'],
+    toolkit: 'SkillsMap + negotiation planning template' },
+  { id: 'srm', name: 'Supplier Relationship Management', days: 1, cohort: 16, suited: 'SRM and performance leads',
+    desc: 'Tools and techniques to segment, develop and manage supplier relationships that deliver value well beyond the contract.',
+    modules: ['Planning for effective supplier relationship management', 'Relationship segmentation tools', 'Power and dependency in supplier relationships', 'Opportunity analysis and value creation', 'Contractual levers of performance', "Service level agreements — dos and don'ts", "The 'people element' of supplier relationships"],
+    outcomes: ['Segment suppliers and tailor relationship strategies accordingly', 'Use contractual and relational levers to drive supplier performance', 'Design SLAs that avoid common pitfalls', 'Build supplier relationships that create value beyond the contract'],
+    toolkit: 'SkillsMap + supplier segmentation matrix' },
+  { id: 'stakeholder', name: 'Stakeholder Management', days: 1, cohort: 16, suited: 'Business partners',
+    desc: 'Builds confidence and skill in identifying, engaging and influencing stakeholders throughout the procurement process.',
+    modules: ['Recognising personality, motivation and communication styles', 'Stakeholder identification and analysis', 'Power/interest mapping — the Mendelow matrix', 'Communications planning', "Influencing and persuasion — the 'pull' approach", 'Managing change and challenging stakeholders constructively'],
+    outcomes: ['Identify and map stakeholders by power and interest', 'Build a communications plan for a live procurement project', 'Apply influencing techniques suited to each stakeholder type', 'Challenge stakeholders constructively when required'],
+    toolkit: 'SkillsMap + stakeholder analysis template' },
+  { id: 'risk', name: 'Risk Management', days: 1, cohort: 16, suited: 'Category and contract teams',
+    desc: 'A practical grounding in identifying, assessing and managing risk across the procurement and supply chain lifecycle.',
+    modules: ['Defining risk, vulnerability and risk appetite', 'The generic risk management process applied to procurement', 'Identifying risk across the procurement lifecycle', 'Supply chain risk management', 'Risk registers and supplier assessment measures', 'Disaster and business continuity planning', 'Stakeholder analysis in risk decisions'],
+    outcomes: ['Apply a structured risk management process to a procurement category', 'Build and maintain a practical, living risk register', 'Identify supply chain vulnerabilities before they crystallise', 'Embed risk thinking into everyday sourcing decisions'],
+    toolkit: 'SkillsMap + risk register template' },
+  { id: 'probity', name: 'Probity', days: 1, cohort: 16, suited: 'Public sector and regulated',
+    desc: 'Defines probity and its risks across the procurement lifecycle, equipping participants to protect integrity in every decision — a key domain of the BlueNorth Competency Framework.',
+    modules: ['Defining probity and probity risk', 'Corruption, maladministration and waste', 'Probity in evaluation, negotiation and selection', 'Probity in contract management', 'Conflicts of interest, confidentiality and honesty', 'Gifts, hospitality and the use of advisors and auditors', 'Building probity into governance and everyday behaviour'],
+    outcomes: ['Identify probity risk at every stage of the procurement lifecycle', 'Manage conflicts of interest and gifts/hospitality appropriately', 'Apply probity requirements to evaluation and negotiation', 'Build a probity plan for a significant procurement'],
+    toolkit: 'SkillsMap + probity plan checklist' },
+  { id: 'social', name: 'Social & Sustainable Procurement', days: 1, cohort: 16, suited: 'ESG and social procurement',
+    desc: 'Builds the skills to embed social, environmental and ethical outcomes into procurement decisions and supplier relationships.',
+    modules: ['Social and sustainable procurement and the triple bottom line', 'The legal and policy environment, Australia and international', 'Balancing procurement objectives across cost, quality and impact', 'Specification, evaluation and performance approaches for sustainability', 'Engaging the supply market on sustainability', 'Measuring and monitoring sustainable outcomes', 'Building a program for sustainable change'],
+    outcomes: ['Apply sustainable objectives at each stage of the procurement cycle', 'Apply due diligence appropriate to ESG and modern slavery risk', 'Evaluate suppliers against sustainability criteria credibly', 'Report on sustainable procurement outcomes'],
+    toolkit: 'SkillsMap + sustainability scorecard' },
+];
+
+const PATHWAYS = [
+  { id: 'all', label: 'All programs' },
+  { id: 'new', label: 'New to procurement', courses: ['essentials', 'sourcing', 'stakeholder', 'contractmgmt'] },
+  { id: 'catmgr', label: 'Category manager', courses: ['category', 'commercial', 'negotiation', 'srm'] },
+  { id: 'contract', label: 'Contract & commercial', courses: ['contractmgmt', 'contractlaw', 'risk', 'cost'] },
+  { id: 'public', label: 'Public sector & governance', courses: ['probity', 'risk', 'social', 'stakeholder'] },
+  { id: 'partner', label: 'Business partner', courses: ['finance', 'stakeholder', 'commercial', 'srm'] },
+];
+
+const CHIP_BASE = 'font-family: var(--font-body); font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 999px; cursor: pointer; transition: background 160ms, color 160ms; ';
+const ROW_BASE = 'width: 100%; box-sizing: border-box; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; text-align: left; padding: 16px 18px; border: 0; border-bottom: 1px solid var(--border-subtle); cursor: pointer; font-family: var(--font-body); ';
+
+class Component extends DCLogic {
+  state = { pathway: 'all', activeId: 'essentials', shortlist: [], open: false };
+
+  componentDidMount() {
+    this._key = (e) => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
+    document.addEventListener('keydown', this._key);
+  }
+  componentDidUpdate() { document.body.style.overflow = this.state.open ? 'hidden' : ''; }
+  componentWillUnmount() { document.removeEventListener('keydown', this._key); document.body.style.overflow = ''; }
+
+  pick(id) { this.setState({ activeId: id }); }
+
+  choosePathway(id) {
+    const p = PATHWAYS.find(x => x.id === id);
+    const first = p && p.courses ? p.courses[0] : 'essentials';
+    this.setState({ pathway: id, activeId: first });
+  }
+
+  toggleShortlist(id) {
+    const s = this.state.shortlist;
+    this.setState({ shortlist: s.indexOf(id) >= 0 ? s.filter(x => x !== id) : s.concat([id]) });
+  }
+
+  renderVals() {
+    const { pathway, activeId, shortlist } = this.state;
+    const p = PATHWAYS.find(x => x.id === pathway) || PATHWAYS[0];
+
+    const ordered = p.courses
+      ? p.courses.map(id => COURSES.find(c => c.id === id)).filter(Boolean)
+      : COURSES;
+
+    const active = COURSES.find(c => c.id === activeId) || COURSES[0];
+    const inShortlist = shortlist.indexOf(active.id) >= 0;
+    const totalDays = shortlist.reduce((n, id) => {
+      const c = COURSES.find(x => x.id === id);
+      return n + (c ? c.days : 0);
+    }, 0);
+
+    const picked = shortlist.length ? shortlist : [active.id];
+    const names = picked.map(id => (COURSES.find(c => c.id === id) || {}).name).filter(Boolean);
+    const pickedDays = picked.reduce((n, id) => { const c = COURSES.find(x => x.id === id); return n + (c ? c.days : 0); }, 0);
+    const proposalHref = 'contact.html?interest=learning&programs=' + encodeURIComponent(names.join(', ')) + '&days=' + pickedDays;
+
+    return {
+      proposalHref: proposalHref,
+      open: !!this.state.open,
+      openModal: () => this.setState({ open: true }),
+      closeModal: () => this.setState({ open: false }),
+      scrimClick: () => this.setState({ open: false }),
+      stop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      pathwayChips: PATHWAYS.map(x => ({
+        id: x.id,
+        label: x.label,
+        select: () => this.choosePathway(x.id),
+        css: CHIP_BASE + (x.id === pathway
+          ? 'background: var(--polaris-blue); color: var(--white); border: 1px solid var(--polaris-blue);'
+          : 'background: var(--white); color: var(--text-muted); border: 1px solid var(--border-default);')
+      })),
+      listLabel: p.courses ? p.label + ' pathway' : 'All programs',
+      listCount: p.courses
+        ? ordered.reduce((n, c) => n + c.days, 0) + ' days'
+        : COURSES.length + ' programs',
+      list: ordered.map((c, i) => ({
+        id: c.id,
+        name: c.name,
+        suited: c.suited,
+        step: p.courses ? String(i + 1).padStart(2, '0') : String(COURSES.indexOf(c) + 1).padStart(2, '0'),
+        dayLabel: c.days === 1 ? '1 day' : c.days + ' days',
+        select: () => this.pick(c.id),
+        css: ROW_BASE + (c.id === activeId
+          ? 'background: var(--surface-brand-soft); box-shadow: inset 3px 0 0 var(--sky-blue);'
+          : 'background: var(--surface-card);')
+      })),
+      active: {
+        name: active.name,
+        desc: active.desc,
+        dayPill: active.days === 1 ? '1-DAY PROGRAM' : '2-DAY PROGRAM',
+        pillCss: 'font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; padding: 6px 12px; border-radius: 999px; white-space: nowrap; ' + (active.days === 2
+          ? 'background: var(--polaris-blue); color: var(--white);'
+          : 'background: var(--surface-brand-soft); color: var(--polaris-blue);'),
+        duration: active.days + '-day workshop + SkillsMap assessment',
+        cohort: 'Facilitated live workshop, up to ' + active.cohort + ' participants',
+        toolkit: active.toolkit,
+        modules: active.modules.map((text, i) => ({ n: String(i + 1).padStart(2, '0'), text })),
+        outcomes: active.outcomes.map(text => ({ text }))
+      },
+      toggleActive: () => this.toggleShortlist(active.id),
+      toggleLabel: inShortlist ? 'Remove from shortlist' : 'Add to shortlist',
+      toggleCss: 'font-family: var(--font-body); font-size: 14px; font-weight: 600; height: 42px; padding: 0 20px; border-radius: 8px; cursor: pointer; ' + (inShortlist
+        ? 'background: var(--surface-brand-soft); color: var(--polaris-blue); border: 1.5px solid var(--sky-blue);'
+        : 'background: transparent; color: var(--polaris-blue); border: 1.5px solid var(--polaris-blue);'),
+      shortlistText: shortlist.length === 0
+        ? 'Shortlist programs to build a program and see the total delivery days.'
+        : shortlist.length + (shortlist.length === 1 ? ' program shortlisted · ' : ' programs shortlisted · ') + totalDays + (totalDays === 1 ? ' day' : ' days') + ' of delivery'
+    };
+  }
+}
+</script>
+</body>
+</html>

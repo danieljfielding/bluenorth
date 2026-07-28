@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/colors.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/typography.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/base.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/styles.css">
+<script src="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/_ds_bundle.js"></script>
+<style>a { text-decoration: none; }</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,0.94); backdrop-filter: saturate(1.2) blur(6px); border-bottom: 1px solid var(--border-default); font-family: var(--font-body);">
+  <nav style="max-width: 1240px; margin: 0 auto; padding: 0 40px; height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+    <a href="index.html" style="display: flex; align-items: center;"><img src="assets/logo-primary.png" alt="BlueNorth" style="height: 56px; width: auto; display: block;"></a>
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <sc-for list="{{ items }}" as="item" hint-placeholder-count="5">
+        <a href="{{ item.href }}" style="{{ item.css }}" style-hover="color: var(--polaris-blue);">{{ item.label }}</a>
+      </sc-for>
+      <a href="contact.html" style="display: inline-flex; align-items: center; height: 42px; padding: 0 20px; border-radius: 8px; background: var(--action-primary); color: var(--white); font-size: 14px; font-weight: 600; white-space: nowrap;" style-hover="background: var(--action-primary-hover); color: var(--white);">Contact us</a>
+    </div>
+  </nav>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;story&quot;,&quot;services&quot;,&quot;team&quot;,&quot;cpo360&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const active = this.props.active || 'home';
+    const defs = [
+      ['home', 'Home', 'index.html'],
+      ['story', 'Our story', 'about.html'],
+      ['services', 'Services', 'services.html'],
+      ['commitment', 'Commitment', 'commitment.html'],
+      ['team', 'Team', 'team.html'],
+      ['cpo360', 'CPO360', 'cpo360.html'],
+    ];
+    return {
+      items: defs.map(([id, label, href]) => ({
+        id, label, href,
+        css: id === active
+          ? 'white-space: nowrap; font-size: 14px; font-weight: 600; color: var(--polaris-blue); padding-bottom: 3px; border-bottom: 2px solid var(--sky-blue);'
+          : 'white-space: nowrap; font-size: 14px; font-weight: 500; color: var(--text-muted); padding-bottom: 3px; border-bottom: 2px solid transparent;'
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

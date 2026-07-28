@@ -1,861 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Blue North is an Australian procurement consultancy specialising in learning & development, operating model design, social procurement, and CPO360 — the procurement intelligence platform.">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Blue North">
-  <link rel="canonical" href="https://bluenorth.com.au/">
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Blue North">
-  <meta property="og:title" content="Blue North — Smarter Procurement. Better Outcomes.">
-  <meta property="og:description" content="Australian procurement consultancy helping public and private sector organisations build smarter, more purposeful procurement functions.">
-  <meta property="og:url" content="https://bluenorth.com.au/">
-  <meta property="og:image" content="https://bluenorth.com.au/images/logo-primary.png">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Blue North — Smarter Procurement. Better Outcomes.">
-  <meta name="twitter:description" content="Australian procurement consultancy helping public and private sector organisations build smarter, more purposeful procurement functions.">
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "@id": "https://bluenorth.com.au/#organization",
-      "name": "Blue North",
-      "alternateName": "Blue North Procurement Consultancy",
-      "url": "https://bluenorth.com.au",
-      "logo": "https://bluenorth.com.au/images/logo-primary.png",
-      "description": "Blue North is an Australian procurement consultancy specialising in learning & development, social & sustainable procurement, operating model design, and the CPO360 procurement intelligence platform.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "24 Third Street",
-        "addressLocality": "Black Rock",
-        "addressRegion": "VIC",
-        "postalCode": "3193",
-        "addressCountry": "AU"
-      },
-      "areaServed": ["Australia", "New Zealand"],
-      "knowsAbout": ["Procurement Consulting", "Procurement Training", "Social Procurement", "Sustainable Procurement", "Procurement Operating Model Design", "Procurement Technology"],
-      "sameAs": ["https://au.linkedin.com/company/bluenorthaustralia"],
-      "founder": [
-        { "@type": "Person", "name": "Dan Fielding", "honorificSuffix": "FCIPS", "jobTitle": "Co-Founder & Director" },
-        { "@type": "Person", "name": "Chris Newman", "honorificSuffix": "MBA GAICD", "jobTitle": "Co-Founder & Director" }
-      ]
-    }
-  </script>
-  <title>Blue North | Australian Procurement Consultancy — Melbourne</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* ---- Page-specific styles ---- */
-
-    /* ---- Star animations ---- */
-    @keyframes starPulse {
-      0%, 100% { opacity: 0.06; transform: translateY(-50%) scale(1); }
-      50% { opacity: 0.13; transform: translateY(-50%) scale(1.04); }
-    }
-    @keyframes starTwinkleA {
-      0%, 100% { opacity: 0.04; transform: rotate(-10deg) scale(1); }
-      40% { opacity: 0.09; transform: rotate(-10deg) scale(1.08); }
-      70% { opacity: 0.02; transform: rotate(-10deg) scale(0.95); }
-    }
-    @keyframes starTwinkleB {
-      0%, 100% { opacity: 0.05; transform: scale(1) translateY(0px); }
-      30% { opacity: 0.02; transform: scale(0.92) translateY(-8px); }
-      65% { opacity: 0.07; transform: scale(1.08) translateY(4px); }
-    }
-    @keyframes starFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      33% { transform: translateY(-12px) rotate(3deg); }
-      66% { transform: translateY(6px) rotate(-2deg); }
-    }
-    @keyframes starDrift {
-      0%, 100% { transform: translateY(-50%) rotate(0deg); }
-      25% { transform: translateY(-52%) rotate(1deg); }
-      75% { transform: translateY(-48%) rotate(-1deg); }
-    }
-
-    /* Services strip */
-    /* Services strip */
-    .services-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--ice);
-    }
-
-    .service-tile {
-      background: white;
-      padding: 56px 44px;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-
-    .service-tile::after {
-      content: '→';
-      position: absolute;
-      bottom: 44px; right: 44px;
-      font-size: 1.4rem;
-      color: var(--sky-blue);
-      opacity: 0;
-      transform: translateX(-10px);
-      transition: all 0.3s;
-    }
-
-    .service-tile:hover {
-      background: var(--deep-polaris);
-    }
-
-    .service-tile:hover .tile-title,
-    .service-tile:hover .tile-text { color: white; }
-    .service-tile:hover .tile-text { color: rgba(255,255,255,0.6); }
-    .service-tile:hover::after { opacity: 1; transform: translateX(0); }
-    .service-tile:hover .tile-icon { color: var(--sky-blue); }
-
-    .tile-icon {
-      width: 44px;
-      height: 44px;
-      color: var(--sky-blue);
-      margin-bottom: 28px;
-      transition: color 0.3s;
-    }
-
-    .tile-number {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--fog);
-      margin-bottom: 10px;
-      transition: color 0.3s;
-    }
-
-    .service-tile:hover .tile-number { color: rgba(255,255,255,0.3); }
-
-    .tile-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--midnight);
-      margin-bottom: 14px;
-      transition: color 0.3s;
-    }
-
-    .tile-text {
-      font-size: 0.9rem;
-      color: var(--slate);
-      line-height: 1.7;
-      transition: color 0.3s;
-    }
-
-    /* Why Blue North */
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-
-    .why-visual {
-      background: var(--polaris-blue);
-      position: relative;
-      overflow: hidden;
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .why-star-bg {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .why-star-bg img {
-      width: 70%;
-      opacity: 0.12;
-    }
-
-    .why-content-inner {
-      position: relative;
-      z-index: 2;
-      padding: 40px;
-      text-align: center;
-      color: white;
-    }
-
-    .why-big-number {
-      font-family: var(--font-display);
-      font-size: 7rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.08);
-      line-height: 1;
-    }
-
-    .why-content {
-      padding: 80px 80px 80px 80px;
-      background: var(--paper);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .why-points {
-      list-style: none;
-      margin-top: 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    .why-points li {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .why-point-icon {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      background: var(--polaris-blue);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-
-    .why-point-icon svg {
-      width: 16px;
-      height: 16px;
-      color: white;
-    }
-
-    .why-point-title {
-      font-weight: 600;
-      color: var(--midnight);
-      margin-bottom: 4px;
-    }
-
-    .why-point-text {
-      font-size: 0.9rem;
-      color: var(--slate);
-      line-height: 1.6;
-    }
-
-    /* CPO360 teaser */
-    .cpo-teaser {
-      background: linear-gradient(135deg, var(--deep-polaris) 0%, var(--polaris-blue) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cpo-teaser-bg {
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 80% 50%, rgba(94,137,201,0.15) 0%, transparent 50%);
-    }
-
-    .cpo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .cpo-mockup {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 32px;
-      backdrop-filter: blur(10px);
-    }
-
-    .cpo-mockup-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-red { background: #FF5F57; }
-    .dot-yellow { background: #FFBD2E; }
-    .dot-green { background: #28C840; }
-
-    .cpo-mockup-title {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.4);
-      margin-left: auto;
-      font-family: monospace;
-      letter-spacing: 0.05em;
-    }
-
-    .radar-chart {
-      display: flex;
-      justify-content: center;
-      padding: 20px 0;
-    }
-
-    .radar-chart svg { max-width: 280px; }
-
-    .cpo-skill-bars {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .skill-bar-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 5px;
-    }
-
-    .skill-bar-track {
-      height: 4px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .skill-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--sky-blue), var(--aurora-teal));
-      border-radius: 2px;
-      transition: width 1s ease;
-    }
-
-    /* Stats band */
-    .stats-band {
-      background: white;
-      border-top: 1px solid var(--ice);
-      border-bottom: 1px solid var(--ice);
-      padding: 80px 0;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      text-align: center;
-    }
-
-    .stat-item {
-      padding: 0 20px;
-      border-right: 1px solid var(--ice);
-    }
-
-    .stat-item:last-child { border-right: none; }
-
-    /* Founders teaser */
-    .founders-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .founders-text h2 { margin-bottom: 20px; }
-
-    .founders-bio-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .founder-card {
-      background: var(--paper);
-      padding: 32px;
-      border-left: 3px solid var(--sky-blue);
-    }
-
-    .founder-name {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--midnight);
-      margin-bottom: 4px;
-    }
-
-    .founder-role {
-      font-size: 0.8rem;
-      color: var(--sky-blue);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .founder-desc {
-      font-size: 0.875rem;
-      color: var(--slate);
-      line-height: 1.6;
-    }
-
-    /* CTA band */
-    .cta-band {
-      text-align: center;
-      padding: 100px 0;
-      background: var(--ice);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-band-star {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      opacity: 0.04;
-      pointer-events: none;
-    }
-
-    .cta-band h2 { margin-bottom: 20px; }
-    .cta-band p { margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .cta-band .btn { position: relative; z-index: 2; }
-
-    @media (max-width: 900px) {
-      .services-strip { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-      .why-visual { min-height: 300px; }
-      .why-content { padding: 60px 40px; }
-      .cpo-grid { grid-template-columns: 1fr; gap: 40px; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .founders-grid { grid-template-columns: 1fr; }
-      .founders-bio-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-  <style>
-    /* Meet the founders */
-    .team-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
-    .team-card { background:white; border:1px solid var(--ice); overflow:hidden; transition:all 0.3s; }
-    .team-card:hover { box-shadow:0 20px 60px rgba(31,58,107,0.1); transform:translateY(-4px); }
-    .team-photo { height:360px; overflow:hidden; position:relative; background:linear-gradient(135deg,var(--polaris-blue) 0%,var(--harbor) 100%); }
-    .team-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
-    .team-card-body { padding:36px; }
-    .team-name { font-family:var(--font-display); font-size:1.5rem; color:var(--midnight); margin-bottom:4px; }
-    .team-role { font-size:0.8rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--sky-blue); margin-bottom:20px; }
-    .team-bio { font-size:0.9rem; color:var(--slate); line-height:1.75; margin-bottom:16px; }
-    .team-credentials { display:flex; flex-wrap:wrap; gap:8px; }
-    .credential { background:var(--ice); color:var(--polaris-blue); font-size:0.72rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:2px; }
-    .team-linkedin { display:inline-flex; align-items:center; gap:8px; font-size:0.82rem; font-weight:600; color:var(--sky-blue); text-decoration:none; margin-top:16px; transition:color 0.2s; }
-    .team-linkedin:hover { color:var(--polaris-blue); }
-    @media(max-width:900px) { .team-grid { grid-template-columns:1fr; } }
-
-        /* ═══════════════════════════════════════════
-       TRUE NORTH HERO — typographic, Paper canvas
-    ═══════════════════════════════════════════ */
-    .hero-light {
-      position: relative;
-      min-height: 72vh;
-      background: #161D2B;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-    .hero-light::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 70% 46%, rgba(94,137,201,0.12) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .hl-star-main {
-      position: absolute;
-      right: -10%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: min(58vw, 780px);
-      opacity: 0.055;
-      pointer-events: none;
-      animation: starPulse 9s ease-in-out infinite;
-      --star-opacity: 0.055;
-    }
-    .hl-star-a {
-      position: absolute;
-      right: 14%; top: 16%;
-      width: 30px; opacity: 0.55;
-      pointer-events: none;
-      animation: starTwinkleA 6s ease-in-out 1s infinite;
-    }
-    .hl-star-b {
-      position: absolute;
-      right: 26%; bottom: 20%;
-      width: 16px; opacity: 0.35;
-      pointer-events: none;
-      animation: starTwinkleB 8s ease-in-out 2.5s infinite;
-    }
-    @keyframes starTwinkleA {
-      0%,100% { opacity: 0.55; } 50% { opacity: 0.2; }
-    }
-    @keyframes starTwinkleB {
-      0%,100% { opacity: 0.35; } 50% { opacity: 0.1; }
-    }
-    .hl-content {
-      position: relative;
-      z-index: 2;
-      max-width: var(--container);
-      margin: 0 auto;
-      width: 100%;
-      padding: 0 40px;
-      padding-top: calc(var(--nav-height) + 60px);
-    }
-    .hl-content .hero-eyebrow {
-      color: #5E89C9;
-      margin-bottom: 32px;
-    }
-    /* Dark nav override for dark hero */
-    .nav.light-nav {
-      background: rgba(22,29,43,0.95) !important;
-      border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-    }
-    .nav.light-nav .nav-links a { color: rgba(255,255,255,0.55) !important; }
-    .nav.light-nav .nav-links a:hover { color: #fff !important; }
-    .nav.light-nav #nav-logo-img { filter: brightness(10) !important; }
-    .nav.light-nav .btn { background: #5E89C9 !important; border-color: #5E89C9 !important; }
-    .hl-headline {
-      font-family: 'Aptos Display', 'Aptos', 'Segoe UI', sans-serif !important;
-      color: #ffffff;
-      font-size: clamp(2.6rem, 5.2vw, 5rem) !important;
-      line-height: 1.06 !important;
-      font-weight: 700 !important;
-      letter-spacing: -0.025em;
-      max-width: 100% !important;
-      margin-bottom: 40px;
-    }
-    /* Rotating phrase */
-    .hl-rotator {
-      display: inline-grid;
-      text-align: left;
-    }
-    .hl-phrase {
-      grid-area: 1 / 1;
-      font-style: italic;
-      white-space: nowrap;
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-      pointer-events: none;
-    }
-    .hl-phrase.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .hl-phrase:nth-child(1) { color: var(--sky-blue); }
-    .hl-phrase:nth-child(2) { color: var(--harbor); }
-    .hl-phrase:nth-child(3) { color: var(--aurora-teal); }
-    .hl-phrase:nth-child(4) { color: var(--beacon); }
-    .hl-lead {
-      max-width: 560px;
-      color: var(--slate);
-      font-size: 1.05rem;
-    }
-    .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
-    /* Rotation indicator — dots + progress line */
-    .hl-progress-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-top: 44px;
-    }
-    .hl-dots { display: flex; gap: 10px; }
-    .hl-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      border: none;
-      background: var(--fog);
-      cursor: pointer;
-      padding: 0;
-      transition: all 0.25s;
-    }
-    .hl-dot.active { background: var(--polaris-blue); transform: scale(1.25); }
-    .hl-progress {
-      position: relative;
-      width: 120px; height: 2px;
-      background: var(--ice);
-      overflow: hidden;
-    }
-    .carousel-progress-bar {
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 0%;
-      background: var(--sky-blue);
-    }
-    .hero-scroll-light {
-      position: absolute;
-      bottom: 32px; left: 50%;
-      transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.25);
-      font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-      z-index: 2;
-      animation: bounce 2s ease-in-out infinite;
-    }
-    .hero-scroll-light::after {
-      content: '';
-      width: 1px; height: 36px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
-    }
-    @media (max-width: 768px) {
-      .hero-light { min-height: 64vh; }
-      .hl-content { padding: 0 24px; padding-top: calc(var(--nav-height) + 40px); }
-      .hl-phrase { white-space: normal; }
-      .hl-star-main { right: -30%; width: 90vw; opacity: 0.04; }
-      .hl-star-a, .hl-star-b { display: none; }
-      .hero-scroll-light { display: none; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+  <title>BlueNorth — Australian procurement consultancy | Melbourne</title>
+  <meta name="description" content="BlueNorth is an Australian procurement consultancy building capability, operating models and social value — led by practitioners who have run procurement functions themselves.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
-<body class="dark-hero-page">
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/colors.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/typography.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/base.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/styles.css">
+<script src="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page); }
+  a { color: var(--text-link); text-decoration: none; }
+  a:hover { color: var(--polaris-blue); }
+</style>
+</helmet>
 
-  <!-- NAVIGATION -->
-  <nav class="nav light-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-logo">
-      <a href="index.html">
-        <img src="images/logo-with-tagline.svg" alt="Blue North" id="nav-logo-img">
+<div style="font-family: var(--font-body); color: var(--text-body); background: var(--surface-page); font-size: 16px; line-height: 1.6;">
+
+  <dc-import name="Site Nav" active="home" hint-size="100%,92px"></dc-import>
+
+  <section data-screen-label="Hero" style="position: relative; overflow: hidden; background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33);">
+    <x-import component-from-global-scope="bn-aurora" from="./aurora-hero.js" hint-size="100%,100%" style="position: absolute; inset: 0;"></x-import>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 108px 40px 84px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 64px; align-items: center;">
+      <div>
+        <h1 style="font-family: var(--font-display); font-weight: 700; font-size: 66px; line-height: 1.05; letter-spacing: -0.03em; color: var(--white); margin: 0 0 24px;">Building procurement for tomorrow.</h1>
+        <p style="font-size: 19px; line-height: 1.6; color: var(--aurora); margin: 0 0 36px; max-width: 520px; text-wrap: pretty;">Capability, operating models and social value — built by practitioners who have run procurement functions themselves.</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="services.html" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 28px; border-radius: 8px; background: var(--sky-blue); color: var(--white); font-size: 15px; font-weight: 600;" style-hover="background: var(--action-secondary-hover); color: var(--white);">Our services <span style="font-family: var(--font-mono);">&rarr;</span></a>
+          <a href="about.html" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 28px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-size: 15px; font-weight: 600;" style-hover="background: rgba(255,255,255,0.1); color: var(--white);">Our story <span style="font-family: var(--font-mono);">&rarr;</span></a>
+        </div>
+      </div>
+      <div style="border-left: 1px solid rgba(255,255,255,0.14); padding-left: 44px; display: grid; gap: 26px;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 34px; font-weight: 500; color: var(--white); letter-spacing: -0.02em;">50+ yrs</div>
+          <div style="font-size: 14px; color: var(--mist); margin-top: 4px;">Combined practitioner experience of our founders</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 34px; font-weight: 500; color: var(--white); letter-spacing: -0.02em;">50%</div>
+          <div style="font-size: 14px; color: var(--mist); margin-top: 4px;">Of all profits invested in social value initiatives</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 34px; font-weight: 500; color: var(--white); letter-spacing: -0.02em;">20+</div>
+          <div style="font-size: 14px; color: var(--mist); margin-top: 4px;">Specialists in our associate network</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" data-screen-label="Services" style="max-width: 1240px; margin: 0 auto; padding: 96px 40px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 44px;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">What we do</div>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 42px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0; max-width: 640px;">Five ways we build better procurement</h2>
+      </div>
+      <a href="contact.html" style="font-size: 15px; font-weight: 600; white-space: nowrap; padding-bottom: 6px;">All services &rarr;</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px;">
+      <a href="contact.html" style="display: block; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 28px; transition: transform 200ms cubic-bezier(0.2,0,0.1,1), box-shadow 200ms;" style-hover="transform: translateY(-2px); box-shadow: 0 12px 28px rgba(22,29,43,0.1);">
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--fog); margin-bottom: 40px;">01</div>
+        <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--polaris-blue); margin: 0 0 12px;">Learning &amp; development</h3>
+        <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 20px;">Skills assessment, 14 facilitated programs, and executive coaching.</p>
+        <div style="font-size: 14px; font-weight: 600; color: var(--glacier);">Explore &rarr;</div>
+      </a>
+      <a href="contact.html" style="display: block; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 28px; transition: transform 200ms cubic-bezier(0.2,0,0.1,1), box-shadow 200ms;" style-hover="transform: translateY(-2px); box-shadow: 0 12px 28px rgba(22,29,43,0.1);">
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--fog); margin-bottom: 40px;">02</div>
+        <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--polaris-blue); margin: 0 0 12px;">Social &amp; sustainable procurement</h3>
+        <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 20px;">Social value, Indigenous procurement, ESG and modern slavery — embedded, not bolted on.</p>
+        <div style="font-size: 14px; font-weight: 600; color: var(--glacier);">Explore &rarr;</div>
+      </a>
+      <a href="contact.html" style="display: block; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 28px; transition: transform 200ms cubic-bezier(0.2,0,0.1,1), box-shadow 200ms;" style-hover="transform: translateY(-2px); box-shadow: 0 12px 28px rgba(22,29,43,0.1);">
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--fog); margin-bottom: 40px;">03</div>
+        <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--polaris-blue); margin: 0 0 12px;">Operating model design</h3>
+        <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 20px;">Diagnose, design, implement and embed a function built for your ambitions.</p>
+        <div style="font-size: 14px; font-weight: 600; color: var(--glacier);">Explore &rarr;</div>
+      </a>
+      <a href="services.html#mentoring" style="display: block; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 28px; transition: transform 200ms cubic-bezier(0.2,0,0.1,1), box-shadow 200ms;" style-hover="transform: translateY(-2px); box-shadow: 0 12px 28px rgba(22,29,43,0.1);">
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--fog); margin-bottom: 40px;">04</div>
+        <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--polaris-blue); margin: 0 0 12px;">Mentoring &amp; business capability</h3>
+        <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 20px;">Expert support for social enterprises, First Nations businesses and SMEs — including pro bono programs.</p>
+        <div style="font-size: 14px; font-weight: 600; color: var(--glacier);">Explore &rarr;</div>
+      </a>
+      <a href="cpo360.html" style="display: block; background: var(--surface-brand-soft); border: 1px solid var(--sky-blue); border-radius: 12px; padding: 28px; transition: transform 200ms cubic-bezier(0.2,0,0.1,1), box-shadow 200ms;" style-hover="transform: translateY(-2px); box-shadow: 0 12px 28px rgba(22,29,43,0.1);">
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--sky-blue); margin-bottom: 40px;">05</div>
+        <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--polaris-blue); margin: 0 0 12px;">AI &amp; technology</h3>
+        <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 20px;">CPO360 — spend intelligence, capability assessment and Board reporting in one platform.</p>
+        <div style="font-size: 14px; font-weight: 600; color: var(--glacier);">Explore &rarr;</div>
       </a>
     </div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">Our Story</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="cpo360.html">CPO360</a></li>
-      <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero-light" aria-label="Hero" style="position:relative;overflow:hidden;">
-    <canvas id="compass-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
-    <div class="hl-content" style="position:relative;z-index:2;">
-      <h1 class="hl-headline">Building procurement<br>for tomorrow.</h1>
-      <div class="hero-cta-group">
-        <a href="services.html" class="btn btn-primary btn-arrow">Our Services</a>
-        <a href="cpo360.html" class="btn btn-outline-dark btn-arrow">Discover CPO360</a>
-      </div>
-    </div>
-    <div class="hero-scroll-light">Scroll</div>
   </section>
 
-    <!-- SERVICES STRIP -->
-  <div class="services-strip">
-    <a href="services.html#learning" class="service-tile fade-up">
-      <div class="tile-number">01</div>
-      <div class="tile-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
-        </svg>
-      </div>
-      <div class="tile-title">Learning &amp; Development</div>
-      <div class="tile-text">Skills assessments, targeted training delivery, and executive coaching to build world-class procurement capability.</div>
-    </a>
-    <a href="services.html#social" class="service-tile fade-up fade-up-delay-1">
-      <div class="tile-number" style="color:#3FA08C;">02</div>
-      <div class="tile-icon" style="color:#3FA08C;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
-        </svg>
-      </div>
-      <div class="tile-title">Social &amp; Sustainable Procurement</div>
-      <div class="tile-text">Embedding social value, indigenous procurement, and sustainability outcomes into every spend decision.</div>
-    </a>
-    <a href="services.html#operating" class="service-tile fade-up fade-up-delay-2">
-      <div class="tile-number" style="color:#385C82;">03</div>
-      <div class="tile-icon" style="color:#385C82;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/>
-        </svg>
-      </div>
-      <div class="tile-title">Operating Model Design</div>
-      <div class="tile-text">Designing fit-for-purpose procurement functions that deliver sustained value and organisational alignment.</div>
-    </a>
-    <a href="cpo360.html" class="service-tile fade-up fade-up-delay-3">
-      <div class="tile-number" style="color:#D88A3E;">04</div>
-      <div class="tile-icon" style="color:#D88A3E;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/>
-        </svg>
-      </div>
-      <div class="tile-title">AI &amp; Technology</div>
-      <div class="tile-text">CPO360 — our procurement intelligence platform for capability assessment, spend analytics, and Board reporting.</div>
-    </a>
-  </div>
-
-  <!-- WHY BLUE NORTH -->
-  <section class="why-grid">
-    <div class="why-visual">
-      <div class="why-star-bg">
-        <img src="images/star-white.png" alt="">
-      </div>
-      <div class="why-content-inner">
-        <div style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px;">Founded by practitioners</div>
-        <div style="font-family:var(--font-display);font-size:2.2rem;color:white;line-height:1.2;">50+ years<br>combined<br>expertise</div>
-        <div style="margin-top:20px;font-size:0.9rem;color:rgba(255,255,255,0.55);">Across public, private &amp; not-for-profit sectors</div>
+  <section data-screen-label="Testimonial" style="background: var(--white); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 88px 40px;">
+      <div style="display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 64px; align-items: start;">
+        <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); padding-top: 10px;">In their words</div>
+        <blockquote style="margin: 0;">
+          <p style="font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.4; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 28px; text-wrap: pretty;">&ldquo;I have worked with Dan and Chris for more than ten years, across three organisations. They are the people I call when the problem is real — because they have sat in the chair, they tell you the truth, and they leave the team better than they found it.&rdquo;</p>
+          <footer style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 44px; height: 1px; background: var(--border-strong);"></div>
+            <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Chief procurement officer &middot; Australian public sector</div>
+          </footer>
+        </blockquote>
       </div>
     </div>
-    <div class="why-content">
-      <div class="section-label teal"><img src="images/star-navy.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:10px;flex-shrink:0;">Why Blue North</div>
-      <h2 class="section-title">Advice from practitioners who've been in your seat</h2>
-      <ul class="why-points">
-        <li>
-          <div class="why-point-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
+  </section>
+
+  <section data-screen-label="Why BlueNorth" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);">
+    <div style="background: var(--surface-brand); position: relative; overflow: hidden; padding: 96px 56px; display: flex; flex-direction: column; justify-content: center;">
+      <img src="assets/mark-white.png" alt="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 420px; opacity: 0.1;">
+      <div style="position: relative;">
+        <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aurora); margin-bottom: 20px;">Founded by practitioners</div>
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 52px; line-height: 1.1; letter-spacing: -0.03em; color: var(--white);">50+ years combined expertise</div>
+        <p style="font-size: 16px; color: var(--aurora); margin: 20px 0 0; max-width: 340px;">Across public, private and not-for-profit sectors.</p>
+      </div>
+    </div>
+    <div style="background: var(--surface-page); padding: 96px 64px; display: flex; flex-direction: column; justify-content: center;">
+      <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Why BlueNorth</div>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.14; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 36px; max-width: 520px;">Advice from practitioners who have been in your seat</h2>
+      <div style="display: grid; gap: 26px; max-width: 560px;">
+        <div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 18px; align-items: start;">
+          <div style="width: 32px; height: 32px; border-radius: 999px; background: var(--surface-brand-soft); border: 1px solid var(--sky-blue);"></div>
           <div>
-            <div class="why-point-title">Practical, hands-on advice</div>
-            <div class="why-point-text">We don't just consult — we've led procurement functions, built teams, and delivered transformations ourselves.</div>
+            <div style="font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--polaris-blue); margin-bottom: 6px;">Practical, hands-on advice</div>
+            <p style="font-size: 15px; color: var(--text-muted); margin: 0;">We have led procurement functions, built teams, and delivered transformations ourselves.</p>
           </div>
-        </li>
-        <li>
-          <div class="why-point-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 18px; align-items: start;">
+          <div style="width: 32px; height: 32px; border-radius: 999px; background: var(--surface-brand-soft); border: 1px solid var(--sky-blue);"></div>
           <div>
-            <div class="why-point-title">Deliver and embed change</div>
-            <div class="why-point-text">We leave your team with the tools, skills, and confidence to sustain improvement long after we've gone.</div>
+            <div style="font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--polaris-blue); margin-bottom: 6px;">Deliver and embed change</div>
+            <p style="font-size: 15px; color: var(--text-muted); margin: 0;">We leave your team with the tools, skills and confidence to sustain improvement long after we have gone.</p>
           </div>
-        </li>
-        <li>
-          <div class="why-point-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 18px; align-items: start;">
+          <div style="width: 32px; height: 32px; border-radius: 999px; background: var(--surface-brand-soft); border: 1px solid var(--sky-blue);"></div>
           <div>
-            <div class="why-point-title">Technology-enabled</div>
-            <div class="why-point-text">Our CPO360 platform provides data-driven insights to guide capability development and track progress.</div>
+            <div style="font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--polaris-blue); margin-bottom: 6px;">Technology-enabled</div>
+            <p style="font-size: 15px; color: var(--text-muted); margin: 0;">CPO360 gives you data-driven insight to guide capability development and track progress.</p>
           </div>
-        </li>
-      </ul>
-      <div style="margin-top:44px;">
-        <a href="about.html" class="btn btn-outline-dark btn-arrow">Meet the Team</a>
+        </div>
+      </div>
+      <div style="margin-top: 36px;">
+        <a href="team.html" style="display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 24px; border-radius: 8px; border: 1.5px solid var(--polaris-blue); color: var(--polaris-blue); font-size: 15px; font-weight: 600;" style-hover="background: var(--surface-brand-soft); color: var(--polaris-blue);">Meet the team <span style="font-family: var(--font-mono);">&rarr;</span></a>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAND -->
-  <div class="stats-band">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item fade-up">
-          <div class="stat-number" style="color:var(--polaris-blue);"><span class="stat-animate" data-target="20" data-suffix="+">50+</span></div>
-          <div class="stat-label">Industries served</div>
+  <section data-screen-label="Commitment" style="background: var(--white); border-top: 1px solid var(--border-default);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 72px 40px; display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 72px; align-items: center;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Our commitment</div>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 16px;">Social purpose is in our DNA.</h2>
+        <a href="commitment.html" style="font-size: 15px; font-weight: 600;">How we put it into practice &rarr;</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border-default); border: 1px solid var(--border-default); border-radius: 12px; overflow: hidden;">
+        <div style="background: var(--surface-card); padding: 28px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Reinvested</div>
+          <div style="font-family: var(--font-mono); font-size: 34px; line-height: 1.1; color: var(--polaris-blue); margin-bottom: 10px;">50%</div>
+          <p style="font-size: 14px; color: var(--text-muted); margin: 0;">Of all profits are invested in organisations and programs working with vulnerable communities across Australia and the region.</p>
         </div>
-        <div class="stat-item fade-up fade-up-delay-1">
-          <div class="stat-number" style="color:var(--polaris-blue);"><span class="stat-animate" data-target="15" data-suffix="+">15+</span></div>
-          <div class="stat-label">L&amp;D Topic areas</div>
+        <div style="background: var(--surface-card); padding: 28px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Subsidised</div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin-bottom: 10px;">Pro bono and low bono</div>
+          <p style="font-size: 14px; color: var(--text-muted); margin: 0;">Programs so social enterprises and First Nations businesses can access the expertise they need to grow and win work.</p>
         </div>
-        <div class="stat-item fade-up fade-up-delay-2">
-          <div class="stat-number" style="color:var(--beacon);"><span class="stat-animate" data-target="100" data-suffix="%">100%</span></div>
-          <div class="stat-label">Practitioner-led</div>
-        </div>
-        <div class="stat-item fade-up fade-up-delay-3">
-          <div class="stat-number" style="color:var(--aurora-teal)">360°</div>
-          <div class="stat-label">Capability visibility</div>
+        <div style="background: var(--surface-card); padding: 28px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Built in</div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin-bottom: 10px;">Every project</div>
+          <p style="font-size: 14px; color: var(--text-muted); margin: 0;">Supporting organisations to deliver social and environmental impact is built into everything we deliver.</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- CPO360 TEASER -->
-  <section class="section cpo-teaser">
-    <div class="cpo-teaser-bg"></div>
-    <div class="container">
-      <div class="cpo-grid">
-        <div>
-          <div class="section-label section-dark"><img src="images/star-white.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:10px;flex-shrink:0;">Technology Platform</div>
-          <h2 class="section-title" style="color:white;margin-bottom:20px;">Introducing <em style="font-style:italic;color:var(--sky-blue);">CPO360</em></h2>
-          <p style="color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:32px;">
-            Our proprietary skills assessment and development platform. CPO360 gives procurement leaders a complete, data-driven picture of team capability — and a clear path to improvement.
-          </p>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;">
-            <li style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.75);font-size:0.925rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FA08C" stroke-width="2.5"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              Comprehensive skills benchmarking across 15+ competency areas
-            </li>
-            <li style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.75);font-size:0.925rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FA08C" stroke-width="2.5"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              Personalised learning pathways for individuals and teams
-            </li>
-            <li style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.75);font-size:0.925rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FA08C" stroke-width="2.5"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              Track capability uplift with measurable, ongoing reporting
-            </li>
-          </ul>
-          <a href="cpo360.html" class="btn btn-primary btn-arrow">Learn More About CPO360</a>
+  <section id="cpo360" data-screen-label="CPO360" style="background: var(--surface-brand); position: relative; overflow: hidden;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 72px; align-items: center;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aurora); margin-bottom: 16px;">Technology platform</div>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 20px;">Introducing CPO360</h2>
+        <p style="font-size: 17px; line-height: 1.65; color: var(--aurora); margin: 0 0 28px; max-width: 480px;">Nine integrated modules — from spend intelligence to skills assessment — feeding one Board-ready dashboard.</p>
+        <div style="display: grid; gap: 14px; margin-bottom: 34px;">
+          <div style="display: flex; gap: 12px; align-items: baseline; color: var(--white); font-size: 15px;"><span style="font-family: var(--font-mono); color: var(--aurora-teal);">&#10003;</span> Skills benchmarking across 10 competencies</div>
+          <div style="display: flex; gap: 12px; align-items: baseline; color: var(--white); font-size: 15px;"><span style="font-family: var(--font-mono); color: var(--aurora-teal);">&#10003;</span> Maturity assessment across 12 dimensions</div>
+          <div style="display: flex; gap: 12px; align-items: baseline; color: var(--white); font-size: 15px;"><span style="font-family: var(--font-mono); color: var(--aurora-teal);">&#10003;</span> Savings tracked against target, exportable to PDF</div>
         </div>
-        <div class="cpo-mockup fade-up">
-          <div class="cpo-mockup-header">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
-            <span class="cpo-mockup-title">CPO360 — Capability Dashboard</span>
-          </div>
-          <div class="radar-chart">
-            <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="radarGrad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#3FA08C" stop-opacity="0.4"/>
-                  <stop offset="100%" stop-color="#5E89C9" stop-opacity="0.1"/>
-                </radialGradient>
-              </defs>
-              <!-- Grid rings -->
-              <polygon points="140,30 218,80 218,180 140,230 62,180 62,80" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <polygon points="140,55 203,92 203,168 140,205 77,168 77,92" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <polygon points="140,80 188,104 188,156 140,180 92,156 92,104" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <polygon points="140,105 173,116 173,144 140,155 107,144 107,116" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <!-- Axes -->
-              <line x1="140" y1="30" x2="140" y2="230" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="62" y1="80" x2="218" y2="180" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="218" y1="80" x2="62" y2="180" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <!-- Data -->
-              <polygon points="140,45 210,100 195,170 140,200 80,165 75,90" fill="url(#radarGrad)" stroke="#5E89C9" stroke-width="1.5"/>
-              <!-- Labels -->
-              <text x="140" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Aptos,Inter,Segoe UI,sans-serif">Category Mgmt</text>
-              <text x="230" y="78" text-anchor="start" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Aptos,Inter,Segoe UI,sans-serif">Sourcing</text>
-              <text x="226" y="188" text-anchor="start" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Aptos,Inter,Segoe UI,sans-serif">SRM</text>
-              <text x="140" y="246" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Aptos,Inter,Segoe UI,sans-serif">Contract Mgmt</text>
-              <text x="50" y="188" text-anchor="end" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Aptos,Inter,Segoe UI,sans-serif">Negotiation</text>
-              <text x="54" y="78" text-anchor="end" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Aptos,Inter,Segoe UI,sans-serif">Cost Mgmt</text>
-              <!-- Score label -->
-              <text x="140" y="128" text-anchor="middle" fill="white" font-size="22" font-family="Playfair Display,serif" font-weight="700">74%</text>
-              <text x="140" y="144" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="Aptos,Inter,Segoe UI,sans-serif" letter-spacing="1">CAPABILITY SCORE</text>
-            </svg>
-          </div>
-          <div class="cpo-skill-bars">
-            <div>
-              <div class="skill-bar-label"><span>Category Management</span><span>82%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div>
+        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 26px; border-radius: 8px; background: var(--sky-blue); color: var(--white); font-size: 15px; font-weight: 600;" style-hover="background: var(--action-secondary-hover); color: var(--white);">Book a demo <span style="font-family: var(--font-mono);">&rarr;</span></a>
+      </div>
+      <div style="background: var(--deep-polaris); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; box-shadow: 0 30px 60px rgba(10,18,35,0.45); overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <span style="width: 9px; height: 9px; border-radius: 999px; background: #E8615C;"></span>
+          <span style="width: 9px; height: 9px; border-radius: 999px; background: var(--sun);"></span>
+          <span style="width: 9px; height: 9px; border-radius: 999px; background: var(--aurora-teal);"></span>
+          <span style="margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--mist);">CPO performance dashboard</span>
+        </div>
+        <div style="padding: 24px; display: grid; gap: 18px;">
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px;">
+              <div style="font-family: var(--font-mono); font-size: 24px; color: var(--white);">$24.6M</div>
+              <div style="font-size: 12px; color: var(--mist); margin-top: 4px;">Savings delivered</div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--aurora-teal); margin-top: 6px;">&uarr; 12% vs target</div>
             </div>
-            <div>
-              <div class="skill-bar-label"><span>Negotiation</span><span>68%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:68%"></div></div>
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px;">
+              <div style="font-family: var(--font-mono); font-size: 24px; color: var(--white);">72%</div>
+              <div style="font-size: 12px; color: var(--mist); margin-top: 4px;">Spend under mgmt</div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--aurora-teal); margin-top: 6px;">&uarr; 8pp YoY</div>
             </div>
-            <div>
-              <div class="skill-bar-label"><span>Social Procurement</span><span>54%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:54%"></div></div>
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px;">
+              <div style="font-family: var(--font-mono); font-size: 24px; color: var(--white);">71%</div>
+              <div style="font-size: 12px; color: var(--mist); margin-top: 4px;">Team capability</div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--aurora-teal); margin-top: 6px;">&uarr; vs benchmark</div>
+            </div>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; display: grid; gap: 14px;">
+            <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist);">Maturity — 12 dimensions</div>
+            <div style="display: grid; grid-template-columns: 140px minmax(0, 1fr) 44px; gap: 12px; align-items: center;">
+              <div style="font-size: 13px; color: var(--aurora);">Category mgmt</div>
+              <div style="height: 6px; border-radius: 999px; background: rgba(255,255,255,0.12);"><div style="width: 82%; height: 6px; border-radius: 999px; background: var(--sky-blue);"></div></div>
+              <div style="font-family: var(--font-mono); font-size: 12px; color: var(--white); text-align: right;">82%</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 140px minmax(0, 1fr) 44px; gap: 12px; align-items: center;">
+              <div style="font-size: 13px; color: var(--aurora);">Strategy</div>
+              <div style="height: 6px; border-radius: 999px; background: rgba(255,255,255,0.12);"><div style="width: 78%; height: 6px; border-radius: 999px; background: var(--sky-blue);"></div></div>
+              <div style="font-family: var(--font-mono); font-size: 12px; color: var(--white); text-align: right;">78%</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 140px minmax(0, 1fr) 44px; gap: 12px; align-items: center;">
+              <div style="font-size: 13px; color: var(--aurora);">Sustainability</div>
+              <div style="height: 6px; border-radius: 999px; background: rgba(255,255,255,0.12);"><div style="width: 52%; height: 6px; border-radius: 999px; background: var(--sky-blue);"></div></div>
+              <div style="font-family: var(--font-mono); font-size: 12px; color: var(--white); text-align: right;">52%</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 140px minmax(0, 1fr) 44px; gap: 12px; align-items: center;">
+              <div style="font-size: 13px; color: var(--aurora);">Digital</div>
+              <div style="height: 6px; border-radius: 999px; background: rgba(255,255,255,0.12);"><div style="width: 48%; height: 6px; border-radius: 999px; background: var(--sky-blue);"></div></div>
+              <div style="font-family: var(--font-mono); font-size: 12px; color: var(--white); text-align: right;">48%</div>
             </div>
           </div>
         </div>
@@ -863,300 +250,54 @@
     </div>
   </section>
 
-  <!-- FOUNDERS -->
-  <section class="section" style="background:var(--paper);">
-    <div class="container">
-      <div class="section-label fade-up"><img src="images/star-navy.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:10px;flex-shrink:0;">Our Founders</div>
-      <h2 class="section-title fade-up fade-up-delay-1" style="margin-bottom:16px;">Built by people who've done the job</h2>
-      <p class="lead fade-up fade-up-delay-2" style="max-width:580px;margin-bottom:60px;">Blue North was founded by two of Australia's most experienced procurement practitioners, bringing decades of real-world expertise to every engagement.</p>
-
-      <div class="team-grid">
-
-        <!-- DAN FIELDING -->
-        <div class="team-card fade-up">
-          <div class="team-card-body">
-            <div class="team-name">Dan Fielding</div>
-            <div class="team-role">Co-Founder &amp; Director · FCIPS</div>
-            <p class="team-bio">Dan is one of Australia's most respected procurement leaders, co-founding ArcBlue and helping build it into a leading Asia-Pacific procurement consultancy before its acquisition by Bain &amp; Company. He brings over two decades of hands-on experience across public sector, healthcare, infrastructure, and financial services.</p>
-            <p class="team-bio">Dan is passionate about using technology and data to lift procurement capability and demonstrate the strategic value of procurement to Boards and leadership teams.</p>
-            <div class="team-credentials">
-              <span class="credential">FCIPS</span>
-              <span class="credential">Co-Founder ArcBlue</span>
-              <span class="credential">CPO360 Creator</span>
-            </div>
-            <a href="https://www.linkedin.com/in/dan-fielding-fcips-b472876/" target="_blank" rel="noopener" class="team-linkedin">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              View LinkedIn Profile
-            </a>
-          </div>
+  <section id="founders" data-screen-label="Founders" style="max-width: 1240px; margin: 0 auto; padding: 96px 40px;">
+    <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Our founders</div>
+    <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 42px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 12px;">Built by people who have done the job</h2>
+    <p style="font-size: 17px; color: var(--text-muted); margin: 0 0 44px; max-width: 620px;">Two of Australia's most experienced procurement practitioners, bringing decades of real-world expertise to every engagement.</p>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
+      <article style="border: 1px solid var(--border-default); border-radius: 12px; display: grid; grid-template-columns: 180px minmax(0, 1fr); overflow: hidden; background: var(--surface-card);">
+        <img src="assets/chris.png" alt="Chris Newman" style="width: 180px; height: 100%; object-fit: cover; display: block;">
+        <div style="padding: 28px;">
+          <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--polaris-blue); margin: 0 0 6px;">Chris Newman</h3>
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Co-founder &amp; director &middot; GAICD</div>
+          <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 18px;">Co-founded ArcBlue alongside Dan, building it into one of Asia-Pacific's premier procurement consultancies before its acquisition by Bain &amp; Company. Deeply focused on social value and community impact.</p>
+          <a href="https://www.linkedin.com/in/chris-newman-gaicd-34202235/" style="font-size: 14px; font-weight: 600;">LinkedIn profile &rarr;</a>
         </div>
-
-        <!-- CHRIS NEWMAN -->
-        <div class="team-card fade-up fade-up-delay-1">
-          <div class="team-card-body">
-            <div class="team-name">Chris Newman</div>
-            <div class="team-role">Co-Founder &amp; Director · GAICD</div>
-            <p class="team-bio">Chris co-founded ArcBlue alongside Dan, building it into one of Asia-Pacific's premier procurement consultancies before its acquisition by Bain &amp; Company. He brings extensive experience in procurement transformation across public sector, healthcare, and financial services.</p>
-            <p class="team-bio">A Graduate of the Australian Institute of Company Directors (GAICD), Chris brings both strategic vision and hands-on delivery capability to every engagement. He is deeply passionate about the role procurement plays in driving social value and positive community impact.</p>
-            <div class="team-credentials">
-              <span class="credential">GAICD</span>
-              <span class="credential">Co-Founder ArcBlue</span>
-              <span class="credential">Social Procurement</span>
-            </div>
-            <a href="https://www.linkedin.com/in/chris-newman-gaicd-34202235/" target="_blank" rel="noopener" class="team-linkedin">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              View LinkedIn Profile
-            </a>
-          </div>
+      </article>
+      <article style="border: 1px solid var(--border-default); border-radius: 12px; display: grid; grid-template-columns: 180px minmax(0, 1fr); overflow: hidden; background: var(--surface-card);">
+        <img src="assets/dan.png" alt="Dan Fielding" style="width: 180px; height: 100%; object-fit: cover; display: block;">
+        <div style="padding: 28px;">
+          <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--polaris-blue); margin: 0 0 6px;">Dan Fielding</h3>
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Co-founder &amp; director &middot; FCIPS</div>
+          <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 18px;">Two decades of hands-on experience across public sector, healthcare, infrastructure and financial services. Creator of CPO360 and an advocate for demonstrating procurement's value to Boards.</p>
+          <a href="https://www.linkedin.com/in/dan-fielding-fcips-b472876/" style="font-size: 14px; font-weight: 600;">LinkedIn profile &rarr;</a>
         </div>
+      </article>
+    </div>
+    <div style="margin-top: 28px;">
+      <a href="about.html" style="display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 24px; border-radius: 8px; border: 1.5px solid var(--polaris-blue); color: var(--polaris-blue); font-size: 15px; font-weight: 600;" style-hover="background: var(--surface-brand-soft); color: var(--polaris-blue);">Our full story <span style="font-family: var(--font-mono);">&rarr;</span></a>
+    </div>
+  </section>
 
+  <section id="contact" data-screen-label="CTA" style="background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33); position: relative; overflow: hidden;">
+    <img src="assets/mark-white.png" alt="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 560px; opacity: 0.06;">
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: center;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 16px;">Get started</div>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">See where your function really stands.</h2>
+        <p style="font-size: 17px; color: var(--aurora); margin: 0; max-width: 460px;">Book a 30-minute CPO360 walkthrough, or start with a capability diagnostic. No obligation either way.</p>
       </div>
-
-      <div style="margin-top:48px;" class="fade-up">
-        <a href="about.html" class="btn btn-outline-dark btn-arrow">Our Full Story</a>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <a href="contact.html?interest=cpo360" style="display: inline-flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 26px; border-radius: 8px; background: var(--sky-blue); color: var(--white); font-size: 16px; font-weight: 600;" style-hover="background: var(--action-secondary-hover); color: var(--white);">Book a CPO360 demo <span style="font-family: var(--font-mono);">&rarr;</span></a>
+        <a href="contact.html?interest=learning" style="display: inline-flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 26px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-size: 16px; font-weight: 600;" style-hover="background: rgba(255,255,255,0.1); color: var(--white);">Request a capability diagnostic <span style="font-family: var(--font-mono);">&rarr;</span></a>
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--mist); margin-top: 8px;">hello@bluenorth.com.au</div>
       </div>
     </div>
   </section>
 
-    <!-- CTA BAND -->
-  <div class="cta-band">
-    <img src="images/star-white.png" alt="" class="cta-band-star" aria-hidden="true">
-    <div class="container" style="position:relative;z-index:2;">
-      <div class="section-label" style="justify-content:center;margin-bottom:20px;">Get started</div>
-      <h2 class="section-title fade-up">Ready to point north?</h2>
-      <p class="lead fade-up fade-up-delay-1">Let's talk about how Blue North can help your organisation achieve smarter procurement outcomes.</p>
-      <a href="contact.html" class="btn btn-primary btn-arrow fade-up fade-up-delay-2">Contact Us Today</a>
-    </div>
-  </div>
+  <dc-import name="Site Footer" hint-size="100%,420px"></dc-import>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <img src="images/logo-nav-reverse.png" alt="Blue North">
-          </div>
-          
-          <div class="footer-social" style="margin-top:24px;">
-            <a href="https://au.linkedin.com/company/bluenorthaustralia" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-heading">Services</div>
-          <ul class="footer-links">
-            <li><a href="services.html#learning">Learning &amp; Development</a></li>
-            <li><a href="services.html#operating">Operating Model Design</a></li>
-            <li><a href="services.html#social">Social &amp; Sustainable</a></li>
-            <li><a href="team.html">Team</a></li>
-      <li><a href="cpo360.html">CPO360</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="footer-heading">Company</div>
-          <ul class="footer-links">
-            <li><a href="about.html">Our Story</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="footer-heading">Contact</div>
-          <ul class="footer-links">
-            <li><a href="mailto:hello@bluenorth.com.au">hello@bluenorth.com.au</a></li>
-            <li><a href="https://bluenorth.com.au">bluenorth.com.au</a></li>
-            <li style="color:rgba(255,255,255,0.35);font-size:0.875rem;">Australia</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Blue North. All rights reserved.</span>
-        
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-
-  <script>
-    (() => {
-      const phrases = document.querySelectorAll('.hl-phrase');
-      const dots    = document.querySelectorAll('.hl-dot');
-      const bar     = document.querySelector('.hl-progress .carousel-progress-bar');
-      if (!phrases.length) return;
-      const DURATION = 5000;
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let current = 0;
-      let timer;
-
-      function goTo(index) {
-        phrases[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = (index + phrases.length) % phrases.length;
-        phrases[current].classList.add('active');
-        dots[current].classList.add('active');
-        startProgress();
-      }
-
-      function startProgress() {
-        if (!bar) return;
-        bar.style.transition = 'none';
-        bar.style.width = '0%';
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            bar.style.transition = 'width ' + DURATION + 'ms linear';
-            bar.style.width = '100%';
-          });
-        });
-      }
-
-      function startAuto() {
-        clearInterval(timer);
-        if (reduced) return;
-        timer = setInterval(() => goTo(current + 1), DURATION);
-      }
-
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => { goTo(i); startAuto(); });
-      });
-
-      if (!reduced) { startProgress(); startAuto(); }
-      else if (bar) { bar.style.width = '100%'; }
-
-      // Subtle scroll parallax on the hero star
-      const heroStar = document.querySelector('.hl-star-main');
-      if (heroStar && !reduced) {
-        window.addEventListener('scroll', () => {
-          const y = window.scrollY;
-          if (y < window.innerHeight) {
-            heroStar.style.transform = 'translateY(calc(-50% + ' + (y * 0.12) + 'px))';
-          }
-        }, { passive: true });
-      }
-    })();
-  </script>
-<script>
-(function() {
-  const canvas = document.getElementById('compass-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const SKY = '#5E89C9', WHITE = '#ffffff';
-  let W, H, t = 0, startTime = null;
-  const introMs = 2600;
-
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  function cx() { return W * 0.70; }
-  function cy() { return H * 0.46; }
-  function ease(p) { return p < 0.5 ? 2*p*p : 1 - Math.pow(-2*p+2,2)/2; }
-
-  function drawGlow(x, y, prog) {
-    const grad = ctx.createRadialGradient(x, y, 0, x, y, Math.min(W,H)*0.45*prog);
-    grad.addColorStop(0,   'rgba(94,137,201,' + (0.14*prog) + ')');
-    grad.addColorStop(0.4, 'rgba(31,58,107,' + (0.08*prog) + ')');
-    grad.addColorStop(1,   'rgba(22,29,43,0)');
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, W, H);
-  }
-
-  function drawBearingLines(x, y, rot, prog) {
-    const bearings = 36, maxLen = Math.max(W,H) * 1.1;
-    for (let i = 0; i < bearings; i++) {
-      const angle = (i/bearings)*Math.PI*2 + rot;
-      const isMajor = i%9===0, isMinor = i%3===0;
-      const len   = isMajor ? maxLen : isMinor ? maxLen*0.7 : maxLen*0.45;
-      const alpha = (isMajor ? 0.28 : isMinor ? 0.13 : 0.06) * prog;
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x+Math.cos(angle)*len*prog, y+Math.sin(angle)*len*prog);
-      ctx.strokeStyle = isMajor ? SKY : WHITE;
-      ctx.globalAlpha = alpha;
-      ctx.lineWidth   = isMajor ? 0.9 : isMinor ? 0.5 : 0.28;
-      ctx.stroke();
-      if (isMajor && prog > 0.3) {
-        const tl = 14, tr = len*0.32*prog;
-        ctx.beginPath();
-        ctx.moveTo(x+Math.cos(angle)*tr, y+Math.sin(angle)*tr);
-        ctx.lineTo(x+Math.cos(angle)*(tr+tl), y+Math.sin(angle)*(tr+tl));
-        ctx.strokeStyle = SKY; ctx.globalAlpha = 0.5*prog;
-        ctx.lineWidth = 1.5; ctx.stroke();
-      }
-    }
-  }
-
-  function drawConcentric(x, y, rot, prog) {
-    const rings = [0.10,0.20,0.32,0.48,0.67,0.90];
-    const base  = Math.min(W,H);
-    rings.forEach(function(r,i) {
-      const radius = r*base*prog, isMajor = i%2===0;
-      ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI*2);
-      ctx.strokeStyle = isMajor ? SKY : WHITE;
-      ctx.globalAlpha = isMajor ? 0.18 : 0.07;
-      ctx.lineWidth   = isMajor ? 0.8 : 0.38; ctx.stroke();
-      if (isMajor && prog > 0.5) {
-        for (let k = 0; k < 72; k++) {
-          const a = (k/72)*Math.PI*2 + rot*0.3;
-          const isT = k%18===0, tl = isT ? 10 : k%6===0 ? 5 : 2;
-          ctx.beginPath();
-          ctx.moveTo(x+Math.cos(a)*radius, y+Math.sin(a)*radius);
-          ctx.lineTo(x+Math.cos(a)*(radius+tl), y+Math.sin(a)*(radius+tl));
-          ctx.strokeStyle = isT ? SKY : WHITE;
-          ctx.globalAlpha = (isT ? 0.4 : 0.12)*prog;
-          ctx.lineWidth = isT ? 1.2 : 0.45; ctx.stroke();
-        }
-      }
-    });
-  }
-
-  function drawCardinals(x, y, rot, prog) {
-    if (prog < 0.55) return;
-    const a = (prog-0.55)/0.45, base = Math.min(W,H)*0.50*prog;
-    ctx.font = '600 12px Aptos, Inter, sans-serif';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ['N','E','S','W'].forEach(function(lbl, i) {
-      const angle = (i/4)*Math.PI*2 - Math.PI/2 + rot;
-      ctx.fillStyle  = lbl==='N' ? SKY : WHITE;
-      ctx.globalAlpha = (lbl==='N' ? 0.9 : 0.3)*a;
-      ctx.fillText(lbl, x+Math.cos(angle)*base, y+Math.sin(angle)*base);
-    });
-  }
-
-  function drawStar(x, y, size, alpha, angle) {
-    ctx.save(); ctx.translate(x,y); ctx.rotate(angle);
-    ctx.globalAlpha = alpha; ctx.beginPath();
-    for (let i = 0; i < 8; i++) {
-      const r = i%2===0 ? size : size*0.07;
-      const a = (i/8)*Math.PI*2 - Math.PI/2;
-      i===0 ? ctx.moveTo(Math.cos(a)*r, Math.sin(a)*r)
-             : ctx.lineTo(Math.cos(a)*r, Math.sin(a)*r);
-    }
-    ctx.closePath(); ctx.fillStyle = SKY; ctx.fill(); ctx.restore();
-  }
-
-  function draw(ts) {
-    if (!startTime) startTime = ts;
-    const prog = ease(Math.min((ts-startTime)/introMs, 1));
-    t += 0.00012;
-    ctx.clearRect(0, 0, W, H);
-    const ox = cx(), oy = cy();
-    drawGlow(ox, oy, prog);
-    drawBearingLines(ox, oy, t, prog);
-    drawConcentric(ox, oy, t, prog);
-    drawCardinals(ox, oy, t, prog);
-    const starAlpha = (0.7 + Math.sin((ts-(startTime||0))*0.0008)*0.15)*prog;
-    drawStar(ox, oy, Math.min(W,H)*0.06*prog, starAlpha, t*0.25);
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(draw);
-  }
-  requestAnimationFrame(draw);
-})();
-</script>
+</div>
+</x-dc>
 </body>
 </html>

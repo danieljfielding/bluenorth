@@ -1,0 +1,107 @@
+/* ============================================================
+   BlueNorth — Color tokens
+   Base palette (named per brand palette sheet) + semantic aliases.
+   ============================================================ */
+
+:root {
+  /* ---- Core ---- */
+  --polaris-blue: #1F3A6B;   /* primary brand */
+  --sky-blue:     #5E89C9;   /* secondary brand / "Blue" in wordmark */
+  --midnight:     #161D2B;   /* deep surface */
+  --deep-polaris: #0E1A33;   /* darkest brand surface */
+
+  /* ---- Neutrals ---- */
+  --ink:   #262C36;
+  --slate: #5E6976;
+  --fog:   #B5BCC4;
+  --ice:   #EDEFF1;
+  --paper: #F7F7F4;          /* warm off-white page base */
+  --black: #000000;
+  --white: #FFFFFF;
+
+  /* ---- Cool accents ---- */
+  --aurora:      #C9D6E8;
+  --glacier:     #4F7CB3;
+  --mist:        #9FB6CF;
+  --aurora-teal: #3FA08C;    /* success / positive */
+  --harbor:      #3B5C82;
+
+  /* ---- Warm accents ---- */
+  --beacon:    #D88A3E;
+  --ember:     #C26A28;
+  --sun:       #E8B560;      /* warning */
+  --signal-red:#C73E3A;      /* danger / error */
+  --burgundy:  #80142B;
+
+  /* ============================================================
+     Semantic aliases — reference these in product UI, not raw names
+     ============================================================ */
+
+  /* Surfaces */
+  --surface-page:        var(--paper);
+  --surface-card:        var(--white);
+  --surface-sunken:      var(--ice);
+  --surface-raised:      var(--white);
+  --surface-inverse:     var(--deep-polaris);
+  --surface-brand:       var(--polaris-blue);
+  --surface-brand-soft:  #E7EDF6;        /* tinted polaris wash */
+  --surface-accent-soft: var(--aurora);
+
+  /* Text */
+  --text-strong:    var(--midnight);
+  --text-body:      var(--ink);
+  --text-muted:     var(--slate);
+  --text-subtle:    #8A93A0;
+  --text-on-brand:  var(--white);
+  --text-on-dark:   var(--ice);
+  --text-link:      var(--glacier);
+  --text-brand:     var(--polaris-blue);
+
+  /* Borders */
+  --border-subtle:  var(--ice);
+  --border-default: #DCE0E5;
+  --border-strong:  var(--fog);
+  --border-brand:   var(--polaris-blue);
+  --border-focus:   var(--sky-blue);
+
+  /* Interactive — primary (Polaris) */
+  --action-primary:        var(--polaris-blue);
+  --action-primary-hover:  #18305A;       /* polaris darkened */
+  --action-primary-press:  #122545;
+  --action-primary-text:   var(--white);
+
+  /* Interactive — secondary (Sky) */
+  --action-secondary:       var(--sky-blue);
+  --action-secondary-hover: #4E78B8;
+  --action-secondary-press: #426aa3;
+
+  /* Focus ring */
+  --focus-ring: rgba(94, 137, 201, 0.45);
+
+  /* Status / feedback */
+  --status-success:      var(--aurora-teal);
+  --status-success-soft: #E3F1ED;
+  --status-success-text: #1F6E5E;
+
+  --status-warning:      var(--sun);
+  --status-warning-soft: #FBF1DC;
+  --status-warning-text: #8A5A12;
+
+  --status-danger:       var(--signal-red);
+  --status-danger-soft:  #FBE6E5;
+  --status-danger-text:  #9B2C29;
+
+  --status-info:         var(--glacier);
+  --status-info-soft:    #E7EDF6;
+  --status-info-text:    var(--polaris-blue);
+
+  /* Data-viz sequence (for charts/spend categories) */
+  --viz-1: var(--polaris-blue);
+  --viz-2: var(--sky-blue);
+  --viz-3: var(--aurora-teal);
+  --viz-4: var(--beacon);
+  --viz-5: var(--harbor);
+  --viz-6: var(--mist);
+  --viz-7: var(--burgundy);
+  --viz-8: var(--sun);
+}
