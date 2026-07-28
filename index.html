@@ -86,6 +86,7 @@
 <link rel="stylesheet" href="ds/tokens/spacing.css">
 <link rel="stylesheet" href="ds/tokens/base.css">
 <link rel="stylesheet" href="ds/styles.css">
+<link rel="stylesheet" href="responsive.css">
 <script src="ds/ds-bundle.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
@@ -102,7 +103,7 @@
 
   <section data-screen-label="Hero" style="position: relative; overflow: hidden; background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33);">
     <x-import component-from-global-scope="bn-aurora" from="./aurora-hero.js" hint-size="100%,100%" style="position: absolute; inset: 0;"></x-import>
-    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 108px 40px 84px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, 1fr); gap: clamp(36px, 5vw, 64px); align-items: center;">
+    <div data-r="stack" style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(54px, 8.7vw, 108px) clamp(20px, 3.2vw, 40px) clamp(42px, 6.8vw, 84px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, 1fr); gap: clamp(36px, 5vw, 64px); align-items: center;">
       <div>
         <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(38px, 5vw, 66px); line-height: 1.05; letter-spacing: -0.03em; color: var(--white); margin: 0 0 24px; overflow-wrap: break-word;">Building procurement for tomorrow.</h1>
         <p style="font-size: 19px; line-height: 1.6; color: var(--aurora); margin: 0 0 36px; max-width: 520px; text-wrap: pretty;">Building the procurement profession — the people, the capability and the standards that make it matter.</p>
@@ -128,8 +129,8 @@
     </div>
   </section>
 
-  <section id="services" data-screen-label="Services" style="max-width: 1240px; margin: 0 auto; padding: 96px 40px;">
-    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 44px;">
+  <section id="services" data-screen-label="Services" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 7.7vw, 96px) clamp(20px, 3.2vw, 40px);">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: clamp(20px, 3.2vw, 40px); margin-bottom: 44px;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">What we do</div>
         <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(29px, 3.3vw, 42px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0; max-width: 640px;">Five ways we build better procurement</h2>
@@ -171,11 +172,11 @@
   </section>
 
   <section data-screen-label="Testimonial" style="background: var(--white); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 88px 40px;">
-      <div style="display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 64px; align-items: start;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 7.1vw, 88px) clamp(20px, 3.2vw, 40px);">
+      <div data-r="stack" style="display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: clamp(32px, 5.2vw, 64px); align-items: start;">
         <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); padding-top: 10px;">In their words</div>
         <blockquote style="margin: 0;">
-          <p style="font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.4; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 28px; text-wrap: pretty;">&ldquo;I have worked with Dan and Chris for more than ten years, across three organisations. They are the people I call when the problem is real — because they have sat in the chair, they tell you the truth, and they leave the team better than they found it.&rdquo;</p>
+          <p style="font-family: var(--font-display); font-weight: 500; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.4; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 28px; text-wrap: pretty;">&ldquo;I have worked with Dan and Chris for more than ten years, across three organisations. They are the people I call when the problem is real — because they have sat in the chair, they tell you the truth, and they leave the team better than they found it.&rdquo;</p>
           <footer style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 44px; height: 1px; background: var(--border-strong);"></div>
             <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Chief procurement officer &middot; Australian public sector</div>
@@ -185,7 +186,7 @@
     </div>
   </section>
 
-  <section data-screen-label="Why BlueNorth" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);">
+  <section data-r="stack" data-screen-label="Why BlueNorth" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);">
     <div style="background: var(--surface-brand); position: relative; overflow: hidden; padding: 96px clamp(32px, 4vw, 56px); display: flex; flex-direction: column; justify-content: center;">
       <img src="assets/mark-white.png" alt="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 420px; opacity: 0.1;">
       <div style="position: relative;">
@@ -240,10 +241,10 @@
   </section>
 
   <section data-screen-label="Commitment" style="background: var(--white); border-top: 1px solid var(--border-default);">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 72px 40px; display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 72px; align-items: center;">
+    <div data-r="stack" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5.8vw, 72px) clamp(20px, 3.2vw, 40px); display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: clamp(36px, 5.8vw, 72px); align-items: center;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Our commitment</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 16px;">Social purpose is in our DNA.</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.9vw, 36px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 16px;">Social purpose is in our DNA.</h2>
         <a href="commitment.html" style="font-size: 15px; font-weight: 600;">How we put it into practice &rarr;</a>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border-default); border: 1px solid var(--border-default); border-radius: 12px; overflow: hidden;">
@@ -254,12 +255,12 @@
         </div>
         <div style="background: var(--surface-card); padding: 28px;">
           <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Subsidised</div>
-          <div style="font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin-bottom: 10px;">Pro bono and low bono</div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(21px, 2.1vw, 26px); line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin-bottom: 10px;">Pro bono and low bono</div>
           <p style="font-size: 14px; color: var(--text-muted); margin: 0;">Programs so social enterprises and First Nations businesses can access the expertise they need to grow and win work.</p>
         </div>
         <div style="background: var(--surface-card); padding: 28px;">
           <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Built in</div>
-          <div style="font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin-bottom: 10px;">Every project</div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(21px, 2.1vw, 26px); line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin-bottom: 10px;">Every project</div>
           <p style="font-size: 14px; color: var(--text-muted); margin: 0;">Supporting organisations to deliver social and environmental impact is built into everything we deliver.</p>
         </div>
       </div>
@@ -267,7 +268,7 @@
   </section>
 
   <section id="cpo360" data-screen-label="CPO360" style="background: var(--surface-brand); position: relative; overflow: hidden;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 72px; align-items: center;">
+    <div data-r="stack" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 7.7vw, 96px) clamp(20px, 3.2vw, 40px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(36px, 5.8vw, 72px); align-items: center;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aurora); margin-bottom: 16px;">Technology platform</div>
         <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 20px;">Introducing CPO360</h2>
@@ -332,12 +333,12 @@
     </div>
   </section>
 
-  <section id="founders" data-screen-label="Founders" style="max-width: 1240px; margin: 0 auto; padding: 96px 40px;">
+  <section id="founders" data-screen-label="Founders" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 7.7vw, 96px) clamp(20px, 3.2vw, 40px);">
     <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Our founders</div>
     <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(29px, 3.3vw, 42px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 12px;">Built by people who have done the job</h2>
     <p style="font-size: 17px; color: var(--text-muted); margin: 0 0 44px; max-width: 620px;">Two of Australia's most experienced procurement practitioners, bringing decades of real-world expertise to every engagement.</p>
-    <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
-      <article style="border: 1px solid var(--border-default); border-radius: 12px; display: grid; grid-template-columns: 180px minmax(0, 1fr); overflow: hidden; background: var(--surface-card);">
+    <div data-r="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
+      <article data-r="stack" style="border: 1px solid var(--border-default); border-radius: 12px; display: grid; grid-template-columns: 180px minmax(0, 1fr); overflow: hidden; background: var(--surface-card);">
         <img src="assets/chris.png" alt="Chris Newman" style="width: 180px; height: 100%; object-fit: cover; display: block;">
         <div style="padding: 28px;">
           <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--polaris-blue); margin: 0 0 6px;">Chris Newman</h3>
@@ -346,7 +347,7 @@
           <a href="https://www.linkedin.com/in/chris-newman-gaicd-34202235/" style="font-size: 14px; font-weight: 600;">LinkedIn profile &rarr;</a>
         </div>
       </article>
-      <article style="border: 1px solid var(--border-default); border-radius: 12px; display: grid; grid-template-columns: 180px minmax(0, 1fr); overflow: hidden; background: var(--surface-card);">
+      <article data-r="stack" style="border: 1px solid var(--border-default); border-radius: 12px; display: grid; grid-template-columns: 180px minmax(0, 1fr); overflow: hidden; background: var(--surface-card);">
         <img src="assets/dan.png" alt="Dan Fielding" style="width: 180px; height: 100%; object-fit: cover; display: block;">
         <div style="padding: 28px;">
           <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--polaris-blue); margin: 0 0 6px;">Dan Fielding</h3>
@@ -363,7 +364,7 @@
 
   <section id="contact" data-screen-label="CTA" style="background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33); position: relative; overflow: hidden;">
     <img src="assets/mark-white.png" alt="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 560px; opacity: 0.06;">
-    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: center;">
+    <div data-r="stack" style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(44px, 7.1vw, 88px) clamp(20px, 3.2vw, 40px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(32px, 5.2vw, 64px); align-items: center;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 16px;">Get started</div>
         <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">See where your function really stands.</h2>

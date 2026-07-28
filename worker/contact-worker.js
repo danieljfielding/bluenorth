@@ -18,15 +18,11 @@
 const TO = ['hello@bluenorth.com.au'];
 const FROM = 'BlueNorth website <website@bluenorth.com.au>';
 
-// Only these origins may post here.
-const ALLOWED = [
-  'https://bluenorth.com.au',
-  'https://www.bluenorth.com.au',
-  'https://danieljfielding.github.io',
-];
-
-const cors = (origin) => ({
-  'Access-Control-Allow-Origin': ALLOWED.includes(origin) ? origin : ALLOWED[0],
+// CORS: open. Restricting Origin is not real protection (curl ignores it) and it
+// silently breaks testing from previews or a staging URL. Abuse is handled by
+// the honeypot + required-field checks below, and the API key living server-side.
+const cors = () => ({
+  'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
   'Access-Control-Max-Age': '86400',
@@ -36,10 +32,9 @@ const esc = (s) => String(s || '').replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>':
 
 export default {
   async fetch(request, env) {
-    const origin = request.headers.get('Origin') || '';
-    const headers = { ...cors(origin), 'Content-Type': 'application/json' };
+    const headers = { ...cors(), 'Content-Type': 'application/json' };
 
-    if (request.method === 'OPTIONS') return new Response(null, { headers: cors(origin) });
+    if (request.method === 'OPTIONS') return new Response(null, { headers: cors() });
     if (request.method !== 'POST') {
       return new Response(JSON.stringify({ success: false, message: 'Method not allowed' }), { status: 405, headers });
     }

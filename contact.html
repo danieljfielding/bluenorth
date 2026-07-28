@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="ds/tokens/spacing.css">
 <link rel="stylesheet" href="ds/tokens/base.css">
 <link rel="stylesheet" href="ds/styles.css">
+<link rel="stylesheet" href="responsive.css">
 <script src="ds/ds-bundle.js"></script>
 <style>
   h1, h2, h3, h4 { overflow-wrap: break-word; }
@@ -48,9 +49,9 @@
 
   <dc-import name="Site Nav" active="contact" hint-size="100%,92px"></dc-import>
 
-  <section data-screen-label="Contact" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: stretch;">
+  <section data-r="stack" data-screen-label="Contact" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: stretch;">
 
-    <div style="background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33); padding: 88px 64px; position: relative; overflow: hidden;">
+    <div style="background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33); padding: clamp(44px, 7.1vw, 88px) clamp(32px, 5.2vw, 64px); position: relative; overflow: hidden;">
       <img src="assets/mark-white.png" alt="" style="position: absolute; right: -110px; bottom: -80px; width: 400px; opacity: 0.08;">
       <div style="position: relative; max-width: 420px;">
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 20px;">Contact</div>
@@ -80,9 +81,9 @@
       </div>
     </div>
 
-    <div style="background: var(--surface-page); padding: 88px 64px;">
+    <div style="background: var(--surface-page); padding: clamp(44px, 7.1vw, 88px) clamp(32px, 5.2vw, 64px);">
       <div style="max-width: 720px;">
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 8px;">Send us a message</h2>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.6vw, 32px); letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 8px;">Send us a message</h2>
         <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 28px;">We typically respond within one business day.</p>
 
         <sc-if value="{{ hasContext }}" hint-placeholder-val="{{ false }}">
@@ -96,15 +97,15 @@
         </sc-if>
 
         <form ref="{{ formRef }}" onSubmit="{{ onSubmit }}" noValidate="{{ true }}" style="display: grid; gap: 24px;">
-          <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
+          <div data-r="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
             <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="First name" name="first_name" required="{{ true }}" placeholder="Jane" hint-size="100%,72px"></x-import>
             <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Last name" name="last_name" required="{{ true }}" placeholder="Smith" hint-size="100%,72px"></x-import>
           </div>
-          <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
+          <div data-r="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
             <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Email address" name="email" type="email" required="{{ true }}" placeholder="jane@organisation.com.au" hint-size="100%,72px"></x-import>
             <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Phone" name="phone" type="tel" placeholder="+61 4XX XXX XXX" hint-size="100%,72px"></x-import>
           </div>
-          <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
+          <div data-r="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
             <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Organisation" name="organisation" placeholder="Your organisation" hint-size="100%,72px"></x-import>
             <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Your role" name="role" placeholder="Chief Procurement Officer" hint-size="100%,72px"></x-import>
           </div>
@@ -112,7 +113,7 @@
 
           <fieldset style="border: 1px solid var(--border-default); border-radius: 12px; padding: 24px; margin: 0; background: var(--surface-card);">
             <legend style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); padding: 0 8px;">What are you interested in</legend>
-            <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 24px;">
+            <div data-r="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 24px;">
               <sc-for list="{{ interests }}" as="it" hint-placeholder-count="6">
                 <x-import component-from-global-scope="DesignSystem_3d5da5.Checkbox" label="{{ it.label }}" name="interest_{{ it.id }}" defaultChecked="{{ it.checked }}" hint-size="100%,24px"></x-import>
               </sc-for>
@@ -129,7 +130,7 @@
               </sc-if>
             </div>
           </sc-if>
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px; border-top: 1px solid var(--border-default); padding-top: 24px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 2.6vw, 32px); border-top: 1px solid var(--border-default); padding-top: 24px;">
             <p style="font-size: 13px; color: var(--text-subtle); margin: 0; max-width: 300px;">We respect your privacy. Your details will never be shared with third parties.</p>
             <button type="submit" disabled="{{ sending }}" style="{{ submitCss }}">{{ submitLabel }}</button>
           </div>

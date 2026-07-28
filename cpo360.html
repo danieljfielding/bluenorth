@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="ds/tokens/spacing.css">
 <link rel="stylesheet" href="ds/tokens/base.css">
 <link rel="stylesheet" href="ds/styles.css">
+<link rel="stylesheet" href="responsive.css">
 <script src="ds/ds-bundle.js"></script>
 <style>
   h1, h2, h3, h4 { overflow-wrap: break-word; }
@@ -50,22 +51,22 @@
 
   <section data-screen-label="CPO360 hero" style="background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33); position: relative; overflow: hidden;">
     <img src="assets/mark-white.png" alt="" style="position: absolute; right: -80px; top: -60px; width: 520px; opacity: 0.07;">
-    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 64px; align-items: center;">
+    <div data-r="stack" style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(44px, 7.1vw, 88px) clamp(20px, 3.2vw, 40px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(32px, 5.2vw, 64px); align-items: center;">
       <div>
         <div style="display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--deep-polaris); background: var(--aurora-teal); padding: 5px 12px; border-radius: 999px; margin-bottom: 24px;">Platform</div>
         <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 4.2vw, 56px); line-height: 1.06; letter-spacing: -0.03em; color: var(--white); margin: 0 0 20px;">Run a world-class procurement function. Prove it too.</h1>
         <p style="font-size: 18px; line-height: 1.6; color: var(--aurora); margin: 0 0 32px; max-width: 520px; text-wrap: pretty;">CPO360 gives you the tools to build capability, develop strategy, and understand your stakeholders and suppliers — then give your CFO, CEO and Board a clear picture of how procurement is performing.</p>
-        <div style="display: flex; gap: 48px; margin-bottom: 36px;">
+        <div style="display: flex; gap: clamp(24px, 3.9vw, 48px); margin-bottom: 36px;">
           <div>
-            <div style="font-family: var(--font-mono); font-size: 30px; color: var(--white);">9</div>
+            <div style="font-family: var(--font-mono); font-size: clamp(24px, 2.4vw, 30px); color: var(--white);">9</div>
             <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); margin-top: 4px;">Integrated modules</div>
           </div>
           <div>
-            <div style="font-family: var(--font-mono); font-size: 30px; color: var(--white);">360&deg;</div>
+            <div style="font-family: var(--font-mono); font-size: clamp(24px, 2.4vw, 30px); color: var(--white);">360&deg;</div>
             <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); margin-top: 4px;">View of performance</div>
           </div>
           <div>
-            <div style="font-family: var(--font-mono); font-size: 30px; color: var(--white);">1</div>
+            <div style="font-family: var(--font-mono); font-size: clamp(24px, 2.4vw, 30px); color: var(--white);">1</div>
             <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); margin-top: 4px;">Dashboard for your Board</div>
           </div>
         </div>
@@ -118,20 +119,20 @@
   </section>
 
   <section data-screen-label="Challenge" style="background: var(--white); border-bottom: 1px solid var(--border-default);">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 88px 40px;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 7.1vw, 88px) clamp(20px, 3.2vw, 40px);">
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">The challenge</div>
       <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(29px, 3.3vw, 42px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 12px;">Procurement has a visibility problem.</h2>
       <p style="font-size: 17px; color: var(--text-muted); margin: 0 0 44px; max-width: 560px;">Most CPOs are doing great work. But without the right tools, it is hard to demonstrate it — to your team, your stakeholders, or your Board.</p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border-default); border: 1px solid var(--border-default); border-radius: 12px; overflow: hidden;">
-        <div style="background: var(--surface-card); padding: 32px;">
+        <div style="background: var(--surface-card); padding: clamp(16px, 2.6vw, 32px);">
           <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 19px; color: var(--polaris-blue); margin: 0 0 10px;">No single source of truth</h3>
           <p style="font-size: 15px; color: var(--text-muted); margin: 0;">Spend data is messy. Categories are inconsistent. There is no clean view of what you are buying, from whom, and at what cost.</p>
         </div>
-        <div style="background: var(--surface-card); padding: 32px;">
+        <div style="background: var(--surface-card); padding: clamp(16px, 2.6vw, 32px);">
           <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 19px; color: var(--polaris-blue); margin: 0 0 10px;">Hard to show the Board what good looks like</h3>
           <p style="font-size: 15px; color: var(--text-muted); margin: 0;">CEOs and CFOs want evidence that procurement is a strategic function. Without a reporting layer, that story is hard to tell.</p>
         </div>
-        <div style="background: var(--surface-card); padding: 32px;">
+        <div style="background: var(--surface-card); padding: clamp(16px, 2.6vw, 32px);">
           <h3 style="font-family: var(--font-display); font-weight: 600; font-size: 19px; color: var(--polaris-blue); margin: 0 0 10px;">Team capability gaps stay hidden</h3>
           <p style="font-size: 15px; color: var(--text-muted); margin: 0;">Without structured assessment, it is hard to know where your team excels, where they need development, and how that compares to best practice.</p>
         </div>
@@ -140,7 +141,7 @@
   </section>
 
   <section data-screen-label="Dashboard" style="background: var(--surface-brand);">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center;">
+    <div data-r="stack" style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 7.1vw, 88px) clamp(20px, 3.2vw, 40px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 5.8vw, 72px); align-items: center;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aurora); margin-bottom: 16px;">CPO dashboard</div>
         <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(29px, 3.3vw, 42px); line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 20px;">One view. Everything that matters.</h2>
@@ -156,7 +157,7 @@
       </div>
       <div style="background: var(--deep-polaris); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 24px; display: grid; gap: 16px;">
         <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist);">CPO performance dashboard &middot; Q2 2025</div>
-        <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px;">
+        <div data-r="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px;">
           <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px;">
             <div style="font-family: var(--font-mono); font-size: 24px; color: var(--white);">$24.6M</div>
             <div style="font-size: 12px; color: var(--mist); margin-top: 4px;">Savings delivered</div>
@@ -204,7 +205,7 @@
   </section>
 
   <section id="modules" data-screen-label="Modules" style="background: var(--surface-inverse);">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 88px 40px;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 7.1vw, 88px) clamp(20px, 3.2vw, 40px);">
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 16px;">The toolkit</div>
       <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(29px, 3.3vw, 42px); line-height: 1.12; letter-spacing: -0.02em; color: var(--white); margin: 0 0 12px;">Nine tools. One integrated platform.</h2>
       <p style="font-size: 17px; color: var(--aurora); margin: 0 0 44px; max-width: 560px;">Each module works standalone. Together, they give you a complete picture of your procurement function.</p>
@@ -267,10 +268,10 @@
     </div>
   </section>
 
-  <section data-screen-label="Audiences" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);">
-    <div style="background: var(--white); padding: 88px 64px;">
+  <section data-r="stack" data-screen-label="Audiences" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);">
+    <div style="background: var(--white); padding: clamp(44px, 7.1vw, 88px) clamp(32px, 5.2vw, 64px);">
       <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">For the CPO</div>
-      <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 16px;">Built for CPOs. Trusted by their stakeholders.</h3>
+      <h3 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.6vw, 32px); line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 16px;">Built for CPOs. Trusted by their stakeholders.</h3>
       <p style="font-size: 16px; color: var(--text-muted); margin: 0 0 28px; max-width: 460px;">You need to run a high-performing function and show it. CPO360 gives you the operational tools and the reporting layer to do both.</p>
       <div style="display: grid; gap: 12px; font-size: 15px; color: var(--text-body);">
         <div>Assess team capability and build development plans</div>
@@ -280,11 +281,11 @@
         <div>Walk into your Board with a credible performance story</div>
       </div>
     </div>
-    <div style="background: var(--surface-brand); padding: 88px 64px; position: relative; overflow: hidden;">
+    <div style="background: var(--surface-brand); padding: clamp(44px, 7.1vw, 88px) clamp(32px, 5.2vw, 64px); position: relative; overflow: hidden;">
       <img src="assets/mark-white.png" alt="" style="position: absolute; right: -70px; bottom: -80px; width: 300px; opacity: 0.08;">
       <div style="position: relative;">
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aurora); margin-bottom: 16px;">For CFOs, CEOs &amp; Boards</div>
-        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">Assurance without the spreadsheets.</h3>
+        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.6vw, 32px); line-height: 1.15; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">Assurance without the spreadsheets.</h3>
         <p style="font-size: 16px; color: var(--aurora); margin: 0 0 28px; max-width: 460px;">You want assurance that procurement is performing — without wading through spreadsheets. The CPO Dashboard gives you exactly that.</p>
         <div style="display: grid; gap: 12px; font-size: 15px; color: var(--white);">
           <div>Single-page view of procurement performance</div>
@@ -299,7 +300,7 @@
 
   <section data-screen-label="CTA" style="background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33); position: relative; overflow: hidden;">
     <img src="assets/mark-white.png" alt="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 520px; opacity: 0.06;">
-    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: center;">
+    <div data-r="stack" style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(44px, 7.1vw, 88px) clamp(20px, 3.2vw, 40px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(32px, 5.2vw, 64px); align-items: center;">
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 16px;">See it in action</div>
         <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">Ready to see CPO360?</h2>

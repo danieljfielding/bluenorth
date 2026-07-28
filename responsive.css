@@ -1,0 +1,54 @@
+/* BlueNorth — responsive layer.
+   Only what cannot be expressed inline: viewport-conditional layout.
+   Elements opt in via data-r; !important is required to beat inline styles. */
+
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg, canvas { max-width: 100%; }
+
+/* Asymmetric two-column splits (text + photo, text + aside) */
+@media (max-width: 900px) {
+  [data-r~="stack"] { grid-template-columns: minmax(0, 1fr) !important; }
+  [data-r~="stack"][data-r~="revs"] > :first-child { order: 2; }
+  [data-r~="stack"][data-r~="revs"] > :last-child { order: 1; }
+  [data-r~="sticky"] { position: static !important; }
+}
+
+/* 3–5 up card grids */
+@media (max-width: 1040px) {
+  [data-r~="grid3"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 680px) {
+  [data-r~="grid3"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* Four-column footer */
+@media (max-width: 900px) {
+  [data-r~="grid4"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 560px) {
+  [data-r~="grid4"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* Even two-up grids */
+@media (max-width: 760px) {
+  [data-r~="grid2"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* Decorative watermarks — drop on small screens */
+@media (max-width: 760px) {
+  [data-r~="deco"] { display: none !important; }
+}
+
+/* Nav: links inline on desktop, sheet on mobile */
+@media (max-width: 900px) {
+  [data-r~="navlinks"] { display: none !important; }
+  [data-r~="navbtn"] { display: inline-flex !important; }
+}
+@media (min-width: 901px) {
+  [data-r~="navpanel"] { display: none !important; }
+}
+
+/* Explorer: side list above detail on small screens */
+@media (max-width: 900px) {
+  [data-r~="exlist"] { max-height: 260px !important; }
+}

@@ -14,26 +14,44 @@
 <link rel="stylesheet" href="ds/tokens/spacing.css">
 <link rel="stylesheet" href="ds/tokens/base.css">
 <link rel="stylesheet" href="ds/styles.css">
+<link rel="stylesheet" href="responsive.css">
 <script src="ds/ds-bundle.js"></script>
 <style>
   h1, h2, h3, h4 { overflow-wrap: break-word; }a { text-decoration: none; }</style>
 </helmet>
 
 <header style="position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,0.94); backdrop-filter: saturate(1.2) blur(6px); border-bottom: 1px solid var(--border-default); font-family: var(--font-body);">
-  <nav style="max-width: 1240px; margin: 0 auto; padding: 0 40px; height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+  <nav style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 3.2vw, 40px); height: 92px; display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 2.6vw, 32px);">
     <a href="index.html" style="display: flex; align-items: center;"><img src="assets/logo-primary.png" alt="BlueNorth" style="height: 56px; width: auto; display: block;"></a>
-    <div style="display: flex; align-items: center; gap: 20px;">
+    <div data-r="navlinks" style="display: flex; align-items: center; gap: 20px;">
       <sc-for list="{{ items }}" as="item" hint-placeholder-count="5">
         <a href="{{ item.href }}" style="{{ item.css }}" style-hover="color: var(--polaris-blue);">{{ item.label }}</a>
       </sc-for>
       <a href="contact.html" style="display: inline-flex; align-items: center; height: 42px; padding: 0 20px; border-radius: 8px; background: var(--action-primary); color: var(--white); font-size: 14px; font-weight: 600; white-space: nowrap;" style-hover="background: var(--action-primary-hover); color: var(--white);">Contact us</a>
     </div>
+    <button type="button" data-r="navbtn" onClick="{{ toggle }}" aria-label="{{ toggleLabel }}" aria-expanded="{{ expanded }}" style="display: none; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid var(--border-default); border-radius: 8px; background: var(--white); cursor: pointer; padding: 0;">
+      <span style="display: grid; gap: 5px;">
+        <span style="{{ bar1 }}"></span>
+        <span style="{{ bar2 }}"></span>
+        <span style="{{ bar3 }}"></span>
+      </span>
+    </button>
   </nav>
+  <div data-r="navpanel" style="{{ panelCss }}">
+    <sc-for list="{{ items }}" as="item" hint-placeholder-count="6">
+      <a href="{{ item.href }}" style="{{ item.mobileCss }}">{{ item.label }}</a>
+    </sc-for>
+    <a href="contact.html" style="display: inline-flex; align-items: center; justify-content: center; height: 52px; margin-top: 8px; border-radius: 8px; background: var(--action-primary); color: var(--white); font-size: 16px; font-weight: 600;">Contact us</a>
+  </div>
 </header>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;story&quot;,&quot;services&quot;,&quot;team&quot;,&quot;cpo360&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
+  state = { open: false };
+
   renderVals() {
+    const open = this.state.open;
+    const bar = 'display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--polaris-blue); transition: transform 200ms cubic-bezier(0.2,0,0.1,1), opacity 160ms;';
     const active = this.props.active || 'home';
     const defs = [
       ['home', 'Home', 'index.html'],
@@ -44,8 +62,20 @@ class Component extends DCLogic {
       ['cpo360', 'CPO360', 'cpo360.html'],
     ];
     return {
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      toggleLabel: open ? 'Close menu' : 'Open menu',
+      expanded: open ? 'true' : 'false',
+      bar1: bar + (open ? ' transform: translateY(7px) rotate(45deg);' : ''),
+      bar2: bar + (open ? ' opacity: 0;' : ''),
+      bar3: bar + (open ? ' transform: translateY(-7px) rotate(-45deg);' : ''),
+      panelCss: 'display: ' + (open ? 'grid' : 'none')
+        + '; gap: 2px; padding: 8px 20px 20px; border-top: 1px solid var(--border-default); background: var(--white);',
       items: defs.map(([id, label, href]) => ({
         id, label, href,
+        mobileCss: 'display: block; padding: 15px 4px; font-size: 17px; border-bottom: 1px solid var(--border-subtle); '
+          + (id === active
+            ? 'font-weight: 600; color: var(--polaris-blue);'
+            : 'font-weight: 500; color: var(--text-body);'),
         css: id === active
           ? 'white-space: nowrap; font-size: 14px; font-weight: 600; color: var(--polaris-blue); padding-bottom: 3px; border-bottom: 2px solid var(--sky-blue);'
           : 'white-space: nowrap; font-size: 14px; font-weight: 500; color: var(--text-muted); padding-bottom: 3px; border-bottom: 2px solid transparent;'
