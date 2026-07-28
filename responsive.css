@@ -34,6 +34,19 @@ img, svg, canvas { max-width: 100%; }
   [data-r~="grid2"] { grid-template-columns: minmax(0, 1fr) !important; }
 }
 
+/* Portrait beside text -> banner above text when the card stacks */
+@media (max-width: 900px) {
+  [data-r~="portrait"] {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover;
+    object-position: center 22%;
+  }
+}
+@media (max-width: 560px) {
+  [data-r~="portrait"] { height: 240px !important; }
+}
+
 /* Decorative watermarks — drop on small screens */
 @media (max-width: 760px) {
   [data-r~="deco"] { display: none !important; }
