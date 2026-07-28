@@ -1,12 +1,12 @@
 # Deploying to danieljfielding/bluenorth
 
 Copy the **contents** of this folder into the repo root on `main`.
-**Except `worker/`** — that is not a website file. See "Contact form" below.
+**Except `worker/`** — that is server code, already deployed to Cloudflare. Don't publish it.
 
-## Why the last attempt rendered unstyled
+## Why an earlier attempt rendered unstyled
 GitHub Pages runs Jekyll by default, and **Jekyll excludes any file or folder whose name
-starts with an underscore**. The design-system folder was `_ds/`, so the fonts, colours and
-component styles were never published — hence serif text and black-on-navy.
+starts with an underscore**. The design-system folder used to be `_ds/`, so the fonts, colours
+and component styles were never published — hence serif text and black-on-navy.
 
 Fixed two ways in this build:
 - the folder is now `ds/` and the bundle is `ds/ds-bundle.js` (no underscores anywhere)
@@ -38,47 +38,40 @@ filenames exactly as-is**, including the spaces. Every page loads them by name.
 
 ---
 
-# Contact form
+# Contact form — live
 
-**The form does not email anyone until you finish these steps.** Until then it falls back to
-opening the visitor's own mail client with the enquiry pre-written — workable, but it relies
-on them pressing send.
+The form posts to your Cloudflare Worker, which sends via Resend to
+**hello@bluenorth.com.au**, with reply-to set to the visitor so you can just hit reply.
 
-GitHub Pages is static, so it cannot hold the Resend API key (anyone could read it in the
-page source and send email as your domain). A small Cloudflare Worker sits in between.
+- Endpoint: `https://bluenorth-contact.danieljfielding.workers.dev`
+  (already set as `FORM_ENDPOINT` in `contact.html` — nothing to edit)
+- Worker source: `worker/contact-worker.js` — keep for reference, don't publish
+- To change the recipient, edit `TO` at the top of the Worker and redeploy
 
-### 1. Verify the domain in Resend
-Resend → Domains → Add domain → `bluenorth.com.au`, then add the DNS records it gives you.
-Sending from an unverified domain fails.
+### If submissions don't arrive
+1. **Resend → Domains** — `bluenorth.com.au` must show **Verified**. Until the GoDaddy DNS
+   records propagate, Resend rejects the send and the visitor sees
+   "Could not send. Please email hello@bluenorth.com.au." That's expected, not a bug.
+2. **Cloudflare → your Worker → Logs** shows the exact Resend error.
+3. Check `RESEND_API_KEY` is set as a **Secret** under Settings → Variables.
+4. Check spam/junk on the first one.
 
-### 2. Deploy the Worker
-`worker/contact-worker.js` in this folder. **Do not commit it to the website repo root** —
-it is server code, not a page.
-
-- dash.cloudflare.com → Workers & Pages → Create → Worker
-- paste the file in, Deploy
-- Worker → Settings → Variables → add a **Secret** named `RESEND_API_KEY` (value starts `re_`)
-- copy the Worker URL, e.g. `https://bluenorth-contact.danieljfielding.workers.dev`
-
-Full steps are also in the comment at the top of that file.
-
-### 3. Point the form at the Worker
-Open `contact.html`, find this line near the top of the inline `<script>` block:
-
-```js
-const FORM_ENDPOINT = '';
-```
-
-Put the Worker URL between the quotes, save, commit. That is the only edit needed.
-
-### Where enquiries land
-`hello@bluenorth.com.au`, with reply-to set to the visitor so you can just hit reply.
-To change the recipient or split by enquiry type, edit `TO` at the top of the Worker.
+### Test it
+Submit the form on the live site. Success looks like a pale blue panel:
+"Thank you — your message is on its way."
 
 ---
 
-# One thing still missing
+# SEO — what's in place
 
-`assets/og-image.png` — the social-share image referenced by the Open Graph tags.
-A 1200×630 PNG (logo on the navy gradient) would complete it. Send one and I'll add it,
-or the tags will simply fall back to no preview image.
+Per page: unique `<title>` and meta description, canonical URL, Open Graph and Twitter card
+tags, `lang="en-AU"`. Site-wide: `robots.txt`, `sitemap.xml`, `assets/og-image.png` for link
+previews, and Organization + founder structured data on the home page.
+
+After publishing, submit `https://bluenorth.com.au/sitemap.xml` in **Google Search Console**
+to speed up indexing of the three new pages.
+
+### One known limitation
+Pages render their content with JavaScript. Google handles this fine, but Bing and some social
+scrapers are weaker at it. If organic search becomes a priority, the pages can be flattened to
+plain static HTML — ask and it can be done as a follow-up.

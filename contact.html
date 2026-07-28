@@ -15,6 +15,8 @@
 <meta property="og:description" content="Talk to BlueNorth about procurement capability, operating model design, social procurement or a CPO360 demo. Based in Melbourne, working Australia-wide and New Zealand.">
 <meta property="og:url" content="https://bluenorth.com.au/contact.html">
 <meta property="og:image" content="https://bluenorth.com.au/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contact BlueNorth | Melbourne procurement consultancy">
 <meta name="twitter:description" content="Talk to BlueNorth about procurement capability, operating model design, social procurement or a CPO360 demo. Based in Melbourne, working Australia-wide and New Zealand.">
@@ -152,7 +154,7 @@ const INTERESTS = [
 // The Worker holds the Resend API key — it must never live in this file.
 // Until this is set, the form falls back to opening the visitor's mail client
 // with the enquiry pre-written, so nothing is lost.
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://bluenorth-contact.danieljfielding.workers.dev';
 const FALLBACK_EMAIL = 'hello@bluenorth.com.au';
 
 class Component extends DCLogic {
