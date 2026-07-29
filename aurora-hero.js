@@ -6,12 +6,20 @@ class BnAurora extends HTMLElement {
   connectedCallback() {
     if (this._built) return;
     this._built = true;
+    const attr = (name, fallback) =>
+      this.getAttribute(name) ?? this.getAttribute(name.replace(/-/g, '')) ?? fallback;
     const cfg = {
       intensity: parseFloat(this.getAttribute('intensity') || '1.65'),
       speed: parseFloat(this.getAttribute('speed') || '2.5'),
       tealAccent: this.getAttribute('teal') !== 'false',
       starCount: parseInt(this.getAttribute('stars') || '26', 10),
-      mark: this.getAttribute('mark') || 'assets/mark-white.png'
+      mark: this.getAttribute('mark') || 'assets/mark-white.png',
+      markTop: attr('mark-top', '10%'),
+      markRight: attr('mark-right', 'calc((100% - min(100% - 80px, 1240px)) / 2 + 428px)'),
+      markSize: attr('mark-size', '46px'),
+      markTopSm: attr('mark-top-sm', '9%'),
+      markRightSm: attr('mark-right-sm', '11%'),
+      markSizeSm: attr('mark-size-sm', '34px')
     };
     const root = this.attachShadow({ mode: 'open' });
     root.innerHTML = `
@@ -21,15 +29,14 @@ class BnAurora extends HTMLElement {
   canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .dot { position: absolute; border-radius: 50%; background: #EAF0F9; opacity: 0.3;
          animation: bnTwinkle 8s ease-in-out infinite; }
-  .mark { position: absolute; top: 14%; right: 12%; width: 68px; height: 68px; }
-  .mark img { width: 100%; height: 100%; animation: bnStarBreathe 9s ease-in-out infinite; }
-  .mark .glint { position: absolute; inset: 0; opacity: 0; filter: blur(6px) brightness(1.6);
-                 animation: bnStarGlint 14s ease-in-out 2s infinite; }
+  .mark { position: absolute; top: ${cfg.markTop}; right: ${cfg.markRight}; width: ${cfg.markSize}; height: ${cfg.markSize}; transform: translate(50%, -50%); }
+  .mark img { width: 100%; height: 100%; animation: bnStarBreathe 7s ease-in-out infinite; }
+  .mark .glint { display: none; }
   .fade { position: absolute; inset: 0; pointer-events: none;
           background: linear-gradient(180deg, rgba(14,26,51,0) 55%, rgba(14,26,51,0.55) 100%); }
   @keyframes bnStarBreathe {
-    0%, 100% { opacity: 0.82; filter: drop-shadow(0 0 10px rgba(94,137,201,0.25)); transform: scale(1); }
-    50% { opacity: 1; filter: drop-shadow(0 0 26px rgba(94,137,201,0.55)); transform: scale(1.03); }
+    0%, 100% { opacity: 0.72; filter: drop-shadow(0 0 8px rgba(94,137,201,0.35)); transform: scale(0.94); }
+    50% { opacity: 1; filter: drop-shadow(0 0 20px rgba(158,190,235,0.7)); transform: scale(1.06); }
   }
   @keyframes bnStarGlint {
     0%, 87%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
@@ -37,6 +44,9 @@ class BnAurora extends HTMLElement {
     95% { opacity: 0; transform: scale(1.35) rotate(20deg); }
   }
   @keyframes bnTwinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.85; } }
+  @media (max-width: 900px) {
+    .mark { top: ${cfg.markTopSm}; right: ${cfg.markRightSm}; width: ${cfg.markSizeSm}; height: ${cfg.markSizeSm}; }
+  }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
 </style>
 <canvas></canvas>
