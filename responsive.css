@@ -21,6 +21,12 @@ img, svg, canvas { max-width: 100%; }
   [data-r~="grid3"] { grid-template-columns: minmax(0, 1fr) !important; }
 }
 
+/* Exactly-three-item grids that draw dividers via gap over a background.
+   These must never sit at 2 columns — the leftover track shows as a grey block. */
+@media (max-width: 900px) {
+  [data-r~="grid3x"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
 /* Four-column footer */
 @media (max-width: 900px) {
   [data-r~="grid4"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
