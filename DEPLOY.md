@@ -62,18 +62,35 @@ Submit the form on the live site. Success looks like a pale blue panel:
 
 ---
 
-# Google Analytics
+# Google Analytics &amp; HubSpot
 
-The GA4 tag (`G-8WRB5DG3ND`) is already in the `<head>` of all 11 pages — nothing to add.
+Both tracking scripts are already in the `&lt;head&gt;` of all 11 pages — nothing to add.
 
-**It only reports from the live domain.** Opening the files locally sends nothing useful.
-After publishing, check **GA4 → Reports → Realtime** and load a page or two to confirm.
+- **GA4** — `G-8WRB5DG3ND`
+- **HubSpot** — portal `443334090` (js-ap1)
 
-Because the site is multi-page (not a single-page app), GA counts each page load
-automatically. No extra event configuration is needed for basic visitor tracking.
+**Both only report from the live domain.** Opening the files locally sends nothing useful.
+After publishing, check **GA4 → Reports → Realtime**, and in HubSpot **Settings → Tracking
+&amp; Analytics → Tracking Code**, where the install status should flip to active once a real
+page view comes through.
 
-If you later want to see contact-form submissions as a conversion, that needs one extra
-line in `contact.html` — ask and it can be added.
+Because the site is multi-page (not a single-page app), page views are counted
+automatically. No extra event configuration is needed.
+
+## Contact form → HubSpot CRM
+The Worker now creates a HubSpot contact **as well as** emailing you. Two steps to switch on:
+
+1. HubSpot → Marketing → **Forms** → Create form → **Embedded form**.
+   Add fields: `email`, `firstname`, `lastname`, `phone`, `company`, `jobtitle`, `message`.
+   Publish, then **Share** — the embed snippet contains `formId: "xxxxxxxx-xxxx-…"`.
+2. Cloudflare → your Worker → **Settings → Variables** → add a plain variable (not a secret)
+   named `HUBSPOT_FORM_GUID` with that value. Redeploy.
+
+Until that variable is set the Worker skips HubSpot and just emails — nothing breaks.
+A HubSpot failure never blocks the email either; you always get the enquiry.
+
+The form also passes the visitor's `hubspotutk` cookie, so a submission attaches to their
+existing page-view history rather than creating a contact with no context.
 
 ---
 

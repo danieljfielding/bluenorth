@@ -31,6 +31,9 @@
   gtag('js', new Date());
   gtag('config', 'G-8WRB5DG3ND');
 </script>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-ap1.hs-scripts.com/443334090.js"></script>
+<!-- End of HubSpot Embed Code -->
 </head>
 <body>
 <x-dc>
@@ -229,11 +232,14 @@ class Component extends DCLogic {
     }
 
     this.setState({ sending: true, status: null, statusMsg: '' });
+    // hubspotutk links this enquiry to the visitor's existing HubSpot page-view
+    // history. The cookie is first-party, so only this page can read it.
+    const hutk = (document.cookie.match(/hubspotutk=([^;]+)/) || [])[1];
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(d),
+        body: JSON.stringify({ ...d, hutk: hutk || '', page_uri: window.location.href }),
       });
       const json = await res.json().catch(() => ({}));
       if (res.ok && json.success !== false) {
