@@ -62,6 +62,21 @@ Submit the form on the live site. Success looks like a pale blue panel:
 
 ---
 
+# Google Analytics
+
+The GA4 tag (`G-8WRB5DG3ND`) is already in the `<head>` of all 11 pages — nothing to add.
+
+**It only reports from the live domain.** Opening the files locally sends nothing useful.
+After publishing, check **GA4 → Reports → Realtime** and load a page or two to confirm.
+
+Because the site is multi-page (not a single-page app), GA counts each page load
+automatically. No extra event configuration is needed for basic visitor tracking.
+
+If you later want to see contact-form submissions as a conversion, that needs one extra
+line in `contact.html` — ask and it can be added.
+
+---
+
 # SEO — what's in place
 
 Per page: unique `<title>` and meta description, canonical URL, Open Graph and Twitter card
