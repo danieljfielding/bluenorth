@@ -21,8 +21,8 @@
 </helmet>
 
 <header style="position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,0.94); backdrop-filter: saturate(1.2) blur(6px); border-bottom: 1px solid var(--border-default); font-family: var(--font-body);">
-  <nav style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 3.2vw, 40px); height: 92px; display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 2.6vw, 32px);">
-    <a href="index.html" style="display: flex; align-items: center;"><img src="assets/logo-primary.png" alt="BlueNorth" style="height: 56px; width: auto; display: block;"></a>
+  <nav style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 3.2vw, 40px); height: 76px; display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 2.6vw, 32px);">
+    <a href="index.html" style="display: flex; align-items: center;"><img src="assets/logo-primary.png" alt="BlueNorth" style="height: 40px; width: auto; display: block;"></a>
     <div data-r="navlinks" style="display: flex; align-items: center; gap: 20px;">
       <sc-for list="{{ items }}" as="item" hint-placeholder-count="5">
         <a href="{{ item.href }}" style="{{ item.css }}" style-hover="color: var(--polaris-blue);">{{ item.label }}</a>
