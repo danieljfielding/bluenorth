@@ -36,10 +36,6 @@
           <div style="font-family: var(--font-mono); font-size: 22px; color: var(--polaris-blue);">5</div>
           <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Learning pathways</div>
         </div>
-        <div>
-          <div style="font-family: var(--font-mono); font-size: 22px; color: var(--polaris-blue);">90</div>
-          <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">SkillsMap questions</div>
-        </div>
       </div>
     </div>
     <button type="button" onClick="{{ openModal }}" style="display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 30px; border-radius: 8px; border: 0; background: var(--action-primary); color: var(--white); font-family: var(--font-body); font-size: 16px; font-weight: 600; cursor: pointer; white-space: nowrap;" style-hover="background: var(--action-primary-hover);">Explore the programs <span style="font-family: var(--font-mono);">&rarr;</span></button>
@@ -66,10 +62,6 @@
       <div>
         <div style="font-family: var(--font-mono); font-size: clamp(21px, 2.1vw, 26px); color: var(--polaris-blue);">14</div>
         <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Programs</div>
-      </div>
-      <div>
-        <div style="font-family: var(--font-mono); font-size: clamp(21px, 2.1vw, 26px); color: var(--polaris-blue);">90</div>
-        <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">SkillsMap questions</div>
       </div>
       <div>
         <div style="font-family: var(--font-mono); font-size: clamp(21px, 2.1vw, 26px); color: var(--polaris-blue);">10</div>
@@ -165,7 +157,7 @@
   <div style="margin-top: 20px; background: var(--surface-inverse); border-radius: 12px; padding: 28px clamp(16px, 2.6vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(16px, 2.6vw, 32px);">
     <div>
       <div style="font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--white); margin-bottom: 6px;">SkillsMap assessment</div>
-      <p style="font-size: 14px; color: var(--mist); margin: 0;">90 questions across 10 competency domains, with individual and team reporting before the workshop.</p>
+      <p style="font-size: 14px; color: var(--mist); margin: 0;">Assessment across 10 competency domains, with individual and team reporting before the workshop.</p>
     </div>
     <div>
       <div style="font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--white); margin-bottom: 6px;">Matching eLearning module</div>
@@ -197,10 +189,10 @@ const COURSES = [
     outcomes: ['Baseline a category and define clear sourcing objectives', 'Select the right route to market for a given spend category', 'Apply structured evaluation methods to select suppliers', 'Carry a sourcing outcome through to a well-managed contract'],
     toolkit: 'SkillsMap + sourcing plan template' },
   { id: 'category', name: 'Category Management', days: 2, cohort: 16, suited: 'Category managers',
-    desc: 'An intensive, tools-based program to build and lead category strategies that deliver long-term value — a key domain of the BlueNorth Competency Framework.',
+    desc: 'An intensive, tools-based program to build and lead category strategies that deliver long-term value — a key domain of the bluenorth Competency Framework.',
     modules: ['Introduction to category management and the CM model (Day 1)', 'Category baselining and spend cube analysis (Day 1)', 'Understanding the business need (Day 1)', "Supply market analysis — PESTLE and Porter's Five Forces (Day 1)", 'Supply chain and risk analysis (Day 2)', 'Strategy tools — supply positioning and preferencing (Day 2)', 'Developing and structuring the category strategy (Day 2)', 'Gaining sponsorship and category governance (Day 2)'],
     outcomes: ['Build a category strategy from spend and market analysis through to a governed plan', 'Apply supply positioning and customer preferencing tools to shape strategy', 'Identify, assess and manage category risk', 'Secure stakeholder sponsorship for the finished strategy'],
-    toolkit: 'SkillsMap + BlueNorth category strategy template' },
+    toolkit: 'SkillsMap + bluenorth category strategy template' },
   { id: 'commercial', name: 'Commercial Modelling', days: 1, cohort: 16, suited: 'Commercial analysts',
     desc: 'Practical tools to build cost models, test pricing structures and evaluate commercial proposals with rigour.',
     modules: ['Introduction to commercial modelling and spreadsheet discipline', 'Total cost of ownership and whole-of-life costing', 'Should-cost modelling — cost drivers and fair margin', 'Understanding pricing models — fixed, cost-plus, value-based', 'Proposal and tender evaluation, bid sheet design', 'Standardising and cleansing supplier data for comparison', 'Rise-and-fall pricing, CPI and indexing considerations'],
@@ -227,7 +219,7 @@ const COURSES = [
     outcomes: ['Recognise legal risk in contract formation and how to avoid it', 'Identify and negotiate the clauses that matter most', 'Understand available remedies and dispute resolution paths', 'Apply legal awareness to day-to-day supplier contracting'],
     toolkit: 'SkillsMap + contract clause checklist' },
   { id: 'negotiation', name: 'Negotiation', days: 2, cohort: 12, suited: 'Anyone at the table',
-    desc: 'An intensive program moving participants from negotiation fundamentals to advanced commercial practice, validated through live role-play — a key domain of the BlueNorth Competency Framework.',
+    desc: 'An intensive program moving participants from negotiation fundamentals to advanced commercial practice, validated through live role-play — a key domain of the bluenorth Competency Framework.',
     modules: ['The negotiation process and stakeholder analysis (Day 1)', 'Preparation and planning — objectives, BATNA and ZOPA (Day 1)', 'Sources of power in commercial negotiation (Day 1)', 'Methods of persuasion and influence (Day 1)', 'Negotiation styles, ploys and tactics (Day 2)', 'Non-verbal behaviour and detecting influence attempts (Day 2)', 'Building an advanced, strategic negotiation plan (Day 2)', 'Role-play with one-to-one tutor feedback (Day 2)'],
     outcomes: ['Plan and execute a structured negotiation from objectives through to close', 'Apply a range of influence and persuasion techniques', "Recognise and respond to the other party's tactics", 'Demonstrate negotiation skill through validated role-play'],
     toolkit: 'SkillsMap + negotiation planning template' },
@@ -247,7 +239,7 @@ const COURSES = [
     outcomes: ['Apply a structured risk management process to a procurement category', 'Build and maintain a practical, living risk register', 'Identify supply chain vulnerabilities before they crystallise', 'Embed risk thinking into everyday sourcing decisions'],
     toolkit: 'SkillsMap + risk register template' },
   { id: 'probity', name: 'Probity', days: 1, cohort: 16, suited: 'Public sector and regulated',
-    desc: 'Defines probity and its risks across the procurement lifecycle, equipping participants to protect integrity in every decision — a key domain of the BlueNorth Competency Framework.',
+    desc: 'Defines probity and its risks across the procurement lifecycle, equipping participants to protect integrity in every decision — a key domain of the bluenorth Competency Framework.',
     modules: ['Defining probity and probity risk', 'Corruption, maladministration and waste', 'Probity in evaluation, negotiation and selection', 'Probity in contract management', 'Conflicts of interest, confidentiality and honesty', 'Gifts, hospitality and the use of advisors and auditors', 'Building probity into governance and everyday behaviour'],
     outcomes: ['Identify probity risk at every stage of the procurement lifecycle', 'Manage conflicts of interest and gifts/hospitality appropriately', 'Apply probity requirements to evaluation and negotiation', 'Build a probity plan for a significant procurement'],
     toolkit: 'SkillsMap + probity plan checklist' },
