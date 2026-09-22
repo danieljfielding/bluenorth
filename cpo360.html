@@ -85,7 +85,7 @@
         </div>
       </div>
       <div style="background: var(--deep-polaris); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; box-shadow: 0 30px 60px rgba(10,18,35,0.5); overflow: hidden; line-height: 0;">
-        <video src="assets/cpo360-hero.mp4" autoplay muted loop playsinline controls controlslist="nodownload noremoteplayback" disablepictureinpicture preload="metadata" aria-label="CPO360 platform walkthrough" style="width: 100%; height: auto; display: block;"></video>
+        <video ref="{{ heroVideo }}" src="assets/cpo360-hero.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" controls="{{ true }}" controlsList="nodownload noremoteplayback" disablePictureInPicture="{{ true }}" preload="metadata" aria-label="CPO360 platform walkthrough" style="width: 100%; height: auto; display: block;"></video>
       </div>
     </div>
   </section>
@@ -307,5 +307,22 @@
 
 </div>
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  heroVideo = React.createRef();
+  componentDidMount() {
+    const v = this.heroVideo.current;
+    if (!v) return;
+    v.muted = true;
+    v.loop = true;
+    v.controls = true;
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
+  }
+  renderVals() {
+    return { heroVideo: this.heroVideo };
+  }
+}
+</script>
 </body>
 </html>
