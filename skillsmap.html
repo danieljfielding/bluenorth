@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<title>Free SkillsMap assessment | bluenorth</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E1A33">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8WRB5DG3ND"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8WRB5DG3ND');
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/colors.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/typography.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/tokens/base.css">
+<link rel="stylesheet" href="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/styles.css">
+<link rel="stylesheet" href="responsive.css">
+<meta name="robots" content="noindex, nofollow">
+<script src="_ds/bluenorth-design-system-3d5da555-e921-45ea-af6e-2b43b6cb46ad/_ds_bundle.js"></script>
+<style>
+  h1, h2, h3, h4 { overflow-wrap: break-word; }
+  body { margin: 0; background: var(--surface-page); }
+  a { color: var(--text-link); text-decoration: none; }
+  a:hover { color: var(--polaris-blue); }
+</style>
+</helmet>
+
+<div style="font-family: var(--font-body); color: var(--text-body); background: var(--surface-page); font-size: 16px; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column;">
+
+  <section data-screen-label="SkillsMap hero" style="background: radial-gradient(120% 100% at 0% 0%, #1c386a, #0E1A33); position: relative; overflow: hidden;">
+    <img src="assets/mark-white.png" alt="" style="position: absolute; right: -90px; top: -60px; width: 320px; opacity: 0.08;">
+    <div style="position: relative; max-width: 640px; margin: 0 auto; padding: 28px clamp(20px, 5vw, 40px) clamp(48px, 8vw, 72px);">
+      <a href="index.html" style="display: inline-block; margin-bottom: clamp(40px, 7vw, 64px);"><img src="assets/logo-reverse.png" alt="bluenorth" style="height: 30px; display: block;"></a>
+      <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 16px;">CPO360 &middot; SkillsMap</div>
+      <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin: 0 0 18px; text-wrap: pretty;">Claim your free SkillsMap assessment.</h1>
+      <p style="font-size: 17px; color: var(--aurora); margin: 0; text-wrap: pretty;">Benchmark your procurement skills across 10 competencies in 90 questions. Register below and we will email your login details.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Register" style="flex: 1;">
+    <div style="max-width: 640px; margin: 0 auto; padding: clamp(32px, 6vw, 56px) clamp(20px, 5vw, 40px) clamp(48px, 8vw, 80px);">
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form ref="{{ formRef }}" onSubmit="{{ onSubmit }}" noValidate="{{ true }}" style="display: grid; gap: 20px;">
+          <div data-r="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;">
+            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="First name" name="first_name" required="{{ true }}" autoComplete="given-name" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Last name" name="last_name" required="{{ true }}" autoComplete="family-name" hint-size="100%,72px"></x-import>
+          </div>
+          <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Work email" name="email" type="email" required="{{ true }}" autoComplete="email" placeholder="jane@organisation.com.au" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Organisation" name="organisation" required="{{ true }}" autoComplete="organization" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Role / job title" name="role" autoComplete="organization-title" placeholder="Category Manager" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="DesignSystem_3d5da5.Input" label="Phone" name="phone" type="tel" autoComplete="tel" placeholder="+61 4XX XXX XXX" hint-size="100%,72px"></x-import>
+
+          <sc-if value="{{ statusMsg }}" hint-placeholder-val="{{ false }}">
+            <div style="display: block; font-size: 15px; padding: 16px 18px; border-radius: 8px; background: #FCEDEC; color: #8E2A24; border: 1px solid #E8615C;">
+              <span>{{ statusMsg }}</span>
+              <sc-if value="{{ showMailto }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ mailtoHref }}" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; height: 44px; padding: 0 18px; border-radius: 8px; background: var(--polaris-blue); color: var(--white); font-size: 14px; font-weight: 600;" style-hover="background: var(--deep-polaris); color: var(--white);">Send as email instead</a>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <button type="submit" disabled="{{ sending }}" style="font-family: var(--font-body); font-size: 16px; font-weight: 600; height: 52px; width: 100%; border-radius: 8px; border: 0; background: var(--action-primary); color: var(--white); cursor: pointer; margin-top: 4px;" style-hover="background: var(--action-primary-hover);">{{ submitLabel }}</button>
+          <p style="font-size: 13px; color: var(--text-subtle); margin: 0; text-align: center;">We respect your privacy. Your details will never be shared with third parties.</p>
+        </form>
+      </sc-if>
+
+      <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+        <div style="background: var(--surface-card); border: 1px solid var(--border-default); border-radius: 12px; padding: clamp(28px, 5vw, 40px); display: grid; gap: 14px;">
+          <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aurora-teal);">You are registered</div>
+          <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 4.4vw, 30px); line-height: 1.15; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0;">Thank you, {{ firstName }}.</h2>
+          <p style="font-size: 16px; margin: 0;">We will email your SkillsMap login details to <strong style="font-weight: 600; color: var(--text-strong);">{{ email }}</strong> shortly. If it does not arrive, check your junk folder or contact <a href="mailto:hello@bluenorth.com.au">hello@bluenorth.com.au</a>.</p>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid var(--border-default); background: var(--surface-page);">
+    <div style="max-width: 640px; margin: 0 auto; padding: 20px clamp(20px, 5vw, 40px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; font-size: 13px; color: var(--text-subtle);">
+      <span>&copy; 2026 <strong style="font-weight: 700;">bluenorth</strong></span>
+      <a href="index.html">bluenorth.com.au</a>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const FORM_ENDPOINT = 'https://bluenorth-contact.danieljfielding.workers.dev';
+const FALLBACK_EMAIL = 'hello@bluenorth.com.au';
+const REQUEST = 'Free SkillsMap assessment (event QR registration)';
+
+class Component extends DCLogic {
+  state = { sending: false, done: false, statusMsg: '', firstName: '', email: '' };
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+    if (this.state.sending || !this.formEl) return;
+    const fd = new FormData(this.formEl);
+    const get = (k) => (fd.get(k) || '').toString().trim();
+    const d = { first_name: get('first_name'), last_name: get('last_name'), email: get('email'), organisation: get('organisation'), role: get('role'), phone: get('phone') };
+    const missing = [];
+    if (!d.first_name) missing.push('first name');
+    if (!d.last_name) missing.push('last name');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) missing.push('a valid work email');
+    if (!d.organisation) missing.push('organisation');
+    if (missing.length) { this.setState({ statusMsg: 'Please add ' + missing.join(', ') + '.' }); this.mailtoHref = ''; return; }
+
+    const payload = { ...d, sector: '', interests: REQUEST, message: 'Please send me login details for my free SkillsMap assessment.' };
+    const summary = ['Request: ' + REQUEST, 'Name: ' + d.first_name + ' ' + d.last_name, 'Email: ' + d.email, 'Organisation: ' + d.organisation, d.role ? 'Role: ' + d.role : null, d.phone ? 'Phone: ' + d.phone : null].filter(Boolean).join('\n');
+    this.setState({ sending: true, statusMsg: '' });
+    const hutk = (document.cookie.match(/hubspotutk=([^;]+)/) || [])[1];
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...payload, hutk: hutk || '', page_uri: window.location.href }) });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || json.success === false) throw new Error(json.message || 'Request failed');
+      this.setState({ sending: false, done: true, firstName: d.first_name, email: d.email });
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (x) {}
+    } catch (err) {
+      this.mailtoHref = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent('SkillsMap free assessment — ' + d.first_name + ' ' + d.last_name) + '&body=' + encodeURIComponent(summary);
+      this.setState({ sending: false, statusMsg: 'We could not send that just now. Send it as an email instead and we will set you up.' });
+    }
+  };
+
+  renderVals() {
+    const { sending, done, statusMsg, firstName, email } = this.state;
+    return {
+      formRef: (el) => { this.formEl = el; },
+      onSubmit: this.onSubmit,
+      sending,
+      submitLabel: sending ? 'Registering…' : 'Register for free access',
+      showForm: !done,
+      done,
+      statusMsg,
+      showMailto: !!this.mailtoHref && !!statusMsg,
+      mailtoHref: this.mailtoHref || ('mailto:' + FALLBACK_EMAIL),
+      firstName,
+      email,
+    };
+  }
+}
+</script>
+</body>
+</html>
