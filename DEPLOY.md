@@ -1,109 +1,28 @@
-# Deploying to danieljfielding/bluenorth
+# bluenorth website update (14 November 2026)
 
-Copy the **contents** of this folder into the repo root on `main`.
-**Except `worker/`** — that is server code, already deployed to Cloudflare. Don't publish it.
+Copy the contents of this folder into the root of the `danieljfielding/bluenorth` repo on `main`, overwriting existing files.
 
-## Why an earlier attempt rendered unstyled
-GitHub Pages runs Jekyll by default, and **Jekyll excludes any file or folder whose name
-starts with an underscore**. The design-system folder used to be `_ds/`, so the fonts, colours
-and component styles were never published — hence serif text and black-on-navy.
+## What is in this package
 
-Fixed two ways in this build:
-- the folder is now `ds/` and the bundle is `ds/ds-bundle.js` (no underscores anywhere)
-- a `.nojekyll` file is included, which disables Jekyll entirely
+**Updated pages:** `index.html`, `about.html`, `services.html`, `contact.html`, `skillsmap.html`
 
-`.nojekyll` is a **hidden file**. If you drag-and-drop through Finder or Explorer it may not
-come across — enable hidden files, or use `git add -A` from the command line. The site works
-without it thanks to the rename, but including it is safer.
+**New service pages:** `procurement-transformation.html`, `value-accelerator.html`, `procurement-diagnostic.html`, `capability-development.html`, `social-procurement.html`, `mentoring.html`
 
-## Do NOT delete these existing repo files
-- `CNAME` — holds the custom domain. Removing it drops the domain from GitHub Pages.
-- `favicon.ico`, `favicon.png`, `apple-touch-icon.png` — every page links to them.
+**Shared fragments** (keep these exact file names, spaces included): `Site Nav.dc.html` (new mega menu), `Site Footer.dc.html`, `Value Compass.dc.html` (new, used by the Value Accelerator page)
 
-## Overwrites
-`index.html`, `about.html`, `contact.html`, `cpo360.html`
+**Site-wide style:** `responsive.css` (new editorial look: serif headings, plain labels, no watermarks)
 
-## New pages
-`services.html`, `commitment.html`, `team.html`
+**Assets:** `assets/hero-balloons.mp4` (desktop), `assets/hero-balloons-mobile.mp4`, `assets/hero-balloons-poster.jpg`
 
-## New supporting files
-`assets/`, `ds/`, `support.js`, `aurora-hero.js`, `robots.txt`, `sitemap.xml`, `.nojekyll`,
-`Site Nav.dc.html`, `Site Footer.dc.html`, `Training Explorer.dc.html`
+**SEO:** `sitemap.xml` (now lists the six new service pages)
 
-The last three are shared page fragments (nav, footer, training explorer) — **keep those
-filenames exactly as-is**, including the spaces. Every page loads them by name.
+## Leave these existing repo files in place
+- `ds/`, `support.js`, `assets/` (logos, photos, insight images, CPO360 video), `Training Explorer.dc.html`
+- `cpo360.html`, `team.html`, `commitment.html`, `insights.html`, the three `insight-*.html` articles. These pick up the new menu, footer and look automatically.
+- `CNAME`, `favicon.ico`, `favicon.png`, `apple-touch-icon.png`, `.nojekyll`, `robots.txt`
+- `aurora-hero.js` is no longer used by the home page and can be deleted later.
 
-## Safe to delete after confirming the new site works
-`css/`, `js/`, `images/` — no longer referenced.
-
----
-
-# Contact form — live
-
-The form posts to your Cloudflare Worker, which sends via Resend to
-**hello@bluenorth.com.au**, with reply-to set to the visitor so you can just hit reply.
-
-- Endpoint: `https://bluenorth-contact.danieljfielding.workers.dev`
-  (already set as `FORM_ENDPOINT` in `contact.html` — nothing to edit)
-- Worker source: `worker/contact-worker.js` — keep for reference, don't publish
-- To change the recipient, edit `TO` at the top of the Worker and redeploy
-
-### If submissions don't arrive
-1. **Resend → Domains** — `bluenorth.com.au` must show **Verified**. Until the GoDaddy DNS
-   records propagate, Resend rejects the send and the visitor sees
-   "Could not send. Please email hello@bluenorth.com.au." That's expected, not a bug.
-2. **Cloudflare → your Worker → Logs** shows the exact Resend error.
-3. Check `RESEND_API_KEY` is set as a **Secret** under Settings → Variables.
-4. Check spam/junk on the first one.
-
-### Test it
-Submit the form on the live site. Success looks like a pale blue panel:
-"Thank you — your message is on its way."
-
----
-
-# Google Analytics &amp; HubSpot
-
-Both tracking scripts are already in the `&lt;head&gt;` of all 11 pages — nothing to add.
-
-- **GA4** — `G-8WRB5DG3ND`
-- **HubSpot** — portal `443334090` (js-ap1)
-
-**Both only report from the live domain.** Opening the files locally sends nothing useful.
-After publishing, check **GA4 → Reports → Realtime**, and in HubSpot **Settings → Tracking
-&amp; Analytics → Tracking Code**, where the install status should flip to active once a real
-page view comes through.
-
-Because the site is multi-page (not a single-page app), page views are counted
-automatically. No extra event configuration is needed.
-
-## Contact form → HubSpot CRM
-The Worker now creates a HubSpot contact **as well as** emailing you. Two steps to switch on:
-
-1. HubSpot → Marketing → **Forms** → Create form → **Embedded form**.
-   Add fields: `email`, `firstname`, `lastname`, `phone`, `company`, `jobtitle`, `message`.
-   Publish, then **Share** — the embed snippet contains `formId: "xxxxxxxx-xxxx-…"`.
-2. Cloudflare → your Worker → **Settings → Variables** → add a plain variable (not a secret)
-   named `HUBSPOT_FORM_GUID` with that value. Redeploy.
-
-Until that variable is set the Worker skips HubSpot and just emails — nothing breaks.
-A HubSpot failure never blocks the email either; you always get the enquiry.
-
-The form also passes the visitor's `hubspotutk` cookie, so a submission attaches to their
-existing page-view history rather than creating a contact with no context.
-
----
-
-# SEO — what's in place
-
-Per page: unique `<title>` and meta description, canonical URL, Open Graph and Twitter card
-tags, `lang="en-AU"`. Site-wide: `robots.txt`, `sitemap.xml`, `assets/og-image.png` for link
-previews, and Organization + founder structured data on the home page.
-
-After publishing, submit `https://bluenorth.com.au/sitemap.xml` in **Google Search Console**
-to speed up indexing of the three new pages.
-
-### One known limitation
-Pages render their content with JavaScript. Google handles this fine, but Bing and some social
-scrapers are weaker at it. If organic search becomes a priority, the pages can be flattened to
-plain static HTML — ask and it can be done as a follow-up.
+## After publishing
+1. Open the live site and check the Services menu, each new service page and the home page video on desktop and phone.
+2. Submit `https://bluenorth.com.au/sitemap.xml` in Google Search Console and request indexing for the six new service pages.
+3. Old links such as `services.html#learning` redirect to the matching new page automatically.

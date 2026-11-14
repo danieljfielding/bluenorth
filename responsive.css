@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap');
+
 /* BlueNorth — responsive layer.
    Only what cannot be expressed inline: viewport-conditional layout.
    Elements opt in via data-r; !important is required to beat inline styles. */
@@ -71,3 +73,49 @@ img, svg, canvas { max-width: 100%; }
 @media (max-width: 900px) {
   [data-r~="exlist"] { max-height: 260px !important; }
 }
+
+/* ============================================================
+   Editorial layer (Nov 2026): one look across every page.
+   Serif display type, sentence-case labels, no watermarks or
+   gradients, quieter corners. Applies to all pages that load
+   this file; inline styles are overridden with !important.
+   ============================================================ */
+
+:root {
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+}
+
+/* Serif headings: lighter weight and tracking suit a serif */
+h1, h2, h3,
+[style*="font-family: var(--font-display)"][style*="font-weight: 700"] {
+  font-weight: 500 !important;
+}
+[style*="font-family: var(--font-display)"][style*="letter-spacing: -0.03em"],
+[style*="font-family: var(--font-display)"][style*="letter-spacing: -0.02em"] {
+  letter-spacing: -0.01em !important;
+}
+
+/* Small caps-and-mono labels become plain sentence-case labels */
+[style*="font-family: var(--font-mono)"][style*="text-transform: uppercase"] {
+  font-family: var(--font-body) !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+/* No logo watermarks; no decorative gradients (Home hero opts out) */
+img[src$="mark-white.png"], img[src$="mark-navy.png"] { display: none !important; }
+[style*="radial-gradient"]:not([data-keep]) { background: var(--polaris-blue) !important; }
+
+/* Icon tiles add nothing; drop them */
+div:has(> i[data-lucide]), div:has(> svg.lucide) { display: none !important; }
+
+/* Arrow glyphs on buttons and links */
+a > span[style="font-family: var(--font-mono);"] { display: none !important; }
+
+/* Quieter corners: square-ish buttons, softer cards */
+a[style*="border-radius: 8px"][style*="font-weight: 600"],
+button[style*="border-radius: 8px"] { border-radius: 4px !important; }
+[style*="border-radius: 12px"] { border-radius: 6px !important; }

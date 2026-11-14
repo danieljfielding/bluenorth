@@ -17,15 +17,22 @@
 <link rel="stylesheet" href="responsive.css">
 <script src="ds/ds-bundle.js"></script>
 <style>
-  h1, h2, h3, h4 { overflow-wrap: break-word; }a { text-decoration: none; }</style>
+  h1, h2, h3, h4 { overflow-wrap: break-word; }a { text-decoration: none; }
+  @media (max-width: 900px) { [data-r~="mega"] { display: none !important; } }
+  @media (max-width: 1040px) { [data-r~="megagrid"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+</style>
 </helmet>
 
-<header style="position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,0.94); backdrop-filter: saturate(1.2) blur(6px); border-bottom: 1px solid var(--border-default); font-family: var(--font-body);">
-  <nav style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 3.2vw, 40px); height: 76px; display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 2.6vw, 32px);">
-    <a href="index.html" style="display: flex; align-items: center;"><img src="assets/logo-primary.png" alt="bluenorth" style="height: 40px; width: auto; display: block;"></a>
+<header onMouseLeave="{{ closeMega }}" style="position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,0.97); backdrop-filter: saturate(1.2) blur(6px); border-bottom: 1px solid var(--border-default); font-family: var(--font-body);">
+  <nav aria-label="Main" style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 3.2vw, 40px); height: 76px; display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 2.6vw, 32px);">
+    <a href="./" style="display: flex; align-items: center;"><img src="assets/logo-primary.png" alt="bluenorth home" style="height: 40px; width: auto; display: block;"></a>
     <div data-r="navlinks" style="display: flex; align-items: center; gap: 20px;">
-      <sc-for list="{{ items }}" as="item" hint-placeholder-count="5">
-        <a href="{{ item.href }}" style="{{ item.css }}" style-hover="color: var(--polaris-blue);">{{ item.label }}</a>
+      <sc-for list="{{ before }}" as="item" hint-placeholder-count="2">
+        <a href="{{ item.href }}" onMouseEnter="{{ closeMega }}" style="{{ item.css }}" style-hover="color: var(--polaris-blue);">{{ item.label }}</a>
+      </sc-for>
+      <button type="button" onClick="{{ toggleMega }}" onMouseEnter="{{ openMega }}" aria-expanded="{{ megaExpanded }}" aria-controls="bn-mega" style="{{ servicesCss }}">Services <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="{{ chevronCss }}"><path d="M6 9l6 6 6-6"></path></svg></button>
+      <sc-for list="{{ after }}" as="item" hint-placeholder-count="4">
+        <a href="{{ item.href }}" onMouseEnter="{{ closeMega }}" style="{{ item.css }}" style-hover="color: var(--polaris-blue);">{{ item.label }}</a>
       </sc-for>
       <a href="contact.html" style="display: inline-flex; align-items: center; height: 42px; padding: 0 20px; border-radius: 8px; background: var(--action-primary); color: var(--white); font-size: 14px; font-weight: 600; white-space: nowrap;" style-hover="background: var(--action-primary-hover); color: var(--white);">Contact us</a>
     </div>
@@ -37,31 +44,101 @@
       </span>
     </button>
   </nav>
+
+  <!-- Services mega menu (desktop) -->
+  <div id="bn-mega" data-r="mega" style="{{ megaCss }}">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 28px clamp(20px, 3.2vw, 40px) 32px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr); gap: 28px;">
+      <div data-r="megagrid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 24px;">
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); padding: 0 12px 10px; margin-bottom: 6px; border-bottom: 1px solid var(--border-subtle);">{{ g.title }}</div>
+            <sc-for list="{{ g.links }}" as="l" hint-placeholder-count="2">
+              <a href="{{ l.href }}" style="display: block; padding: 12px; border-radius: 8px;" style-hover="background: var(--surface-brand-soft);">
+                <span style="display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--polaris-blue); margin-bottom: 4px;">{{ l.label }}<sc-if value="{{ l.flag }}" hint-placeholder-val="{{ false }}"><span style="font-family: var(--font-mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--sky-blue); padding: 3px 6px; border-radius: 4px;">{{ l.flag }}</span></sc-if></span>
+                <span style="display: block; font-size: 13px; line-height: 1.5; color: var(--text-muted);">{{ l.desc }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <a href="cpo360.html" style="display: flex; flex-direction: column; justify-content: space-between; gap: 18px; background: var(--surface-inverse); border-radius: 12px; padding: 24px; position: relative; overflow: hidden;" style-hover="background: var(--deep-polaris);">
+        <img src="assets/mark-white.png" alt="" style="position: absolute; right: -40px; bottom: -50px; width: 170px; opacity: 0.08;">
+        <span style="position: relative; display: block;">
+          <span style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sun); margin-bottom: 10px;">Technology platform</span>
+          <span style="display: block; font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--white); margin-bottom: 8px;">CPO360</span>
+          <span style="display: block; font-size: 14px; line-height: 1.55; color: var(--aurora);">Every engagement runs on CPO360, so savings, maturity and capability are tracked in one Board-ready dashboard.</span>
+        </span>
+        <span style="position: relative; font-size: 14px; font-weight: 600; color: var(--sky-blue);">Explore the platform &rarr;</span>
+      </a>
+    </div>
+    <div style="border-top: 1px solid var(--border-subtle); background: var(--surface-page);">
+      <div style="max-width: 1240px; margin: 0 auto; padding: 14px clamp(20px, 3.2vw, 40px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px;">
+        <span style="color: var(--text-muted);">Not sure where to start? We will help you find the right entry point.</span>
+        <span style="display: flex; gap: 22px;">
+          <a href="services.html" style="font-weight: 600; color: var(--polaris-blue);">All services &rarr;</a>
+          <a href="contact.html" style="font-weight: 600; color: var(--glacier);">Talk to us &rarr;</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile sheet -->
   <div data-r="navpanel" style="{{ panelCss }}">
-    <sc-for list="{{ items }}" as="item" hint-placeholder-count="6">
+    <sc-for list="{{ before }}" as="item" hint-placeholder-count="2">
+      <a href="{{ item.href }}" style="{{ item.mobileCss }}">{{ item.label }}</a>
+    </sc-for>
+    <button type="button" onClick="{{ toggleSub }}" aria-expanded="{{ subExpanded }}" style="{{ mobileServicesCss }}">Services <span aria-hidden="true" style="font-family: var(--font-mono);">{{ subSign }}</span></button>
+    <sc-if value="{{ subOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="display: grid; padding: 4px 0 8px 14px; border-bottom: 1px solid var(--border-subtle);">
+        <a href="services.html" style="display: block; padding: 11px 4px; font-size: 15px; font-weight: 600; color: var(--polaris-blue);">All services</a>
+        <sc-for list="{{ flatLinks }}" as="l" hint-placeholder-count="6">
+          <a href="{{ l.href }}" style="display: block; padding: 11px 4px; font-size: 15px; color: var(--text-body);">{{ l.label }}</a>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-for list="{{ after }}" as="item" hint-placeholder-count="4">
       <a href="{{ item.href }}" style="{{ item.mobileCss }}">{{ item.label }}</a>
     </sc-for>
     <a href="contact.html" style="display: inline-flex; align-items: center; justify-content: center; height: 52px; margin-top: 8px; border-radius: 8px; background: var(--action-primary); color: var(--white); font-size: 16px; font-weight: 600;">Contact us</a>
   </div>
 </header>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;story&quot;,&quot;services&quot;,&quot;team&quot;,&quot;cpo360&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;story&quot;,&quot;services&quot;,&quot;cpo360&quot;,&quot;commitment&quot;,&quot;insights&quot;,&quot;team&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const SERVICE_GROUPS = [
+  { title: 'Transform', links: [
+    { label: 'Procurement transformation', href: 'procurement-transformation.html', flag: 'Integrated', desc: 'Diagnostic, Value Accelerator and capability development in one program.' },
+    { label: 'Procurement diagnostic', href: 'procurement-diagnostic.html', flag: '', desc: 'Benchmark maturity and design the right operating model.' },
+    { label: 'Value Accelerator', href: 'value-accelerator.html', flag: '', desc: 'Turn spend data into a pipeline of savings, then deliver them.' },
+  ]},
+  { title: 'Build capability', links: [
+    { label: 'Capability development', href: 'capability-development.html', flag: '', desc: 'SkillsMap assessment and 14 facilitated training programs.' },
+    { label: 'Mentoring & business capability', href: 'mentoring.html', flag: '', desc: 'Pro bono and low bono support for purpose-led businesses.' },
+  ]},
+  { title: 'Create impact', links: [
+    { label: 'Social & sustainable procurement', href: 'social-procurement.html', flag: '', desc: 'Social value, First Nations procurement, ESG and modern slavery.' },
+  ]},
+];
+
 class Component extends DCLogic {
-  state = { open: false };
+  state = { open: false, mega: false, sub: false };
+
+  componentDidMount() {
+    this.onKey = (e) => { if (e.key === 'Escape' && (this.state.mega || this.state.open)) this.setState({ mega: false, open: false }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); }
 
   renderVals() {
-    const open = this.state.open;
+    const { open, mega, sub } = this.state;
     const bar = 'display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--polaris-blue); transition: transform 200ms cubic-bezier(0.2,0,0.1,1), opacity 160ms;';
     const active = this.props.active || 'home';
-    const defs = [
-      ['home', 'Home', 'index.html'],
-      ['story', 'Our story', 'about.html'],
-      ['services', 'Services', 'services.html'],
-      ['cpo360', 'CPO360', 'cpo360.html'],
-      ['commitment', 'Commitment', 'commitment.html'],
-      ['insights', 'Insights', 'insights.html'],
-      ['team', 'Team', 'team.html'],
-    ];
+    const linkCss = (on) => on
+      ? 'white-space: nowrap; font-size: 14px; font-weight: 600; color: var(--polaris-blue); padding-bottom: 3px; border-bottom: 2px solid var(--sky-blue);'
+      : 'white-space: nowrap; font-size: 14px; font-weight: 500; color: var(--text-muted); padding-bottom: 3px; border-bottom: 2px solid transparent;';
+    const mobileCss = (on) => 'display: block; padding: 15px 4px; font-size: 17px; border-bottom: 1px solid var(--border-subtle); '
+      + (on ? 'font-weight: 600; color: var(--polaris-blue);' : 'font-weight: 500; color: var(--text-body);');
+    const mk = ([id, label, href]) => ({ id, label, href, css: linkCss(id === active), mobileCss: mobileCss(id === active) });
+    const svcOn = active === 'services';
     return {
       toggle: () => this.setState(s => ({ open: !s.open })),
       toggleLabel: open ? 'Close menu' : 'Open menu',
@@ -70,17 +147,36 @@ class Component extends DCLogic {
       bar2: bar + (open ? ' opacity: 0;' : ''),
       bar3: bar + (open ? ' transform: translateY(-7px) rotate(-45deg);' : ''),
       panelCss: 'display: ' + (open ? 'grid' : 'none')
-        + '; gap: 2px; padding: 8px 20px 20px; border-top: 1px solid var(--border-default); background: var(--white);',
-      items: defs.map(([id, label, href]) => ({
-        id, label, href,
-        mobileCss: 'display: block; padding: 15px 4px; font-size: 17px; border-bottom: 1px solid var(--border-subtle); '
-          + (id === active
-            ? 'font-weight: 600; color: var(--polaris-blue);'
-            : 'font-weight: 500; color: var(--text-body);'),
-        css: id === active
-          ? 'white-space: nowrap; font-size: 14px; font-weight: 600; color: var(--polaris-blue); padding-bottom: 3px; border-bottom: 2px solid var(--sky-blue);'
-          : 'white-space: nowrap; font-size: 14px; font-weight: 500; color: var(--text-muted); padding-bottom: 3px; border-bottom: 2px solid transparent;'
-      }))
+        + '; gap: 2px; padding: 8px 20px 20px; border-top: 1px solid var(--border-default); background: var(--white); max-height: calc(100vh - 76px); overflow-y: auto;',
+
+      before: [['home', 'Home', './'], ['story', 'Our story', 'about.html']].map(mk),
+      after: [
+        ['cpo360', 'CPO360', 'cpo360.html'],
+        ['commitment', 'Commitment', 'commitment.html'],
+        ['insights', 'Insights', 'insights.html'],
+        ['team', 'Team', 'team.html'],
+      ].map(mk),
+
+      openMega: () => { if (!this.state.mega) this.setState({ mega: true }); },
+      closeMega: () => { if (this.state.mega) this.setState({ mega: false }); },
+      toggleMega: () => this.setState(s => ({ mega: !s.mega })),
+      megaExpanded: mega ? 'true' : 'false',
+      servicesCss: 'display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; cursor: pointer; font-family: var(--font-body); padding: 0 0 3px; '
+        + (svcOn || mega
+          ? 'font-size: 14px; font-weight: 600; color: var(--polaris-blue); border-bottom: 2px solid var(--sky-blue);'
+          : 'font-size: 14px; font-weight: 500; color: var(--text-muted); border-bottom: 2px solid transparent;'),
+      chevronCss: 'transition: transform 200ms cubic-bezier(0.2,0,0.1,1);' + (mega ? ' transform: rotate(180deg);' : ''),
+      megaCss: 'display: ' + (mega ? 'block' : 'none')
+        + '; position: absolute; left: 0; right: 0; top: 100%; background: var(--white); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default); box-shadow: 0 24px 48px rgba(22,29,43,0.14);',
+      groups: SERVICE_GROUPS,
+
+      toggleSub: () => this.setState(s => ({ sub: !s.sub })),
+      subOpen: sub,
+      subExpanded: sub ? 'true' : 'false',
+      subSign: sub ? '−' : '+',
+      mobileServicesCss: 'display: flex; justify-content: space-between; align-items: center; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--border-subtle); padding: 15px 4px; font-family: var(--font-body); font-size: 17px; cursor: pointer; '
+        + (svcOn ? 'font-weight: 600; color: var(--polaris-blue);' : 'font-weight: 500; color: var(--text-body);'),
+      flatLinks: SERVICE_GROUPS.reduce((a, g) => a.concat(g.links), []),
     };
   }
 }

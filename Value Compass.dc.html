@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Value Compass</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/tokens/fonts.css">
+<link rel="stylesheet" href="ds/tokens/colors.css">
+<link rel="stylesheet" href="ds/tokens/typography.css">
+<link rel="stylesheet" href="ds/tokens/spacing.css">
+<link rel="stylesheet" href="ds/tokens/base.css">
+<link rel="stylesheet" href="ds/styles.css">
+<link rel="stylesheet" href="responsive.css">
+<script src="ds/ds-bundle.js"></script>
+<style>
+  h1, h2, h3, h4 { overflow-wrap: break-word; } a { text-decoration: none; }
+  @media (max-width: 560px) { [data-r~="seg"] { grid-template-columns: minmax(0, 1fr) !important; } }
+</style>
+</helmet>
+
+<div style="font-family: var(--font-body); color: var(--text-body); background: var(--white); border: 1px solid var(--border-default); border-radius: 14px; padding: clamp(20px, 3.2vw, 40px);">
+  <div data-r="stack" style="display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(24px, 3.9vw, 48px); align-items: start;">
+
+    <!-- Compass + readout -->
+    <div>
+      <svg viewBox="0 0 400 400" role="img" aria-label="{{ svgLabel }}" style="width: 100%; max-width: 440px; display: block; margin: 0 auto;">
+        <circle cx="200" cy="200" r="186" fill="#F7F7F4" stroke="#DCE0E5"></circle>
+        <sc-for list="{{ bgWedges }}" as="b" hint-placeholder-count="4">
+          <path d="{{ b.d }}" fill="{{ b.fill }}" opacity="0.14"></path>
+        </sc-for>
+        <circle cx="200" cy="200" r="72.5" fill="none" stroke="#DCE0E5" stroke-dasharray="3 4"></circle>
+        <circle cx="200" cy="200" r="105" fill="none" stroke="#DCE0E5" stroke-dasharray="3 4"></circle>
+        <circle cx="200" cy="200" r="137.5" fill="none" stroke="#DCE0E5" stroke-dasharray="3 4"></circle>
+        <sc-for list="{{ wedges }}" as="w" hint-placeholder-count="4">
+          <path d="{{ w.d }}" fill="{{ w.fill }}" opacity="0.85" style="transition: d 320ms cubic-bezier(0.2,0,0.1,1);"></path>
+        </sc-for>
+        <line x1="200" y1="30" x2="200" y2="370" stroke="#B5BCC4" stroke-width="1"></line>
+        <line x1="30" y1="200" x2="370" y2="200" stroke="#B5BCC4" stroke-width="1"></line>
+        <sc-for list="{{ labels }}" as="l" hint-placeholder-count="4">
+          <g>
+            <circle cx="{{ l.cx }}" cy="{{ l.cy }}" r="17" fill="{{ l.ink }}"></circle>
+            <text x="{{ l.cx }}" y="{{ l.ty }}" text-anchor="middle" style="font-family: var(--font-display);" font-weight="700" font-size="16" fill="#FFFFFF">{{ l.letter }}</text>
+          </g>
+        </sc-for>
+        <g style="{{ needleCss }}">
+          <polygon points="200,58 211,200 189,200" fill="#1F3A6B"></polygon>
+          <polygon points="200,342 211,200 189,200" fill="#B5BCC4"></polygon>
+        </g>
+        <circle cx="200" cy="200" r="34" fill="#FFFFFF" stroke="#1F3A6B" stroke-width="2"></circle>
+        <text x="200" y="196" text-anchor="middle" style="font-family: var(--font-mono);" font-size="16" fill="#1F3A6B">{{ untappedPct }}</text>
+        <text x="200" y="212" text-anchor="middle" style="font-family: var(--font-mono);" font-size="8" letter-spacing="1" fill="#5E6976">UNTAPPED</text>
+      </svg>
+
+      <div style="margin-top: 18px; padding: 18px 20px; border-radius: 12px; background: var(--surface-brand-soft);">
+        <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--polaris-blue); margin-bottom: 6px;">Your compass points to</div>
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.01em; color: var(--polaris-blue); margin-bottom: 8px;">{{ headline }}</div>
+        <p style="font-size: 15px; line-height: 1.6; color: var(--text-body); margin: 0;">{{ advice }}</p>
+      </div>
+
+      <div style="display: grid; gap: 10px; margin-top: 18px;">
+        <sc-for list="{{ bars }}" as="r" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 120px minmax(0, 1fr) 44px; gap: 12px; align-items: center;">
+            <span style="font-size: 14px; font-weight: 600; color: var(--polaris-blue);">{{ r.name }}</span>
+            <span style="display: block; height: 8px; border-radius: 999px; background: var(--ice); overflow: hidden;"><span style="{{ r.fillCss }}"></span></span>
+            <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-align: right;">{{ r.pct }}</span>
+          </div>
+        </sc-for>
+        <div style="font-size: 12px; color: var(--text-muted);">Share of untapped value in each direction. Indicative only.</div>
+      </div>
+    </div>
+
+    <!-- Lever assessment -->
+    <div>
+      <div role="tablist" aria-label="Compass directions" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-bottom: 18px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <button type="button" role="tab" aria-selected="{{ t.selected }}" onClick="{{ t.pick }}" style="{{ t.css }}">
+            <span style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;">{{ t.letter }}</span>
+            <span style="display: block; font-size: 14px; font-weight: 600;">{{ t.name }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="{{ dirHeadCss }}">
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 21px; color: var(--polaris-blue); margin-bottom: 4px;">{{ dir.question }}</div>
+        <p style="font-size: 15px; color: var(--text-muted); margin: 0;">{{ dir.blurb }}</p>
+      </div>
+
+      <div style="display: grid; gap: 4px;">
+        <sc-for list="{{ levers }}" as="lv" hint-placeholder-count="4">
+          <div style="padding: 16px 0; border-bottom: 1px solid var(--border-subtle);">
+            <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; margin-bottom: 4px;">
+              <span style="font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--polaris-blue);">{{ lv.name }}</span>
+              <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border-default); border-radius: 5px; padding: 3px 7px;">{{ lv.time }}</span>
+            </div>
+            <p style="font-size: 14px; color: var(--text-muted); margin: 0 0 10px;">{{ lv.desc }}</p>
+            <div data-r="seg" role="group" aria-label="{{ lv.groupLabel }}" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 3px; border-radius: 9px; background: var(--ice);">
+              <sc-for list="{{ lv.opts }}" as="o" hint-placeholder-count="3">
+                <button type="button" aria-pressed="{{ o.pressed }}" onClick="{{ o.pick }}" style="{{ o.css }}">{{ o.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px;">
+        <button type="button" onClick="{{ reset }}" style="font-family: var(--font-body); font-size: 14px; font-weight: 600; height: 42px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--border-default); background: var(--white); color: var(--polaris-blue); cursor: pointer;">Reset to example</button>
+        <a href="contact.html?interest=cost" style="display: inline-flex; align-items: center; gap: 10px; height: 42px; padding: 0 18px; border-radius: 8px; background: var(--action-primary); color: var(--white); font-size: 14px; font-weight: 600;" style-hover="background: var(--action-primary-hover); color: var(--white);">Discuss your result <span style="font-family: var(--font-mono);">&rarr;</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1160,"height":760}}'>
+const DIRS = [
+  { id: 'N', name: 'Need', angle: 0, color: '#D88A3E', ink: '#8A5A12',
+    question: 'Rethink what you buy',
+    blurb: 'Demand and specification levers change what and how much is bought. They take longer, but usually hold the largest share of long-term value.',
+    advice: 'Start with demand and specification reviews in your highest-spend categories. These levers usually hold the most long-term value and need budget holders at the table, not only procurement.',
+    levers: [
+      ['Demand management', 'Challenge volumes, frequency and service levels against genuine need.', 'Quick win'],
+      ['Specification simplification', 'Standardise and simplify requirements to widen the market and reduce cost.', 'Medium term'],
+      ['Value engineering and whole-of-life cost', 'Optimise design, materials and lifecycle cost rather than purchase price alone.', 'Structural'],
+      ['Make, buy or lease', 'Test the delivery model: in-house, outsourced, leased or as a service.', 'Structural'],
+    ] },
+  { id: 'E', name: 'Engage', angle: 90, color: '#5E89C9', ink: '#3B5C82',
+    question: 'Use the market',
+    blurb: 'Commercial levers change how you buy. They are the fastest route to savings and often fund the rest of the program.',
+    advice: 'Commercial levers are the quickest route to savings. Aggregating volume and running a structured market approach in priority categories delivers early wins that fund the wider program.',
+    levers: [
+      ['Aggregation and bundling', 'Consolidate volume across business units, sites and contracts.', 'Quick win'],
+      ['Competitive tension', 'Market testing, new suppliers and well-timed approaches to market.', 'Quick win'],
+      ['Negotiation and commercial terms', 'Pricing models, rebates, payment terms and performance incentives.', 'Quick win'],
+      ['Alternative sourcing', 'New supply markets, materials and supplier models.', 'Medium term'],
+    ] },
+  { id: 'S', name: 'Sustain', angle: 180, color: '#1F3A6B', ink: '#1F3A6B',
+    question: 'Protect value once contracted',
+    blurb: 'Value leaks after award through off-contract spend, variations and weak supplier management. These levers keep what you negotiated.',
+    advice: 'Value is leaking after contract award. Tightening compliance and supplier performance management protects savings already negotiated and stops price creep.',
+    levers: [
+      ['Contract compliance', 'Stop leakage from off-contract buying, price creep and unmanaged variations.', 'Quick win'],
+      ['Supplier performance and relationships', 'KPIs, reviews and relationship plans for critical suppliers.', 'Medium term'],
+      ['Supply risk and resilience', 'Dual sourcing, contingency planning and supplier development.', 'Medium term'],
+      ['Joint improvement and innovation', 'Work with key suppliers to take cost and waste out together.', 'Structural'],
+    ] },
+  { id: 'W', name: 'Wider value', angle: 270, color: '#3FA08C', ink: '#1F6E5E',
+    question: 'Create value beyond price',
+    blurb: 'Spend can deliver social, environmental and local outcomes alongside savings, increasingly expected by boards and government.',
+    advice: 'Your spend can deliver social and environmental outcomes alongside savings. Building them into category strategies strengthens tender outcomes and meets ESG and government commitments.',
+    levers: [
+      ['Social procurement', 'Social enterprise and First Nations participation through your spend.', 'Medium term'],
+      ['Environmental and carbon', 'Lower-emission alternatives, circular options and carbon in evaluation.', 'Structural'],
+      ['Local economic development', 'Local suppliers, jobs and regional capability.', 'Medium term'],
+      ['Supply chain integrity', 'Modern slavery and ethical sourcing assurance across tiers.', 'Medium term'],
+    ] },
+];
+const OPTS = ['Not yet', 'Partly', 'Embedded'];
+const EXAMPLE = { N: [0, 0, 0, 1], E: [1, 2, 1, 1], S: [1, 0, 1, 0], W: [0, 1, 1, 0] };
+
+const pt = (deg, r) => {
+  const a = deg * Math.PI / 180;
+  return [(200 + r * Math.sin(a)).toFixed(1), (200 - r * Math.cos(a)).toFixed(1)];
+};
+const wedge = (center, r0, r1) => {
+  const a0 = center - 45, a1 = center + 45;
+  const [x0, y0] = pt(a0, r0), [x1, y1] = pt(a0, r1), [x2, y2] = pt(a1, r1), [x3, y3] = pt(a1, r0);
+  return 'M' + x0 + ' ' + y0 + ' L' + x1 + ' ' + y1 + ' A' + r1 + ' ' + r1 + ' 0 0 1 ' + x2 + ' ' + y2
+    + ' L' + x3 + ' ' + y3 + ' A' + r0 + ' ' + r0 + ' 0 0 0 ' + x0 + ' ' + y0 + ' Z';
+};
+
+class Component extends DCLogic {
+  state = { tab: 'N', scores: JSON.parse(JSON.stringify(EXAMPLE)) };
+
+  renderVals() {
+    const { tab, scores } = this.state;
+    const R0 = 40, R1 = 170;
+    const gaps = DIRS.map(d => scores[d.id].reduce((a, v) => a + (2 - v), 0));
+    const max = DIRS[0].levers.length * 2;
+    const total = gaps.reduce((a, b) => a + b, 0);
+
+    let vx = 0, vy = 0;
+    DIRS.forEach((d, i) => { const a = d.angle * Math.PI / 180; vx += gaps[i] * Math.sin(a); vy += gaps[i] * Math.cos(a); });
+    const needleDeg = (vx === 0 && vy === 0) ? 0 : Math.atan2(vx, vy) * 180 / Math.PI;
+    const top = gaps.indexOf(Math.max.apply(null, gaps));
+    const balanced = total <= 4 || gaps.filter(g => g === gaps[top]).length > 2;
+    const d = DIRS.find(x => x.id === tab);
+
+    const setScore = (dirId, i, v) => this.setState(s => {
+      const next = JSON.parse(JSON.stringify(s.scores));
+      next[dirId][i] = v;
+      return { scores: next };
+    });
+
+    return {
+      svgLabel: 'Value Compass. Untapped value by direction: ' + DIRS.map((x, i) => x.name + ' ' + Math.round(gaps[i] / max * 100) + '%').join(', '),
+      bgWedges: DIRS.map(x => ({ d: wedge(x.angle, R0, R1), fill: x.color })),
+      wedges: DIRS.map((x, i) => ({ d: wedge(x.angle, R0, R0 + (R1 - R0) * gaps[i] / max), fill: x.color })),
+      labels: DIRS.map(x => { const [cx, cy] = pt(x.angle, 186); return { cx, cy, ty: (+cy + 5.5).toFixed(1), letter: x.id, ink: x.ink }; }),
+      needleCss: 'transform-box: view-box; transform-origin: 200px 200px; transform: rotate(' + needleDeg.toFixed(1) + 'deg); transition: transform 480ms cubic-bezier(0.2,0,0.1,1);',
+      untappedPct: Math.round(total / (max * 4) * 100) + '%',
+      headline: balanced ? 'A balanced profile' : DIRS[top].name + ': ' + DIRS[top].question.toLowerCase(),
+      advice: total === 0 ? 'Every lever is embedded. Keep re-testing each category as markets, needs and suppliers change.' : balanced ? 'Value is spread across all four directions. The next gains come from deepening the levers rated Partly, starting with your highest-spend categories.' : DIRS[top].advice,
+      bars: DIRS.map((x, i) => ({
+        name: x.name,
+        pct: Math.round(gaps[i] / max * 100) + '%',
+        fillCss: 'display: block; height: 8px; border-radius: 999px; background: ' + x.color + '; width: ' + (gaps[i] / max * 100) + '%; transition: width 320ms cubic-bezier(0.2,0,0.1,1);',
+      })),
+      tabs: DIRS.map(x => ({
+        letter: x.id, name: x.name,
+        selected: x.id === tab ? 'true' : 'false',
+        pick: () => this.setState({ tab: x.id }),
+        css: 'font-family: var(--font-body); text-align: left; padding: 10px 12px; border-radius: 9px; cursor: pointer; border: 1px solid '
+          + (x.id === tab ? x.ink + '; background: ' + x.ink + '; color: #FFFFFF;' : 'var(--border-default); background: var(--white); color: var(--polaris-blue); border-top: 3px solid ' + x.color + ';'),
+      })),
+      dir: { question: d.question, blurb: d.blurb },
+      dirHeadCss: 'padding: 0 0 14px 14px; border-left: 4px solid ' + d.color + '; margin-bottom: 6px;',
+      levers: d.levers.map(([name, desc, time], i) => ({
+        name, desc, time,
+        groupLabel: name + ': how established is this lever?',
+        opts: OPTS.map((label, v) => {
+          const on = scores[d.id][i] === v;
+          return {
+            label, pressed: on ? 'true' : 'false',
+            pick: () => setScore(d.id, i, v),
+            css: 'font-family: var(--font-body); font-size: 13px; height: 34px; border: 0; border-radius: 7px; cursor: pointer; '
+              + (on ? 'background: ' + d.ink + '; color: #FFFFFF; font-weight: 600;' : 'background: transparent; color: var(--text-body); font-weight: 500;'),
+          };
+        }),
+      })),
+      reset: () => this.setState({ scores: JSON.parse(JSON.stringify(EXAMPLE)) }),
+    };
+  }
+}
+</script>
+</body>
+</html>
