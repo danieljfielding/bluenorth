@@ -229,7 +229,7 @@
         <p style="font-size: 17px; color: var(--text-muted); margin: 0;">Everything you need to run a disciplined savings program, and to prove its results.</p>
       </div>
       <div data-r="grid2" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px;">
-          <div style="display: flex; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); font-size: 15px; color: var(--text-body);"><span style="font-family: var(--font-mono); color: var(--aurora-teal); flex: none;">&#10003;</span><span>Cleansed and categorised spend cube</span></div>
+          <div style="display: flex; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); font-size: 15px; color: var(--text-body);"><span style="font-family: var(--font-mono); color: var(--aurora-teal); flex: none;">&#10003;</span><span>A clean, consistently coded spend dataset</span></div>
           <div style="display: flex; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); font-size: 15px; color: var(--text-body);"><span style="font-family: var(--font-mono); color: var(--aurora-teal); flex: none;">&#10003;</span><span>Spend dashboards by category, supplier and business unit</span></div>
           <div style="display: flex; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); font-size: 15px; color: var(--text-body);"><span style="font-family: var(--font-mono); color: var(--aurora-teal); flex: none;">&#10003;</span><span>Sized and prioritised opportunity register</span></div>
           <div style="display: flex; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); font-size: 15px; color: var(--text-body);"><span style="font-family: var(--font-mono); color: var(--aurora-teal); flex: none;">&#10003;</span><span>One-page strategy per priority category</span></div>
@@ -295,7 +295,7 @@
       <div>
         <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-blue); margin-bottom: 16px;">Get started</div>
         <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin: 0 0 16px;">See what is in your spend.</h2>
-        <p style="font-size: 17px; color: var(--aurora); margin: 0; max-width: 480px;">Share a recent extract of your spend data and we will show you where the opportunities are likely to sit before you commit to a program.</p>
+        <p style="font-size: 17px; color: var(--aurora); margin: 0; max-width: 480px;">Share a recent extract of your spend data and we will point to where the largest opportunities are likely to sit before you commit to a program.</p>
       </div>
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <a href="contact.html?interest=cost" style="display: inline-flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 26px; border-radius: 8px; background: var(--sky-blue); color: var(--white); font-size: 16px; font-weight: 600;" style-hover="background: var(--action-secondary-hover); color: var(--white);">Talk about your spend <span style="font-family: var(--font-mono);">&rarr;</span></a>
@@ -316,37 +316,37 @@ const PHASES = [
 ];
 const STAGES = ['Baseline', 'Identified', 'Validated', 'Contracted', 'Realised'];
 const STEPS = [
-  { phase: 'a', title: 'Cleanse and categorise', timing: 'Weeks 1 to 2', stage: 0,
+  { phase: 'a', title: 'Clean the data', timing: 'Weeks 1 to 2', stage: 0,
     desc: 'We bring transaction data together from every ledger and system, remove duplicates and apply a consistent category structure so spend can be analysed with confidence.',
     acts: ['Data request, review and field mapping', 'Consistent category taxonomy applied', 'Supplier names normalised and parent groups linked'],
-    outs: ['Cleansed, categorised spend dataset', 'Data quality summary'],
+    outs: ['A clean, consistently coded spend dataset', 'Data quality summary'],
     apps: ['Spend Cube'],
     stageNote: 'An agreed spend baseline is the foundation for every saving that follows.' },
-  { phase: 'a', title: 'Build the spend cube', timing: 'Weeks 3 to 4', stage: 0,
+  { phase: 'a', title: 'Map the spend', timing: 'Weeks 3 to 4', stage: 0,
     desc: 'The cleansed data becomes interactive dashboards showing spend by category, supplier, business unit and contract coverage, highlighting what procurement can genuinely influence.',
-    acts: ['Influenceable spend identified', 'Contracted versus uncontracted spend mapped', 'Dashboards configured for your team'],
+    acts: ['Spend procurement can genuinely influence', 'Contracted versus uncontracted spend mapped', 'Dashboards configured for your team'],
     outs: ['Interactive spend cube your team keeps', 'Spend profile by category and business unit'],
     apps: ['Spend Cube', 'CPO dashboard'],
     stageNote: 'Visibility first: the spend cube shows where opportunities are likely to sit.' },
-  { phase: 'o', title: 'Identify opportunities', timing: 'Weeks 4 to 6', stage: 1,
+  { phase: 'o', title: 'Find the value', timing: 'Weeks 4 to 6', stage: 1,
     desc: 'We develop savings hypotheses for each category using spend patterns, contract terms, market insight and benchmarks, then size them to build a pipeline.',
     acts: ['Category-level opportunity sizing', 'Quick wins separated from strategic plays', 'Existing contracts and initiatives reviewed'],
     outs: ['Sized opportunity register', 'Draft savings targets by category'],
     apps: ['Spend Cube', 'Supplier Assure', 'Value Tracker'],
     stageNote: 'Opportunities enter the pipeline as identified savings with an estimated range.' },
-  { phase: 'o', title: 'Validate and plan', timing: 'Weeks 6 to 8', stage: 2,
+  { phase: 'o', title: 'Prove the case', timing: 'Weeks 6 to 8', stage: 2,
     desc: 'Opportunities are tested with budget holders and Finance. Each priority category gets a one-page strategy, an agreed target and a place in a delivery wave.',
     acts: ['Stakeholder validation workshops', 'One-page category strategies', 'Waves sequenced by value and ease'],
     outs: ['Validated savings pipeline', 'Category roadmap in waves', 'Business case for delivery'],
     apps: ['Playbooks', 'Value Tracker'],
     stageNote: 'Validated savings carry an owner, a target and stakeholder agreement.' },
-  { phase: 'd', title: 'Source and negotiate', timing: 'Each wave', stage: 3,
+  { phase: 'd', title: 'Go to market', timing: 'Each wave', stage: 3,
     desc: 'We run the market approach and negotiations alongside your team, applying the full range of commercial, demand and specification levers and building their skills as we go.',
     acts: ['Market testing and RFx', 'Negotiation planning and support', 'Contract award and transition'],
     outs: ['Contracts awarded or renegotiated', 'Contracted savings recorded against target'],
     apps: ['Value Tracker', 'Supplier Assure'],
     stageNote: 'Savings become contracted once new terms are signed.' },
-  { phase: 'd', title: 'Track and report', timing: 'Ongoing', stage: 4,
+  { phase: 'd', title: 'Bank the savings', timing: 'Ongoing', stage: 4,
     desc: 'Realised savings are measured against the agreed baseline and method, signed off by Finance and reported to the executive and Board.',
     acts: ['Benefits realisation framework agreed with Finance', 'Realised savings tracked monthly', 'Executive and Board reporting'],
     outs: ['Finance-recognised savings', 'Board-ready savings dashboard'],
