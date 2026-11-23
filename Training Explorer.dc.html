@@ -22,23 +22,44 @@
 
 <div style="font-family: var(--font-body); color: var(--text-body); font-size: 16px; line-height: 1.6;">
 
-  <div data-r="stack" style="border: 1px solid var(--border-default); border-radius: 12px; background: var(--surface-card); padding: clamp(24px, 3.2vw, 36px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; justify-items: start;">
-    <div>
-      <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 14px;">Training portfolio</div>
-      <h3 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.6vw, 32px); line-height: 1.14; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 12px;">14 facilitated programs across the procurement lifecycle</h3>
-      <p style="font-size: 16px; color: var(--text-muted); margin: 0 0 20px; max-width: 620px;">Browse every program — modules, learning outcomes and delivery format — or start from one of five suggested learning pathways and build a shortlist.</p>
-      <div style="display: flex; gap: clamp(16px, 2.6vw, 32px);">
-        <div>
-          <div style="font-family: var(--font-mono); font-size: 22px; color: var(--polaris-blue);">14</div>
-          <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Programs</div>
-        </div>
-        <div>
-          <div style="font-family: var(--font-mono); font-size: 22px; color: var(--polaris-blue);">5</div>
-          <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">Learning pathways</div>
-        </div>
+  <div>
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; margin-bottom: 28px;">
+      <div style="max-width: 700px;">
+        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glacier); margin-bottom: 16px;">Training programs</div>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -0.02em; color: var(--polaris-blue); margin: 0 0 16px;">14 facilitated programs across the procurement lifecycle</h2>
+        <p style="font-size: 17px; color: var(--text-muted); margin: 0;">Each program pairs a SkillsMap assessment with a facilitated workshop and matching CPO360 eLearning, so you can see the uplift. Choose a pathway for your team, or open any program to see its modules and learning outcomes.</p>
       </div>
+      <button type="button" onClick="{{ openModal }}" style="display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 22px; border-radius: 8px; border: 1.5px solid var(--polaris-blue); background: transparent; color: var(--polaris-blue); font-family: var(--font-body); font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap;" style-hover="background: var(--surface-brand-soft);">Compare programs and build a shortlist</button>
     </div>
-    <button type="button" onClick="{{ openModal }}" style="display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 30px; border-radius: 8px; border: 0; background: var(--action-primary); color: var(--white); font-family: var(--font-body); font-size: 16px; font-weight: 600; cursor: pointer; white-space: nowrap;" style-hover="background: var(--action-primary-hover);">Explore the programs <span style="font-family: var(--font-mono);">&rarr;</span></button>
+
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;">
+      <span style="font-size: 14px; font-weight: 600; color: var(--text-muted); margin-right: 4px;">Learning pathway</span>
+      <sc-for list="{{ pathwayChips }}" as="chip" hint-placeholder-count="6">
+        <button type="button" onClick="{{ chip.select }}" style="{{ chip.css }}">{{ chip.label }}</button>
+      </sc-for>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 16px;">
+      <sc-for list="{{ cards }}" as="card" hint-placeholder-count="14">
+        <button type="button" onClick="{{ card.open }}" aria-label="{{ card.aria }}" style="display: flex; flex-direction: column; gap: 10px; text-align: left; padding: 22px 22px 18px; border: 1px solid var(--border-default); border-radius: 10px; background: var(--white); cursor: pointer; font-family: var(--font-body); transition: border-color 160ms, box-shadow 160ms, transform 160ms;" style-hover="border-color: var(--sky-blue); box-shadow: 0 10px 24px rgba(22,29,43,0.08); transform: translateY(-2px);">
+          <span style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <span style="font-family: var(--font-mono); font-size: 12px; color: var(--sky-blue);">{{ card.n }}</span>
+            <span style="font-size: 12px; font-weight: 600; color: var(--polaris-blue); background: var(--surface-brand-soft); padding: 4px 10px; border-radius: 999px; white-space: nowrap;">{{ card.dayLabel }}</span>
+          </span>
+          <span style="display: block; font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.22; letter-spacing: -0.01em; color: var(--polaris-blue);">{{ card.name }}</span>
+          <span style="display: block; flex: 1; font-size: 14px; line-height: 1.55; color: var(--text-muted);">{{ card.desc }}</span>
+          <span style="display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--border-subtle); padding-top: 12px; margin-top: 4px; font-size: 13px;">
+            <span style="color: var(--text-subtle);">{{ card.suited }}</span>
+            <span style="color: var(--glacier); font-weight: 600; white-space: nowrap;">View program</span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="margin-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; padding: 20px 24px; border-radius: 10px; background: var(--surface-brand-soft);">
+      <span style="font-size: 15px; color: var(--polaris-blue); max-width: 720px;">Not sure where to start? A SkillsMap assessment shows which programs will make the most difference for your team.</span>
+      <a href="contact.html?interest=learning" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 8px; background: var(--action-primary); color: var(--white); font-size: 14px; font-weight: 600; white-space: nowrap;" style-hover="background: var(--action-primary-hover); color: var(--white);">Talk to us about training</a>
+    </div>
   </div>
 
   <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
@@ -184,23 +205,23 @@ const COURSES = [
     outcomes: ['Explain the end-to-end procurement lifecycle and where value is created', 'Translate business needs into clear, usable specifications', 'Apply core sourcing, evaluation and negotiation concepts', 'Manage supplier and contract basics with confidence'],
     toolkit: 'SkillsMap + Procurement Essentials workbook' },
   { id: 'sourcing', name: 'Sourcing Essentials', days: 1, cohort: 16, suited: 'Buyers running tenders',
-    desc: 'Practical grounding in running a sourcing process — from category baselining through to a well-negotiated contract.',
+    desc: 'Practical grounding in running a sourcing process, from category baselining through to a well-negotiated contract.',
     modules: ['The role and value-add of procurement', 'Sourcing principles and category baselining', 'Developing clear, concise specifications', 'Approaches to market and their trade-offs', 'Understanding the difference between price and cost', 'Mapping and mitigating sourcing and supply chain risk', 'Evaluation methods and their application', 'Negotiating and contracting the outcome'],
     outcomes: ['Baseline a category and define clear sourcing objectives', 'Select the right route to market for a given spend category', 'Apply structured evaluation methods to select suppliers', 'Carry a sourcing outcome through to a well-managed contract'],
     toolkit: 'SkillsMap + sourcing plan template' },
   { id: 'category', name: 'Category Management', days: 2, cohort: 16, suited: 'Category managers',
-    desc: 'An intensive, tools-based program to build and lead category strategies that deliver long-term value — a key domain of the bluenorth Competency Framework.',
-    modules: ['Introduction to category management and the CM model (Day 1)', 'Category baselining and spend cube analysis (Day 1)', 'Understanding the business need (Day 1)', "Supply market analysis — PESTLE and Porter's Five Forces (Day 1)", 'Supply chain and risk analysis (Day 2)', 'Strategy tools — supply positioning and preferencing (Day 2)', 'Developing and structuring the category strategy (Day 2)', 'Gaining sponsorship and category governance (Day 2)'],
+    desc: 'An intensive, tools-based program to build and lead category strategies that deliver long-term value. Category management is a key domain of the bluenorth Competency Framework.',
+    modules: ['Introduction to category management and the CM model (Day 1)', 'Category baselining and spend cube analysis (Day 1)', 'Understanding the business need (Day 1)', "Supply market analysis: PESTLE and Porter's Five Forces (Day 1)", 'Supply chain and risk analysis (Day 2)', 'Strategy tools: supply positioning and preferencing (Day 2)', 'Developing and structuring the category strategy (Day 2)', 'Gaining sponsorship and category governance (Day 2)'],
     outcomes: ['Build a category strategy from spend and market analysis through to a governed plan', 'Apply supply positioning and customer preferencing tools to shape strategy', 'Identify, assess and manage category risk', 'Secure stakeholder sponsorship for the finished strategy'],
     toolkit: 'SkillsMap + bluenorth category strategy template' },
   { id: 'commercial', name: 'Commercial Modelling', days: 1, cohort: 16, suited: 'Commercial analysts',
     desc: 'Practical tools to build cost models, test pricing structures and evaluate commercial proposals with rigour.',
-    modules: ['Introduction to commercial modelling and spreadsheet discipline', 'Total cost of ownership and whole-of-life costing', 'Should-cost modelling — cost drivers and fair margin', 'Understanding pricing models — fixed, cost-plus, value-based', 'Proposal and tender evaluation, bid sheet design', 'Standardising and cleansing supplier data for comparison', 'Rise-and-fall pricing, CPI and indexing considerations'],
+    modules: ['Introduction to commercial modelling and spreadsheet discipline', 'Total cost of ownership and whole-of-life costing', 'Should-cost modelling: cost drivers and fair margin', 'Understanding pricing models: fixed, cost-plus and value-based', 'Proposal and tender evaluation, bid sheet design', 'Standardising and cleansing supplier data for comparison', 'Rise-and-fall pricing, CPI and indexing considerations'],
     outcomes: ['Build a should-cost model and identify true cost drivers', 'Apply total cost of ownership thinking to sourcing decisions', 'Design bid sheets that compare proposals on a like-for-like basis', 'Select the right pricing model for a given category'],
     toolkit: 'SkillsMap + should-cost model template (Excel)' },
   { id: 'cost', name: 'Cost Management', days: 1, cohort: 16, suited: 'Savings and value owners',
-    desc: 'A strategic approach to controlling, reducing and reporting procurement cost throughout the process — without compromising value or quality.',
-    modules: ['The cost management lifecycle — from baseline to benefits realisation', 'Cost levers across the procurement cycle', 'Total cost of ownership versus purchase price', 'Benchmarking and should-cost as a negotiation input', 'Building a savings and benefits tracker', 'Reporting cost performance to leadership', 'Avoiding cost leakage post-contract'],
+    desc: 'A strategic approach to controlling, reducing and reporting procurement cost throughout the process, without compromising value or quality.',
+    modules: ['The cost management lifecycle, from baseline to benefits realisation', 'Cost levers across the procurement cycle', 'Total cost of ownership versus purchase price', 'Benchmarking and should-cost as a negotiation input', 'Building a savings and benefits tracker', 'Reporting cost performance to leadership', 'Avoiding cost leakage post-contract'],
     outcomes: ['Identify and prioritise cost levers across a category', 'Distinguish price, cost and value in supplier negotiations', 'Build a benefits and savings tracker aligned to CPO360 Value Tracker', 'Report cost performance in board-ready terms'],
     toolkit: 'SkillsMap + CPO360 Value Tracker walkthrough' },
   { id: 'finance', name: 'Finance for Procurement', days: 1, cohort: 16, suited: 'Anyone building a business case',
@@ -210,27 +231,27 @@ const COURSES = [
     toolkit: 'SkillsMap + financial analysis workbook' },
   { id: 'contractmgmt', name: 'Contract Management', days: 1, cohort: 16, suited: 'Contract and supplier owners',
     desc: 'Practical approaches to managing contracts and supplier performance so the value negotiated is the value actually realised.',
-    modules: ['Contract management principles and what goes wrong', 'Contract management enablers — people, framework, systems', 'Mobilising the contract and early actions', 'Contract administration, variations and disputes', 'Building a contract management plan', 'Performance regimes and KPIs', 'Managing contract closure and supplier exit'],
+    modules: ['Contract management principles and what goes wrong', 'Contract management enablers: people, framework and systems', 'Mobilising the contract and early actions', 'Contract administration, variations and disputes', 'Building a contract management plan', 'Performance regimes and KPIs', 'Managing contract closure and supplier exit'],
     outcomes: ['Set up a contract governance structure appropriate to risk', 'Build a contract management plan with clear KPIs', 'Manage variations, disputes and performance reviews with confidence', 'Close out a contract and supplier exit cleanly'],
     toolkit: 'SkillsMap + contract management plan template' },
   { id: 'contractlaw', name: 'Contract Law', days: 1, cohort: 16, suited: 'Non-lawyers negotiating terms',
-    desc: 'Essential legal principles behind contract formation, key clauses and dispute resolution — built for procurement professionals, not lawyers.',
-    modules: ["Contract formation — offer, acceptance and the 'battle of the forms'", 'Conditions vs. warranties, express and implied terms', 'Key clauses — liability, indemnity, limitation and termination', 'Allocating risk through the contract', 'Variations and change control', 'Breach of contract and available remedies', 'Dispute resolution options and their trade-offs'],
+    desc: 'Essential legal principles behind contract formation, key clauses and dispute resolution, built for procurement professionals rather than lawyers.',
+    modules: ["Contract formation: offer, acceptance and the 'battle of the forms'", 'Conditions vs. warranties, express and implied terms', 'Key clauses: liability, indemnity, limitation and termination', 'Allocating risk through the contract', 'Variations and change control', 'Breach of contract and available remedies', 'Dispute resolution options and their trade-offs'],
     outcomes: ['Recognise legal risk in contract formation and how to avoid it', 'Identify and negotiate the clauses that matter most', 'Understand available remedies and dispute resolution paths', 'Apply legal awareness to day-to-day supplier contracting'],
     toolkit: 'SkillsMap + contract clause checklist' },
   { id: 'negotiation', name: 'Negotiation', days: 2, cohort: 12, suited: 'Anyone at the table',
-    desc: 'An intensive program moving participants from negotiation fundamentals to advanced commercial practice, validated through live role-play — a key domain of the bluenorth Competency Framework.',
-    modules: ['The negotiation process and stakeholder analysis (Day 1)', 'Preparation and planning — objectives, BATNA and ZOPA (Day 1)', 'Sources of power in commercial negotiation (Day 1)', 'Methods of persuasion and influence (Day 1)', 'Negotiation styles, ploys and tactics (Day 2)', 'Non-verbal behaviour and detecting influence attempts (Day 2)', 'Building an advanced, strategic negotiation plan (Day 2)', 'Role-play with one-to-one tutor feedback (Day 2)'],
+    desc: 'An intensive program moving participants from negotiation fundamentals to advanced commercial practice, validated through live role-play. Negotiation is a key domain of the bluenorth Competency Framework.',
+    modules: ['The negotiation process and stakeholder analysis (Day 1)', 'Preparation and planning: objectives, BATNA and ZOPA (Day 1)', 'Sources of power in commercial negotiation (Day 1)', 'Methods of persuasion and influence (Day 1)', 'Negotiation styles, ploys and tactics (Day 2)', 'Non-verbal behaviour and detecting influence attempts (Day 2)', 'Building an advanced, strategic negotiation plan (Day 2)', 'Role-play with one-to-one tutor feedback (Day 2)'],
     outcomes: ['Plan and execute a structured negotiation from objectives through to close', 'Apply a range of influence and persuasion techniques', "Recognise and respond to the other party's tactics", 'Demonstrate negotiation skill through validated role-play'],
     toolkit: 'SkillsMap + negotiation planning template' },
   { id: 'srm', name: 'Supplier Relationship Management', days: 1, cohort: 16, suited: 'SRM and performance leads',
     desc: 'Tools and techniques to segment, develop and manage supplier relationships that deliver value well beyond the contract.',
-    modules: ['Planning for effective supplier relationship management', 'Relationship segmentation tools', 'Power and dependency in supplier relationships', 'Opportunity analysis and value creation', 'Contractual levers of performance', "Service level agreements — dos and don'ts", "The 'people element' of supplier relationships"],
+    modules: ['Planning for effective supplier relationship management', 'Relationship segmentation tools', 'Power and dependency in supplier relationships', 'Opportunity analysis and value creation', 'Contractual levers of performance', "Service level agreements: dos and don'ts", "The 'people element' of supplier relationships"],
     outcomes: ['Segment suppliers and tailor relationship strategies accordingly', 'Use contractual and relational levers to drive supplier performance', 'Design SLAs that avoid common pitfalls', 'Build supplier relationships that create value beyond the contract'],
     toolkit: 'SkillsMap + supplier segmentation matrix' },
   { id: 'stakeholder', name: 'Stakeholder Management', days: 1, cohort: 16, suited: 'Business partners',
     desc: 'Builds confidence and skill in identifying, engaging and influencing stakeholders throughout the procurement process.',
-    modules: ['Recognising personality, motivation and communication styles', 'Stakeholder identification and analysis', 'Power/interest mapping — the Mendelow matrix', 'Communications planning', "Influencing and persuasion — the 'pull' approach", 'Managing change and challenging stakeholders constructively'],
+    modules: ['Recognising personality, motivation and communication styles', 'Stakeholder identification and analysis', 'Power/interest mapping with the Mendelow matrix', 'Communications planning', "Influencing and persuasion: the 'pull' approach", 'Managing change and challenging stakeholders constructively'],
     outcomes: ['Identify and map stakeholders by power and interest', 'Build a communications plan for a live procurement project', 'Apply influencing techniques suited to each stakeholder type', 'Challenge stakeholders constructively when required'],
     toolkit: 'SkillsMap + stakeholder analysis template' },
   { id: 'risk', name: 'Risk Management', days: 1, cohort: 16, suited: 'Category and contract teams',
@@ -239,7 +260,7 @@ const COURSES = [
     outcomes: ['Apply a structured risk management process to a procurement category', 'Build and maintain a practical, living risk register', 'Identify supply chain vulnerabilities before they crystallise', 'Embed risk thinking into everyday sourcing decisions'],
     toolkit: 'SkillsMap + risk register template' },
   { id: 'probity', name: 'Probity', days: 1, cohort: 16, suited: 'Public sector and regulated',
-    desc: 'Defines probity and its risks across the procurement lifecycle, equipping participants to protect integrity in every decision — a key domain of the bluenorth Competency Framework.',
+    desc: 'Defines probity and its risks across the procurement lifecycle, equipping participants to protect integrity in every decision. Probity is a key domain of the bluenorth Competency Framework.',
     modules: ['Defining probity and probity risk', 'Corruption, maladministration and waste', 'Probity in evaluation, negotiation and selection', 'Probity in contract management', 'Conflicts of interest, confidentiality and honesty', 'Gifts, hospitality and the use of advisors and auditors', 'Building probity into governance and everyday behaviour'],
     outcomes: ['Identify probity risk at every stage of the procurement lifecycle', 'Manage conflicts of interest and gifts/hospitality appropriately', 'Apply probity requirements to evaluation and negotiation', 'Build a probity plan for a significant procurement'],
     toolkit: 'SkillsMap + probity plan checklist' },
@@ -273,6 +294,8 @@ class Component extends DCLogic {
   componentWillUnmount() { document.removeEventListener('keydown', this._key); document.body.style.overflow = ''; }
 
   pick(id) { this.setState({ activeId: id }); }
+
+  openCourse(id) { this.setState({ activeId: id, open: true }); }
 
   choosePathway(id) {
     const p = PATHWAYS.find(x => x.id === id);
@@ -324,6 +347,15 @@ class Component extends DCLogic {
       listCount: p.courses
         ? ordered.reduce((n, c) => n + c.days, 0) + ' days'
         : COURSES.length + ' programs',
+      cards: ordered.map((c, i) => ({
+        n: p.courses ? String(i + 1).padStart(2, '0') : String(COURSES.indexOf(c) + 1).padStart(2, '0'),
+        name: c.name,
+        desc: c.desc.split('. ')[0].replace(/\.$/, '') + '.',
+        suited: c.suited,
+        dayLabel: c.days === 1 ? '1 day' : c.days + ' days',
+        aria: 'View ' + c.name + ' program details',
+        open: () => this.openCourse(c.id)
+      })),
       list: ordered.map((c, i) => ({
         id: c.id,
         name: c.name,

@@ -8,7 +8,7 @@ Copy the contents of this folder into the root of the `danieljfielding/bluenorth
 
 **New service pages:** `procurement-transformation.html`, `value-accelerator.html`, `procurement-diagnostic.html`, `capability-development.html`, `social-procurement.html`, `mentoring.html`
 
-**Shared fragments** (keep these exact file names, spaces included): `Site Nav.dc.html` (new mega menu), `Site Footer.dc.html`, `Value Compass.dc.html` (new, used by the Value Accelerator page)
+**Shared fragments** (keep these exact file names, spaces included): `Site Nav.dc.html` (new mega menu), `Site Footer.dc.html`, `Value Compass.dc.html` (new, used by the Value Accelerator page), `Training Explorer.dc.html` (now shows all 14 programs on the Capability Development page)
 
 **Site-wide style:** `responsive.css` (new editorial look: serif headings, plain labels, no watermarks)
 
@@ -17,7 +17,7 @@ Copy the contents of this folder into the root of the `danieljfielding/bluenorth
 **SEO:** `sitemap.xml` (now lists the six new service pages)
 
 ## Leave these existing repo files in place
-- `ds/`, `support.js`, `assets/` (logos, photos, insight images, CPO360 video), `Training Explorer.dc.html`
+- `ds/`, `support.js`, `assets/` (logos, photos, insight images, CPO360 video)
 - `cpo360.html`, `insights.html`, the three `insight-*.html` articles. These pick up the new menu, footer and look automatically.
 - `CNAME`, `favicon.ico`, `favicon.png`, `apple-touch-icon.png`, `.nojekyll`, `robots.txt`
 - `aurora-hero.js` is no longer used by the home page and can be deleted later.
